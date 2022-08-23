@@ -15,6 +15,15 @@ public class GameColorChanger : MonoBehaviour
 	[Header("Logo")]
 	[SerializeField] private Texture2D _transparentTexture;
 	[SerializeField] private Material _logoMaterial;
+	[Header("Single Color Materials")]
+	[SerializeField] private Material _singleColorMain;
+	[SerializeField] private Material _singleColorMainMetallic;
+	[SerializeField] private Material _singleColorMainAdd;
+	[SerializeField] private Material _singleColorMainAddMetallic;
+	[SerializeField] private Material _singleColorSlave;
+	[SerializeField] private Material _singleColorSlaveMetallic;
+	[SerializeField] private Material _singleColorSlaveAdd;
+	[SerializeField] private Material _singleColorSlaveAddMetallic;
 	[Space]
 	[SerializeField] private Material _material1;
 	[SerializeField] private Material _material2;
@@ -241,6 +250,9 @@ public class GameColorChanger : MonoBehaviour
 		_material1.SetColor("_MainColor", color);
 		_material2.SetColor("_SecondColor", color);
 
+		_singleColorMainMetallic.SetColor("_Color", color);
+		_singleColorMain.SetColor("_Color", color);
+
 		_mainBarMaterial.SetColor("_MainColor", color);
 
 		color = color / (1 - _weightLigtherBG);
@@ -252,12 +264,18 @@ public class GameColorChanger : MonoBehaviour
 	{
 		_material1.SetColor("_SecondColor", color);
 		_material2.SetColor("_MainColor", color);
+
+		_singleColorMainAddMetallic.SetColor("_Color", color);
+		_singleColorMainAdd.SetColor("_Color", color);
 	}
 
 	private void ChangeSlaveColor(Color color)
 	{
 		_material3.SetColor("_MainColor", color);
 		_material4.SetColor("_SecondColor", color);
+
+		_singleColorSlaveMetallic.SetColor("_Color", color);
+		_singleColorSlave.SetColor("_Color", color);
 
 		ChangeAudioMaskShapeColor(color);
 	}
@@ -266,6 +284,9 @@ public class GameColorChanger : MonoBehaviour
 	{
 		_material3.SetColor("_SecondColor", color);
 		_material4.SetColor("_MainColor", color);
+
+		_singleColorSlaveAddMetallic.SetColor("_Color", color);
+		_singleColorSlaveAdd.SetColor("_Color", color);
 
 		_logoMaterial.SetColor("_MainColor", color);
 

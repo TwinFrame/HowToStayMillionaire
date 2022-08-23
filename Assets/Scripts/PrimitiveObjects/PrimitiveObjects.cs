@@ -102,7 +102,11 @@ public class PrimitiveObjects : MonoBehaviour
 		for (int i = 0; i < _startPositions.Count; i++)
 		{
 			//_rigidbodies[i].velocity = Vector3.zero;
-			_rigidbodies[i].transform.position = _startPositions[i];
+
+			_rigidbodies[i].transform.SetPositionAndRotation(_startPositions[i],
+				Quaternion.Euler(Random.Range(0, 359), Random.Range(0, 359), Random.Range(0, 359)));
+
+			//_rigidbodies[i].transform.position = _startPositions[i];
 		}
 	}
 

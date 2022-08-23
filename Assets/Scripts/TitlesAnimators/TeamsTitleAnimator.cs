@@ -103,7 +103,12 @@ public class TeamsTitleAnimator : TitleAnimator
 			StopCoroutine(_changeTeamNameJob);
 		_changeTeamNameJob = StartCoroutine(ChangeTeamNameJob(numTeam, newName));
 	}
-
+	/*
+	public void SelectWinner(int numTeam)
+	{
+		_teamFieldsList[numTeam].transform.localScale = Vector3.one * Properties.ScaleSelectedTeamFields;
+	}
+	*/
 	private void InitTeamsContent()
 	{
 		_teamFieldsList.Clear();
@@ -255,6 +260,13 @@ public class TeamsTitleAnimator : TitleAnimator
 		_scaleTeamFieldJob = StartCoroutine(ScaleTeamFieldJob(numTeam, true));
 
 		selectTeamJob = _scaleTeamFieldJob;
+	}
+
+	private void SelectTeam(int numTeam)
+	{
+		if (_scaleTeamFieldJob != null)
+			StopCoroutine(_scaleTeamFieldJob);
+		_scaleTeamFieldJob = StartCoroutine(ScaleTeamFieldJob(numTeam, true));
 	}
 
 	private void DeselectTeam(int numTeam, out Coroutine deselectTeamJob)

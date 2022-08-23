@@ -63,6 +63,7 @@ public class Game : MonoBehaviour
 	private bool _isPreparationState = false;
 	private bool _isAskQuestionState = false;
 	private bool _isNeedRemoveMoneyWhenTeamsTitleStart = false;
+	//private bool _isGameOver = false;
 
 
 	private Coroutine _preparationTeamsJob;
@@ -221,6 +222,8 @@ public class Game : MonoBehaviour
 
 	public void EnterFinalTitle()
 	{
+		//_isGameOver = true;
+
 		_finalTitleAnimator.Enter(out Coroutine enterFinishTitleJob);
 
 		_primitiveObjects.EnterPrimitives();
@@ -766,6 +769,7 @@ public class Game : MonoBehaviour
 		_isAskQuestionState = false;
 		_isPreparationState = false;
 		_isNeedRemoveMoneyWhenTeamsTitleStart = false;
+		//_isGameOver = false;
 	}
 
 	private void ResetAllQuestions()
@@ -865,6 +869,18 @@ public class Game : MonoBehaviour
 
 			yield return _changeTeamMoneyJob;
 		}
+		/*
+		else if (_isFinished)
+		{
+			for (int i = 0; i < _teams.Count; i++)
+			{
+				if (_teams[i].IsWinner)
+				{
+					_teamsTitleAnimator.SelectWinner(i);
+				}
+			}
+		}
+		*/
 	}
 	/*
 	private IEnumerator ChangeTeamNameJob(int numTeam, string newName)
