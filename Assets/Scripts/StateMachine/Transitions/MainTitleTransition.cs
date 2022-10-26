@@ -25,7 +25,7 @@ public class MainTitleTransition : Transition
 
 	public override void OnMainTitleButton()
 	{
-		Game.WriteLog("Main Title: You are here.");
+		Game.WriteLog("Вы уже на главной заставке.");
 	}
 
 	public override void OnTeamsTitleButton()
@@ -36,6 +36,6 @@ public class MainTitleTransition : Transition
 		if (Game.IsTeamsReady)
 			IsReadyTransit = true;
 		else
-			Game.WriteLog("The teams have not been initialized yet.");
+			Game.WriteLog("Сначала подготовьте команды на следующем слайде.");
 	}
 }

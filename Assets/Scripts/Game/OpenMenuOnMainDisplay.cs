@@ -12,8 +12,8 @@ public class OpenMenuOnMainDisplay : MonoBehaviour
 	[SerializeField] private Camera _gameCamera;
 	[SerializeField] private GameMenu _gameMenu;
 	[SerializeField] private Toggle _openMenuToggle;
-	[Header("Service")]
-	[SerializeField] private Game _game;
+	//[Header("Service")]
+	//[SerializeField] private Game _game;
 
 	private Canvas _menuCanvas;
 	private Camera _menuCamera;
@@ -76,8 +76,8 @@ public class OpenMenuOnMainDisplay : MonoBehaviour
 
 	private void OnOpenMenu()
 	{
-		//if (AreHotkeysBlocked)
-		//	return;
+		if (_gameMenu.AreHotkeysBlocked)
+			return;
 
 		if (_openMenuToggle.isOn)
 			_toggleIsOn = false;

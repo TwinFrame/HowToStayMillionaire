@@ -54,6 +54,8 @@ public class PropertiesTabOnServer : BaseTab
 		_gameTextsWindows.OnCloseWindowEvent += OnCloseTextsWindow;
 		_gameTextsWindows.OnChangeCurrentSymbolEvent += (symbol) => OnChangeCurrentSymbol(symbol);
 		_gameTextsWindows.OnChangedGameTextsEvent += (name, finalText) => OnChangedGameTexts(name, finalText);
+		_gameTextsWindows.OnBlockHotkeyEvent += BlockHotkey;
+		_gameTextsWindows.OnUnblockHotkeyEvent += UnblockHotkey;
 
 		_loadImageButton.onClick.AddListener(OnOpenLoadImageWindow);
 		_loadImageWindow.OnCloseLoadImageWindowEvent += OnCloseLoadImageWindow;
@@ -87,6 +89,8 @@ public class PropertiesTabOnServer : BaseTab
 		_gameTextsWindows.OnCloseWindowEvent -= OnCloseTextsWindow;
 		_gameTextsWindows.OnChangeCurrentSymbolEvent -= (symbol) => OnChangeCurrentSymbol(symbol);
 		_gameTextsWindows.OnChangedGameTextsEvent -= (name, finalText) => OnChangedGameTexts(name, finalText);
+		_gameTextsWindows.OnBlockHotkeyEvent -= BlockHotkey;
+		_gameTextsWindows.OnUnblockHotkeyEvent -= UnblockHotkey;
 
 		_loadImageButton.onClick.RemoveListener(OnOpenLoadImageWindow);
 		_loadImageWindow.OnCloseLoadImageWindowEvent -= OnCloseLoadImageWindow;

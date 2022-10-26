@@ -101,7 +101,7 @@ public class Game : MonoBehaviour
 
 		_transitions = InitTransitions();
 		if (_transitions == null)
-			WriteLog("Dont find any transition on Game.");
+			WriteLog("Переходы в игре не найдены.");
 
 		ResetGame(); //добавить для TitleAnimation, как MainTitleAnim
 	}
@@ -302,7 +302,7 @@ public class Game : MonoBehaviour
 					CurrentQuestionWrongAnswer();
 			}
 			else
-				WriteLog("Option not selection.");
+				WriteLog("Не выбран вариант в вопросе.");
 		}
 		else
 		{
@@ -336,7 +336,7 @@ public class Game : MonoBehaviour
 		if (_isAskQuestionState)
 			_questionAnimator.StartCountdown(_tours[_currentNumTour].TimeToQuestion);
 		else
-			WriteLog("This is not Question State.");
+			WriteLog("Обратный отсчёт запскается только на слайде с вопросом.");
 	}
 
 	public bool TryGetIsAnsweredCurrentQuestion(out bool isRightAnswer)
@@ -402,7 +402,7 @@ public class Game : MonoBehaviour
 			return false;
 		}
 
-		WriteLog("The type of question without options");
+		WriteLog("Тип вопроса без вариантов ответа.");
 		currentChoosedOption = 0;
 		return false;
 	}
@@ -580,11 +580,11 @@ public class Game : MonoBehaviour
 		if (_currentTransition != null)
 		{
 			if (_currentTransition is AskQuestionTransition)
-				WriteLog("Play the question first.");
+				WriteLog("Сначала отыграйте текущий вопрос.");
 			else if (_currentTransition is PreparationTeamsTransition)
-				WriteLog("First prepare the teams.");
+				WriteLog("Сначала подготовьте все команды.");
 			else if (_currentTransition is MainTitleTransition)
-				WriteLog("This is Main Title.");
+				WriteLog("Вы уже на главной заставке.");
 			else
 				_currentTransition.OnMainTitleButton();
 		}
@@ -612,7 +612,7 @@ public class Game : MonoBehaviour
 				{
 					if (currentChoosedOption == numOption)
 					{
-						WriteLog("This option is already selected.");
+						WriteLog("Этот вариант уже выбран.");
 						return;
 					}
 
@@ -622,10 +622,10 @@ public class Game : MonoBehaviour
 					_questionAnimator.SetChooseOption(numOption);
 			}
 			else
-				WriteLog("There is no such option or the question whithout options.");
+				WriteLog("Такого варианта ответа нет или вопрос без вариантов ответа.");
 		}
 		else
-			WriteLog("This is not Question State.");
+			WriteLog("Сейчас не слайд с вопросом.");
 	}
 
 	public void OnChangedCurentMonetaryUnit(char MonetaryUnit)
@@ -646,7 +646,7 @@ public class Game : MonoBehaviour
 			//_gameEvent.SetNormalizedPauseMark(normalizedPauseMark);
 		}
 		else
-			WriteLog("Current question without audio or video content.");
+			WriteLog("Вопрос без аудио или видео контента.");
 	}
 
 	private Transition[] InitTransitions()

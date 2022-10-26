@@ -68,6 +68,8 @@ public class PropertiesTabOnClient : BaseTab
 		_gameTextsWindows.OnCloseWindowEvent += OnCloseTextsWindow;
 		_gameTextsWindows.OnChangeCurrentSymbolEvent += (symbol) => OnChangeCurrentSymbol(symbol);
 		_gameTextsWindows.OnChangedGameTextsEvent += (name, finalText) => OnChangedGameTexts(name, finalText);
+		_gameTextsWindows.OnBlockHotkeyEvent += BlockHotkey;
+		_gameTextsWindows.OnUnblockHotkeyEvent += UnblockHotkey;
 
 		_colorsButton.onClick.AddListener(OnOpenColorsWindow);
 		_colorsWindow.OnCloseWindowEvent += OnCloseColorsWindow;
@@ -107,6 +109,8 @@ public class PropertiesTabOnClient : BaseTab
 		_gameTextsWindows.OnCloseWindowEvent -= OnCloseTextsWindow;
 		_gameTextsWindows.OnChangeCurrentSymbolEvent -= (symbol) => OnChangeCurrentSymbol(symbol);
 		_gameTextsWindows.OnChangedGameTextsEvent -= (name, finalText) => OnChangedGameTexts(name, finalText);
+		_gameTextsWindows.OnBlockHotkeyEvent -= BlockHotkey;
+		_gameTextsWindows.OnUnblockHotkeyEvent -= UnblockHotkey;
 
 		_colorsButton.onClick.RemoveListener(OnOpenColorsWindow);
 		_colorsWindow.OnCloseWindowEvent -= OnCloseColorsWindow;

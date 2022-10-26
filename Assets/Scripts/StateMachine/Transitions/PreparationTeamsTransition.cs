@@ -9,17 +9,17 @@ public class PreparationTeamsTransition : Transition
 		if (Game.IsTeamsReady)
 			IsReadyTransit = true;
 		else
-			Game.WriteLog("Not all teams are Ready.");
+			Game.WriteLog("Не все команды готовы.");
 	}
 
 	public override void OnMainTitleButton()
 	{
-		Game.WriteLog("Pause with stop time.");
+		Game.WriteLog("Пауза с остановкой времени.");
 	}
 
 	public override void OnTeamsTitleButton()
 	{
-		Game.WriteLog("Teams is not ready yet.");
+		Game.WriteLog("Пока не готовы все команды.");
 	}
 
 	/*

@@ -114,13 +114,13 @@ public abstract class BaseMenu : MonoBehaviour
 
 	protected virtual void BlockHotkey()
 	{
-		WriteLog("Block Hotkey");
+		WriteLog("Горячие клавиши заблокированы.");
 		_areHotkeysBlocked = true;
 	}
 
 	protected virtual void UnblockHotkey()
 	{
-		WriteLog("Unblock Hotkey");
+		WriteLog("Горячие клавиши разблокированы.");
 		_areHotkeysBlocked = false;
 	}
 

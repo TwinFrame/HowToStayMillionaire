@@ -632,7 +632,7 @@ public class GameMenu : BaseMenu
 		{
 			RefreshTeamsDropdown(_game.Teams);
 
-			WriteLog("It didn`t work out. Enter a number.");
+			WriteLog("Не вышло. Введите целое число.");
 		}
 	}
 
@@ -804,7 +804,7 @@ public class GameMenu : BaseMenu
 			else
 			{
 				Debug.Log("The value must be between 0 and 1. Example: 0,55. Your: " + pauseMarkFloat);
-				WriteLog("The value must be between 0 and 1. Example: 0,55. Your: " + pauseMarkFloat);
+				WriteLog("Значение должно быть от 0 до 1. Ваше: " + pauseMarkFloat);
 
 				WriteOnPauseMarkField(_currentPauseMark.ToString());
 			}
@@ -812,7 +812,7 @@ public class GameMenu : BaseMenu
 		else
 		{
 			Debug.Log("It is possible to enter only integers 0-9 and one \",\" or \".\"");
-			WriteLog("It is possible to enter only integers 0-9 and one \",\" or \".\"");
+			WriteLog("Возможно ввести только целые числа 0-9 и одну \",\" для Win или \".\" для Mac.");
 
 			WriteOnPauseMarkField(_currentPauseMark.ToString());
 		}
@@ -1044,7 +1044,7 @@ public class GameMenu : BaseMenu
 			if (TryConvertStringToUshort(port, out ushort serverPort))
 				_gameServer.Server.Init(serverPort);
 			else
-				WriteLog("No good port");
+				WriteLog("Не корректный порт.");
 		}
 	}
 
@@ -1313,7 +1313,7 @@ public class GameMenu : BaseMenu
 				OnOption5Button();
 				break;
 			default:
-				WriteLog($"Option {netOption.Option} not found");
+				WriteLog($"Вариант {netOption.Option} не найден.");
 				break;
 		}
 	}
@@ -1362,7 +1362,7 @@ public class GameMenu : BaseMenu
 		if (netReplaceCurrentTeam.NewNumTeam < _game.Teams.Count)
 			ReplaceCurrentTeam(netReplaceCurrentTeam.NewNumTeam);
 		else
-			WriteLog($"The number {netReplaceCurrentTeam.NewNumTeam + 1} more than present Teams");
+			WriteLog($"Число {netReplaceCurrentTeam.NewNumTeam + 1} больше количества команд.");
 	}
 
 	private void OnChangeTeamNameServer(NetMessage msg, NetworkConnection networkConnection)
@@ -1372,7 +1372,7 @@ public class GameMenu : BaseMenu
 		if (netChangeTeamName.NewNumTeam < _game.Teams.Count)
 			ChangeTeamName(netChangeTeamName.NewNumTeam, netChangeTeamName.NewNameTeam);
 		else
-			WriteLog($"The number {netChangeTeamName.NewNumTeam + 1} more than present Teams");
+			WriteLog($"Число {netChangeTeamName.NewNumTeam + 1} больше количества команд.");
 	}
 
 	private void OnAddMoneyToTeamServer(NetMessage msg, NetworkConnection networkConnection)
@@ -1382,7 +1382,7 @@ public class GameMenu : BaseMenu
 		if (addMoneyToTeam.NumTeam < _game.Teams.Count)
 			AddMoneyToTeam(addMoneyToTeam.NumTeam, addMoneyToTeam.Money);
 		else
-			WriteLog($"The number {addMoneyToTeam.NumTeam + 1} more than present Teams");
+			WriteLog($"Число {addMoneyToTeam.NumTeam + 1} больше количества команд.");
 	}
 
 	#endregion

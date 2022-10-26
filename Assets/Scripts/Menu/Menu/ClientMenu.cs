@@ -422,7 +422,7 @@ public class ClientMenu : BaseMenu
 		else
 		{
 
-			WriteLog("First you need to connect to the Server.");
+			WriteLog("Сначала подключитесь к серверу.");
 		}
 	}
 
@@ -957,10 +957,10 @@ public class ClientMenu : BaseMenu
 			if (TryConvertStringToUshort(port, out ushort clientPort))
 				_gameClient.Client.Init(ipAddress, clientPort);
 			else
-				WriteLog("No good port");
+				WriteLog("Не корректный порт");
 		}
 
-		WriteLog("Press Connect button");
+		WriteLog("Кнопка подлкючения нажата безуспешно.");
 	}
 
 	private void ConnectedClient()
@@ -1102,7 +1102,7 @@ public class ClientMenu : BaseMenu
 		if (_gameClient.Client.IsActive && _gameClient.Client.Connection.IsCreated)
 			_gameClient.Client.SendToServer(msg);
 		else
-			WriteLog("Connect to the Server.");
+			WriteLog("Подключитесь к серверу.");
 	}
 
 	private void OnWelcomeClient(NetMessage msg)

@@ -20,11 +20,11 @@ public class AskQuestionTransition : Transition
 
 	public override void OnMainTitleButton()
 	{
-		Game.WriteLog("Pause with stop time.");
+		Game.WriteLog("Пауза с остановкой времени.");
 	}
 
 	public override void OnTeamsTitleButton()
 	{
-		Game.WriteLog("Need exit from question state.");
+		Game.WriteLog("Сначала отыграйте текущий вопрос.");
 	}
 }

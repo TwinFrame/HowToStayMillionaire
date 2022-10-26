@@ -30,9 +30,9 @@ public class GameColorChanger : MonoBehaviour
 	[Space]
 	[SerializeField] private Material _material3;
 	[SerializeField] private Material _material4;
-	[Space]
-	[SerializeField] private Material _material5;
-	[SerializeField] private Material _material6;
+	//[Space]
+	//[SerializeField] private Material _material5;
+	//[SerializeField] private Material _material6;
 	[Space]
 	[SerializeField] private Material _mainBarMaterial;
 	[SerializeField] private Material _glassIndicator;

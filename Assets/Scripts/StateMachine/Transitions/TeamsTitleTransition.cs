@@ -62,6 +62,6 @@ public class TeamsTitleTransition : Transition
 	
 	public override void OnTeamsTitleButton()
 	{
-		Game.WriteLog("You are here.");
+		Game.WriteLog("Вы уже на слайде о командах.");
 	}
 }
