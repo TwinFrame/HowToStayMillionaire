@@ -283,8 +283,8 @@ public class MenuColorsWindow : MenuWindow
 			color = new Color(0, 0, 0, 0);
 			currentBool = false;
 
-			_showTextForTime.ShowText(_textField, $"Only user palettes can be changed. " +
-				$"{_palettesDropdown.options[_palettesDropdown.value].text} palette is not user.");
+			_showTextForTime.ShowText(_textField, $"Только пользовательские палитры (User) могут быть изменены. " +
+				$"{_palettesDropdown.options[_palettesDropdown.value].text} не пользовательская палитра.");
 		}
 
 		return currentBool;

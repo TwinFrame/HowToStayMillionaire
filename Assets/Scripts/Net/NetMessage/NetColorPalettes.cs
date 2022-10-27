@@ -17,7 +17,14 @@ public class NetColorPalettes : NetMessage
 	//private int _currentNumPalette;
 	//public List<ColorPalette> Palettes { get; private set; }
 	///public List<string> PaletteNames { get; private set; }
+	///
 
+	/*
+	public NetColorPalettes()
+	{
+		Code = OpCode.COLOR_PALETTES;
+	}
+	*/
 	public NetColorPalettes(List<ColorPalette> palettes, int currentNumPalette)
 	{
 		Code = OpCode.COLOR_PALETTES;

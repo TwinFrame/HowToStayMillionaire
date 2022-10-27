@@ -6742,7 +6742,6 @@ MonoBehaviour:
   _gameCamera: {fileID: 963194227}
   _gameMenu: {fileID: 1213599684}
   _openMenuToggle: {fileID: 1407438549}
-  _game: {fileID: 644717937}
 --- !u!224 &579668741
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11235,6 +11234,14 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -3518891304371657065, guid: 4ebb472511c1a4845b59749f0b8917bf, type: 2}
+    - target: {fileID: 1823625514, guid: 6943376c02a82024b97c6d43190dccc2, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823625514, guid: 6943376c02a82024b97c6d43190dccc2, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1823625514, guid: 6943376c02a82024b97c6d43190dccc2, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -18478,6 +18485,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 1823625514, guid: 6943376c02a82024b97c6d43190dccc2, type: 3}
+      propertyPath: m_fontSize
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823625514, guid: 6943376c02a82024b97c6d43190dccc2, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 4ebb472511c1a4845b59749f0b8917bf, type: 2}
@@ -18486,8 +18497,20 @@ PrefabInstance:
       value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1823625514, guid: 6943376c02a82024b97c6d43190dccc2, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3518891304371657065, guid: 4ebb472511c1a4845b59749f0b8917bf, type: 2}
+    - target: {fileID: 1823625514, guid: 6943376c02a82024b97c6d43190dccc2, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823625514, guid: 6943376c02a82024b97c6d43190dccc2, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823625514, guid: 6943376c02a82024b97c6d43190dccc2, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 977775551304182405, guid: 6943376c02a82024b97c6d43190dccc2, type: 3}
       propertyPath: _name

@@ -975,7 +975,7 @@ public class GameMenu : BaseMenu
 		if (tab != null)
 			tab.SetColorsFromPalette(palettes, currentNumPalette);
 
-		TrySendBroadcast(new NetColorPalettes(palettes, currentNumPalette));
+		RefreshPalettesOnClient();
 	}
 
 	private void OnChangedPalette(int numPalette)
@@ -993,7 +993,9 @@ public class GameMenu : BaseMenu
 	{
 		List<ColorPalette> palettes = _properties.GameColorChanger.GetPalettes(out int currentNumPalette);
 
-		TrySendBroadcast(new NetColorPalettes(palettes, currentNumPalette));
+		NetColorPalettes netColorPalettes = new NetColorPalettes(palettes, currentNumPalette);
+
+		TrySendBroadcast(netColorPalettes);
 	}
 
 	#endregion

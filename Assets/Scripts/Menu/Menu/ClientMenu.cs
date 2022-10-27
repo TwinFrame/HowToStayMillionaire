@@ -937,8 +937,8 @@ public class ClientMenu : BaseMenu
 
 		if (tab != null)
 		{
-			tab.UpdateVolumeChannel(normalizeMaster, normalizeFx, normalizeQuestion,
-				normalizeCountdown, normalizeMusic);
+			tab.UpdateVolumeChannel(normalizeMaster, normalizeFx, normalizeCountdown,
+				normalizeQuestion, normalizeMusic);
 		}
 	}
 
