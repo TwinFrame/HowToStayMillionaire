@@ -13,7 +13,6 @@ public class QuestionViewer : MonoBehaviour
 	private CanvasGroup _canvasGroup;
 	private QuestionViewerTemplate _currentQuestionViewer;
 	private Question _currentQuestion;
-	//private bool _isEntering;
 
 	public UnityAction StartQuestion;
 	public UnityAction StopQuestion;
@@ -21,8 +20,6 @@ public class QuestionViewer : MonoBehaviour
 	public UnityAction StopQuestionWithOptions;
 	public UnityAction<IAdvancedPlayer, float> StartQuestionWithPlayer;
 	public UnityAction StopQuestionWithPlayer;
-
-	//public bool IsEntering => _isEntering;
 
 	private void Awake()
 	{
@@ -33,8 +30,6 @@ public class QuestionViewer : MonoBehaviour
 
 	public void Enter()
 	{
-		//_isEntering = true;
-
 		if (_currentQuestionViewer is IQuestionViewerWithPlayer && _currentQuestion is IQuestionThatNeedsPlayer)
 		{
 			var currentQuestionViewer = _currentQuestionViewer as IQuestionViewerWithPlayer;
@@ -53,14 +48,10 @@ public class QuestionViewer : MonoBehaviour
 		}
 
 		_currentQuestionViewer.Enter(_currentQuestion);
-
-		//StartQuestion?.Invoke();
 	}
 
 	public void Exit()
 	{
-		//_isEntering = false;
-
 		if (_currentQuestionViewer == null)
 			return;
 
@@ -71,14 +62,11 @@ public class QuestionViewer : MonoBehaviour
 
 		if (_currentQuestionViewer is QuestionViewerTemplateWithOptions)
 			StopQuestionWithOptions?.Invoke();
-
-		//StopQuestion?.Invoke();
 	}
 
 	public void ResetViewers()
 	{
 		_canvasGroup.alpha = 0;
-		//_isEntering = false;
 
 		foreach (var viewer in _questionTemplates)
 		{

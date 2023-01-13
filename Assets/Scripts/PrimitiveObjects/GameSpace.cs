@@ -1,5 +1,3 @@
-//using System.Collections;
-//using System.Collections.Generic;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +6,6 @@ public class GameSpace : MonoBehaviour
 	[SerializeField] private SphereCollider _endZone;
 
 	[SerializeField] private BoxCollider _saveZone;
-	//[SerializeField] private Vector3 _titleScale;
-	//[SerializeField] private Vector3 _teamsScale;
 	[Space]
 	[SerializeField] private LayerMask _layerMask;
 
@@ -50,6 +46,7 @@ public class GameSpace : MonoBehaviour
 			_isHitWithSafeArea = false;
 
 			_ray.origin = Random.onUnitSphere * (_endZone.radius + _additionalDistance);
+
 			_ray.direction = Vector3.zero - _ray.origin;
 
 			RaycastHit[] raycastHits = Physics.RaycastAll(_ray, _rayDistance, _layerMask);

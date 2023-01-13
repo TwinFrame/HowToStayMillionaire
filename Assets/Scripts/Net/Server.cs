@@ -67,7 +67,7 @@ public class Server : MonoBehaviour
 			ShutdownEvent?.Invoke();
 	}
 
-	public void OnDestroy() //maybe private
+	public void OnDestroy()
 	{
 		Shutdown();
 	}

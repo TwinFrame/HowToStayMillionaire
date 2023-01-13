@@ -6,14 +6,8 @@ public class AskQuestionTransition : Transition
 {
 	[SerializeField] private State _mainTitleState;
 
-	private bool _isRightAnswer;
-	private bool _isNeedChangeTour;
-
 	public override void OnNextButton()
 	{
-		//if (Game.IsPauseWithTimeStop)
-		//	return;
-
 		if(Game.TryGetIsAnsweredCurrentQuestion())
 			IsReadyTransit = true;
 	}

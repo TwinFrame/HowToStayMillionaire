@@ -5,30 +5,17 @@ using UnityEngine;
 
 public class NetColorPalettes : NetMessage
 {
-	public List<ColorPalette> Palettes { get; private set; }
-	public int CurrentNumPalette { get; private set; }
+	private List<ColorPalette> _palettesFromServer;
+	private int _palettesCount;
 
+	public List<ColorPalette> PalettesToClient { get; private set; }
+	public int CurrentNumPalette { get; private set; }
 	public GameObject Parent { get; private set; }
 
-	private int _palettesCount;
-	//private bool _isUserAllowedChange;
-
-	//private List<string> _paletteNames;
-	//private int _currentNumPalette;
-	//public List<ColorPalette> Palettes { get; private set; }
-	///public List<string> PaletteNames { get; private set; }
-	///
-
-	/*
-	public NetColorPalettes()
-	{
-		Code = OpCode.COLOR_PALETTES;
-	}
-	*/
 	public NetColorPalettes(List<ColorPalette> palettes, int currentNumPalette)
 	{
 		Code = OpCode.COLOR_PALETTES;
-		Palettes = palettes;
+		_palettesFromServer = palettes;
 		CurrentNumPalette = currentNumPalette;
 	}
 
@@ -42,64 +29,64 @@ public class NetColorPalettes : NetMessage
 	{
 		writer.WriteByte((byte)Code);
 		writer.WriteInt(CurrentNumPalette);
-		writer.WriteInt(Palettes.Count);
-
-		for (int i = 0; i < Palettes.Count; i++)
+		writer.WriteInt(_palettesFromServer.Count);
+		
+		for (int i = 0; i < _palettesFromServer.Count; i++)
 		{
-			writer.WriteFloat(Palettes[i].MainColor.r);
-			writer.WriteFloat(Palettes[i].MainColor.g);
-			writer.WriteFloat(Palettes[i].MainColor.b);
-			writer.WriteFloat(Palettes[i].MainColor.a);
+			writer.WriteFloat(_palettesFromServer[i].MainColor.r);
+			writer.WriteFloat(_palettesFromServer[i].MainColor.g);
+			writer.WriteFloat(_palettesFromServer[i].MainColor.b);
+			writer.WriteFloat(_palettesFromServer[i].MainColor.a);
 
-			writer.WriteFloat(Palettes[i].SlaveColor.r);
-			writer.WriteFloat(Palettes[i].SlaveColor.g);
-			writer.WriteFloat(Palettes[i].SlaveColor.b);
-			writer.WriteFloat(Palettes[i].SlaveColor.a);
+			writer.WriteFloat(_palettesFromServer[i].SlaveColor.r);
+			writer.WriteFloat(_palettesFromServer[i].SlaveColor.g);
+			writer.WriteFloat(_palettesFromServer[i].SlaveColor.b);
+			writer.WriteFloat(_palettesFromServer[i].SlaveColor.a);
 
-			writer.WriteFloat(Palettes[i].Add1Color.r);
-			writer.WriteFloat(Palettes[i].Add1Color.g);
-			writer.WriteFloat(Palettes[i].Add1Color.b);
-			writer.WriteFloat(Palettes[i].Add1Color.a);
+			writer.WriteFloat(_palettesFromServer[i].Add1Color.r);
+			writer.WriteFloat(_palettesFromServer[i].Add1Color.g);
+			writer.WriteFloat(_palettesFromServer[i].Add1Color.b);
+			writer.WriteFloat(_palettesFromServer[i].Add1Color.a);
 
-			writer.WriteFloat(Palettes[i].Add2Color.r);
-			writer.WriteFloat(Palettes[i].Add2Color.g);
-			writer.WriteFloat(Palettes[i].Add2Color.b);
-			writer.WriteFloat(Palettes[i].Add2Color.a);
+			writer.WriteFloat(_palettesFromServer[i].Add2Color.r);
+			writer.WriteFloat(_palettesFromServer[i].Add2Color.g);
+			writer.WriteFloat(_palettesFromServer[i].Add2Color.b);
+			writer.WriteFloat(_palettesFromServer[i].Add2Color.a);
 
-			writer.WriteFloat(Palettes[i].TextColor.r);
-			writer.WriteFloat(Palettes[i].TextColor.g);
-			writer.WriteFloat(Palettes[i].TextColor.b);
-			writer.WriteFloat(Palettes[i].TextColor.a);
+			writer.WriteFloat(_palettesFromServer[i].TextColor.r);
+			writer.WriteFloat(_palettesFromServer[i].TextColor.g);
+			writer.WriteFloat(_palettesFromServer[i].TextColor.b);
+			writer.WriteFloat(_palettesFromServer[i].TextColor.a);
 
-			writer.WriteFloat(Palettes[i].SelectedColor.r);
-			writer.WriteFloat(Palettes[i].SelectedColor.g);
-			writer.WriteFloat(Palettes[i].SelectedColor.b);
-			writer.WriteFloat(Palettes[i].SelectedColor.a);
+			writer.WriteFloat(_palettesFromServer[i].SelectedColor.r);
+			writer.WriteFloat(_palettesFromServer[i].SelectedColor.g);
+			writer.WriteFloat(_palettesFromServer[i].SelectedColor.b);
+			writer.WriteFloat(_palettesFromServer[i].SelectedColor.a);
 
-			writer.WriteFloat(Palettes[i].RightColor.r);
-			writer.WriteFloat(Palettes[i].RightColor.g);
-			writer.WriteFloat(Palettes[i].RightColor.b);
-			writer.WriteFloat(Palettes[i].RightColor.a);
+			writer.WriteFloat(_palettesFromServer[i].RightColor.r);
+			writer.WriteFloat(_palettesFromServer[i].RightColor.g);
+			writer.WriteFloat(_palettesFromServer[i].RightColor.b);
+			writer.WriteFloat(_palettesFromServer[i].RightColor.a);
 
-			writer.WriteFloat(Palettes[i].WrongColor.r);
-			writer.WriteFloat(Palettes[i].WrongColor.g);
-			writer.WriteFloat(Palettes[i].WrongColor.b);
-			writer.WriteFloat(Palettes[i].WrongColor.a);
+			writer.WriteFloat(_palettesFromServer[i].WrongColor.r);
+			writer.WriteFloat(_palettesFromServer[i].WrongColor.g);
+			writer.WriteFloat(_palettesFromServer[i].WrongColor.b);
+			writer.WriteFloat(_palettesFromServer[i].WrongColor.a);
 
-			writer.WriteFixedString128(Palettes[i].Name);
+			writer.WriteFixedString128(_palettesFromServer[i].Name);
 
-			writer.WriteInt(Convert.ToInt32(Palettes[i].IsUserAllowedChange));
+			writer.WriteInt(Convert.ToInt32(_palettesFromServer[i].IsUserAllowedChange));
 		}
 	}
 
 	public override void Deserialize(DataStreamReader reader)
 	{
+		PalettesToClient = new List<ColorPalette>(_palettesCount);
+		Parent = new GameObject("ColorPalettes");
+
 		CurrentNumPalette = reader.ReadInt();
 
 		_palettesCount = reader.ReadInt();
-
-		Palettes = new List<ColorPalette>(_palettesCount);
-		Parent = new GameObject("ColorPalettes");
 
 		for (int i = 0; i < _palettesCount; i++)
 		{
@@ -156,12 +143,10 @@ public class NetColorPalettes : NetMessage
 			bool isUserAllowedChange = Convert.ToBoolean(reader.ReadInt());
 
 			ColorPalette colorPalette = Parent.AddComponent<ColorPalette>();
-			colorPalette.transform.SetParent(Parent.transform);
 			colorPalette.Set(currentPaletteName, mainColor, slaveColor, add1Color,
 				add2Color, textColor, selectedColor, rightColor, wrongColor, isUserAllowedChange);
-			//ColorPalette colorPalette = ScriptableObject.CreateInstance<ColorPalette>();
 
-			Palettes.Add(colorPalette);
+			PalettesToClient.Add(colorPalette);
 		}
 	}
 

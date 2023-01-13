@@ -63,8 +63,6 @@ public class QuestionViewerText : QuestionViewerTemplate
 
 	public override void Enter(Question question)
 	{
-		//_question.color = _questionTransparentColor;
-
 		if (_enterQuestionJob != null)
 			StopCoroutine(_enterQuestionJob);
 		_enterQuestionJob = StartCoroutine(EnterQuestionJob(question));
@@ -72,11 +70,6 @@ public class QuestionViewerText : QuestionViewerTemplate
 
 	public override void Exit(QuestionViewer questionViewer)
 	{
-		/*
-		if (_exitQuestionJob != null)
-			StopCoroutine(_exitQuestionJob);
-		_exitQuestionJob = StartCoroutine(ExitQuestionJob(questionViewer));
-		*/
 		questionViewer.CloseViewer();
 	}
 
@@ -90,18 +83,11 @@ public class QuestionViewerText : QuestionViewerTemplate
 
 		_answerRectTransform.anchoredPosition3D = _answerStartPosition;
 		_answer.color = _answerStartColor;
-		//IsStartCountdown = false; //нужно для каждого Viewer
 	}
 
 	//Этот код копипастится в зависимости от наличия полей
 	private IEnumerator EnterQuestionJob(Question question)
 	{
-		//yield return WaitBetweenViewers;
-
-		//if (_fadeInQuestion != null)
-		//	StopCoroutine(_fadeInQuestion);
-		//_fadeInQuestion = StartCoroutine(FadeInQuestion());
-
 		yield return new WaitUntil(() => question.IsAskedReadOnly);
 
 		if (_fadeOutQuestion != null)
@@ -119,15 +105,6 @@ public class QuestionViewerText : QuestionViewerTemplate
 
 	private IEnumerator ExitQuestionJob(QuestionViewer questionViewer)
 	{
-		/*
-		if (_fadeOutAnswer != null)
-			StopCoroutine(_fadeOutAnswer);
-
-		_fadeOutAnswer = StartCoroutine(FadeOutAnswer());
-
-		yield return _fadeOutAnswer;
-		*/
-
 		yield return null;
 
 		questionViewer.CloseViewer();

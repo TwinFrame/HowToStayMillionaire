@@ -103,12 +103,7 @@ public class TeamsTitleAnimator : TitleAnimator
 			StopCoroutine(_changeTeamNameJob);
 		_changeTeamNameJob = StartCoroutine(ChangeTeamNameJob(numTeam, newName));
 	}
-	/*
-	public void SelectWinner(int numTeam)
-	{
-		_teamFieldsList[numTeam].transform.localScale = Vector3.one * Properties.ScaleSelectedTeamFields;
-	}
-	*/
+
 	private void InitTeamsContent()
 	{
 		_teamFieldsList.Clear();
@@ -116,8 +111,6 @@ public class TeamsTitleAnimator : TitleAnimator
 		for (int i = 0; i < _game.Teams.Count; i++)
 		{
 			_currentTeamTemplate = Instantiate(_teamFieldsTemplate, _container);
-
-			//_currentTeamTemplate.gameObject.SetActive(false);
 
 			_currentTeamTemplate.SetName(_game.Teams[i].Name);
 
@@ -142,8 +135,6 @@ public class TeamsTitleAnimator : TitleAnimator
 		yield return new WaitUntil(() => _game.Teams[numTeam].IsConfirmNameWhenPreparing);
 
 		ChangeTeamMoney(numTeam, initialCapital, false, out _changeTeamMoneyJob);
-
-		//_game.ChangeTeamMoney(numTeam, initialCapital, true);
 
 		yield return new WaitUntil(() => _game.Teams[numTeam].IsReady);
 

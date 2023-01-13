@@ -10,7 +10,6 @@ public class QuestionViewerAudioWithOptions : QuestionViewerTemplateWithOptions,
 	[Header("Question")]
 	[SerializeField] private TMP_Text _question;
 	[SerializeField] private AdvancedAudioPlayer _player;
-	//[SerializeField] private Image _audioImage;
 	[SerializeField] private AudioVizualizator _vizualizator;
 
 
@@ -25,8 +24,6 @@ public class QuestionViewerAudioWithOptions : QuestionViewerTemplateWithOptions,
 	private Color _audioImageTransparentColor;
 
 	private List<SpriteShapeRenderer> _shapeRenderers;
-	//private List<Color> _vizualizatorStartColor;
-	//private List<Color> _vizualizatorTransparentColor;
 
 	private Coroutine _enterQuestionJob;
 	private Coroutine _exitQuestionJob;
@@ -65,30 +62,6 @@ public class QuestionViewerAudioWithOptions : QuestionViewerTemplateWithOptions,
 		_questionStartPosition = _questionRectTransform.anchoredPosition3D;
 		_questionStartColor = _question.color;
 		_questionTransparentColor = new Vector4(_questionStartColor.r, _questionStartColor.g, _questionStartColor.b, 0);
-		/*
-		_audioImageRectTransform = _audioImage.gameObject.GetComponent<RectTransform>();
-		_audioImageStartPosition = _audioImageRectTransform.anchoredPosition3D;
-		_audioImageStartColor = _audioImage.color;
-		_audioImageTransparentColor = new Vector4(_audioImageStartColor.r, _audioImageStartColor.g, _audioImageStartColor.b, 0);
-		ScrollOptionsStartPosition = OptionsFolder.anchoredPosition3D;
-
-		if (_vizualizator.TryGetShapeRenderer(out _shapeRenderers))
-		{
-			_vizualizatorStartColor = new List<Color>();
-			_vizualizatorTransparentColor = new List<Color>();
-
-			for (int i = 0; i < _shapeRenderers.Count; i++)
-			{
-				_vizualizatorStartColor.Add(_shapeRenderers[i].color);
-				_vizualizatorTransparentColor.Add(new Vector4(_shapeRenderers[i].color.r, _shapeRenderers[i].color.g, _shapeRenderers[i].color.b, 0));
-			}
-		}
-
-		if (OptionsFolder.TryGetComponent<CanvasGroup>(out CanvasGroup canvasGroup))
-			ScrollOptionsCanvasGroup = canvasGroup;
-		else
-			ScrollOptionsCanvasGroup = OptionsFolder.gameObject.AddComponent<CanvasGroup>();
-		*/
 
 		InitWaitForSeconds();
 	}
@@ -102,17 +75,6 @@ public class QuestionViewerAudioWithOptions : QuestionViewerTemplateWithOptions,
 
 	public override void Enter(Question question)
 	{
-		/*
-		_question.color = _questionTransparentColor;
-		_audioImage.color = _audioImageTransparentColor;
-		ScrollOptionsCanvasGroup.alpha = 0;
-
-		for (int i = 0; i < _shapeRenderers.Count; i++)
-		{
-			_shapeRenderers[i].color = _vizualizatorTransparentColor[i];
-		}
-		*/
-
 		if (_enterQuestionJob != null)
 			StopCoroutine(_enterQuestionJob);
 		_enterQuestionJob = StartCoroutine(EnterQuestionJob(question));
@@ -120,11 +82,6 @@ public class QuestionViewerAudioWithOptions : QuestionViewerTemplateWithOptions,
 
 	public override void Exit(QuestionViewer questionViewer)
 	{
-		/*
-		if (_exitQuestionJob != null)
-			StopCoroutine(_exitQuestionJob);
-		_exitQuestionJob = StartCoroutine(ExitQuestionJob(questionViewer));
-		*/
 		_vizualizator.Exit();
 
 		questionViewer.CloseViewer();
@@ -138,14 +95,8 @@ public class QuestionViewerAudioWithOptions : QuestionViewerTemplateWithOptions,
 		_question.text = string.Empty;
 		_normalizedPauseTime = 0;
 		_player.ClearPlayer();
-		//IsStartCountdown = false; //нужно для каждого Viewer
 
 		ResetOptions();
-		/*
-		_shapeRenderers.Clear();
-		_vizualizatorStartColor.Clear();
-		_vizualizatorTransparentColor.Clear();
-		*/
 	}
 
 	public IAdvancedPlayer GetPlayer()
@@ -201,29 +152,6 @@ public class QuestionViewerAudioWithOptions : QuestionViewerTemplateWithOptions,
 
 		yield return _player.IsPrepared;
 
-		//yield return WaitBetweenViewers;
-		/*
-		if (_fadeInQuestion != null)
-			StopCoroutine(_fadeInQuestion);
-		_fadeInQuestion = StartCoroutine(FadeInQuestion());
-
-		//yield return WaitBetweenElements;
-		yield return _fadeInQuestion;
-		*/
-		/*
-		if (_fadeInSound != null)
-			StopCoroutine(_fadeInSound);
-		_fadeInSound = StartCoroutine(FadeInSound());
-
-		yield return WaitBetweenElements;
-
-		if (FadeInOptionsCoroutine != null)
-			StopCoroutine(FadeInOptionsCoroutine);
-		FadeInOptionsCoroutine = StartCoroutine(FadeInOptionsJob());
-
-		yield return FadeInOptionsCoroutine;
-		*/
-
 		_player.PlayUntilPauseMark(_normalizedPauseTime);
 
 		yield return new WaitUntil(() => IsChoosedOption);
@@ -247,11 +175,6 @@ public class QuestionViewerAudioWithOptions : QuestionViewerTemplateWithOptions,
 
 	private IEnumerator ExitQuestionJob(QuestionViewer questionViewer)
 	{
-		/*
-		if (_fadeOutSound != null)
-			StopCoroutine(_fadeOutSound);
-		_fadeOutSound = StartCoroutine(FadeOutSound());
-		*/
 		if (ZoomOutOptionCoroutine != null)
 			StopCoroutine(ZoomOutOptionCoroutine);
 		ZoomOutOptionCoroutine = StartCoroutine(ZoomOutOptionJob());
@@ -262,16 +185,7 @@ public class QuestionViewerAudioWithOptions : QuestionViewerTemplateWithOptions,
 			StopCoroutine(_fadeOutQuestion);
 		_fadeOutQuestion = StartCoroutine(FadeOutQuestion());
 
-		//yield return WaitBetweenElements;
 		yield return _fadeOutQuestion;
-
-		/*
-		if (FadeOutOptionsCoroutine != null)
-			StopCoroutine(FadeOutOptionsCoroutine);
-		FadeOutOptionsCoroutine = StartCoroutine(FadeOutOptionsJob());
-
-		yield return FadeOutOptionsCoroutine;
-		*/
 
 		_vizualizator.Exit();
 
@@ -327,84 +241,4 @@ public class QuestionViewerAudioWithOptions : QuestionViewerTemplateWithOptions,
 		_question.color = _questionTransparentColor;
 		_questionRectTransform.anchoredPosition = _questionStartPosition - _properties.OffsetPosition;
 	}
-
-	/*
-	private IEnumerator FadeInSound()
-	{
-		_soundCurrentTime = 0;
-
-		_audioImageRectTransform.anchoredPosition = _audioImageStartPosition + _properties.OffsetPosition;
-
-		for (int i = 0; i < _shapeRenderers.Count; i++)
-		{
-			_shapeRenderers[i].color = _vizualizatorTransparentColor[i];
-		}
-
-		while (_soundCurrentTime <= _properties.FadeInOutUIElements)
-		{
-			_soundCurrentTime += Time.deltaTime;
-
-			_soundCurrentNormalizeTime = _soundCurrentTime / _properties.FadeInOutUIElements;
-
-			_audioImageRectTransform.anchoredPosition = Vector2.Lerp(_audioImageStartPosition + _properties.OffsetPosition,
-				_audioImageStartPosition, _properties.FadeIn.Evaluate(_soundCurrentNormalizeTime));
-
-			_audioImage.color = Vector4.Lerp(_audioImageTransparentColor, _audioImageStartColor, _properties.FadeIn.Evaluate(_soundCurrentNormalizeTime));
-
-			for (int i = 0; i < _shapeRenderers.Count; i++)
-			{
-				_shapeRenderers[i].color = Vector4.Lerp(_vizualizatorTransparentColor[i], _vizualizatorStartColor[i], _properties.FadeIn.Evaluate(_soundCurrentNormalizeTime));
-			}
-
-			yield return null;
-		}
-
-		_audioImage.color = _audioImageStartColor;
-		_audioImageRectTransform.anchoredPosition = _audioImageStartPosition;
-
-		for (int i = 0; i < _shapeRenderers.Count; i++)
-		{
-			_shapeRenderers[i].color = _vizualizatorStartColor[i];
-		}
-	}
-
-	private IEnumerator FadeOutSound()
-	{
-		_soundCurrentTime = 0;
-
-		_audioImageRectTransform.anchoredPosition = _audioImageStartPosition;
-
-		for (int i = 0; i < _shapeRenderers.Count; i++)
-		{
-			_shapeRenderers[i].color = _vizualizatorStartColor[i];
-		}
-
-		while (_soundCurrentTime <= _properties.FadeInOutUIElements)
-		{
-			_soundCurrentTime += Time.deltaTime;
-
-			_soundCurrentNormalizeTime = _soundCurrentTime / _properties.FadeInOutUIElements;
-
-			_audioImageRectTransform.anchoredPosition = Vector2.Lerp(_audioImageStartPosition,
-				_audioImageStartPosition - _properties.OffsetPosition, _properties.FadeOut.Evaluate(_soundCurrentNormalizeTime));
-
-			_audioImage.color = Vector4.Lerp(_audioImageStartColor, _audioImageTransparentColor, _properties.FadeOut.Evaluate(_soundCurrentNormalizeTime));
-
-			for (int i = 0; i < _shapeRenderers.Count; i++)
-			{
-				_shapeRenderers[i].color = Vector4.Lerp(_vizualizatorStartColor[i], _vizualizatorTransparentColor[i], _properties.FadeOut.Evaluate(_soundCurrentNormalizeTime));
-			}
-
-			yield return null;
-		}
-
-		_audioImage.color = _audioImageTransparentColor;
-		_audioImageRectTransform.anchoredPosition = _audioImageStartPosition - _properties.OffsetPosition;
-
-		for (int i = 0; i < _shapeRenderers.Count; i++)
-		{
-			_shapeRenderers[i].color = _vizualizatorTransparentColor[i];
-		}
-	}
-	*/
 }

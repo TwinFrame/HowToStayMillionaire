@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,24 +12,18 @@ public class Game : MonoBehaviour
 	[Header("Titles")]
 	[TextArea]
 	[SerializeField] private string _name;
-	//[SerializeField] private string _description;
 	[Space]
 	[TextArea]
 	[SerializeField] private string _finalTitleText;
-	//[SerializeField] private string _finalDescriptionText;
 	[Space]
 	[Header("Teams")]
 	[SerializeField] private List<Team> _teams;
 	[Header("Service")]
-	//[SerializeField] private TourTitleViewer _tourTitleViewer;
-	//[SerializeField] private FinishTitleViewer _finishTitleViewer;
-	//[SerializeField] private QuestionViewer _questionViewer;
 	[Space]
 	[SerializeField] private MainTitleAnimator _mainTitleAnimator;
 	[SerializeField] private TeamsTitleAnimator _teamsTitleAnimator;
 	[SerializeField] private TourTitleAnimator _toursTitleAnimator;
 	[SerializeField] private QuestionAnimator _questionAnimator;
-	//[SerializeField] private CountdownAnimator _countdownAnimator;
 	[SerializeField] private FinalTitleAnimator _finalTitleAnimator;
 	[Space]
 	[SerializeField] private GameMenu _menu;
@@ -38,10 +31,6 @@ public class Game : MonoBehaviour
 	[SerializeField] private TintLightsForAnswer _tintLight;
 	[SerializeField] private ParticleSystem _fireworks;
 	[SerializeField] private PrimitiveObjects _primitiveObjects;
-	//[SerializeField] private Transform _objectsBG;
-	//[SerializeField] private SideElementsAnimator _sideElements;
-	//[Space]
-	//[SerializeField] private ConvertToMoneyFormat _convertToMoney;
 	[Space]
 	[SerializeField] private GameEvents _gameEvents;
 
@@ -63,8 +52,6 @@ public class Game : MonoBehaviour
 	private bool _isPreparationState = false;
 	private bool _isAskQuestionState = false;
 	private bool _isNeedRemoveMoneyWhenTeamsTitleStart = false;
-	//private bool _isGameOver = false;
-
 
 	private Coroutine _preparationTeamsJob;
 	private Coroutine _enterTeamsTitleJob;
@@ -86,7 +73,6 @@ public class Game : MonoBehaviour
 
 	public GameEvents GameEvents => _gameEvents;
 	public bool IsPauseWithTimeStop => _isPauseWithTimeStop;
-	//public bool IsPause => _isPause;
 	public bool IsTeamsReady => _isTeamsReady;
 	public bool IsTeamsTitle => _isTeamsTitleState;
 
@@ -103,7 +89,7 @@ public class Game : MonoBehaviour
 		if (_transitions == null)
 			WriteLog("Переходы в игре не найдены.");
 
-		ResetGame(); //добавить для TitleAnimation, как MainTitleAnim
+		ResetGame();
 	}
 
 	public void EnterPreparationTeams()
@@ -147,11 +133,7 @@ public class Game : MonoBehaviour
 
 			_questionAnimator.SetAndFillQuestionTemplate(_tours[_currentNumTour].Questions[_currentNumQuestion], _questionTemplate);
 
-			//_questionViewer.Enter(_tours[_currentNumTour].Questions[_currentNumQuestion]);
-
 			_questionAnimator.Enter(out Coroutine enterQuestionJob);
-
-			//_countdownAnimator.Enter();
 		}
 		else
 		{
@@ -165,21 +147,16 @@ public class Game : MonoBehaviour
 
 		if (_questionAnimator.IsEntering)
 		{
-			//_questionViewer.Exit();
 			_questionAnimator.Exit();
 		}
-
-			//_countdownAnimator.Exit();
 	}
 
 	public void EnterTourTitle()
 	{
 		_menu.RefreshTeamsDropdown(_teams);
 
-		//_tourTitleViewer.Enter(_tours[_currentNumTour].Name, _teams[_currentNumTeam].Name);
-
 		_toursTitleAnimator.ActualizeTexts(_tours[_currentNumTour].Name, _teams[_currentNumTeam].Name);
-		_toursTitleAnimator.Enter(out Coroutine enterToursJob); //для всех Enter- в этот компонент добавить private _enterToursJob 
+		_toursTitleAnimator.Enter(out Coroutine enterToursJob);
 
 		_primitiveObjects.EnterPrimitives();
 
@@ -188,11 +165,6 @@ public class Game : MonoBehaviour
 
 	public void ExitTourTitle()
 	{
-		/*
-		if (_tourTitleViewer.IsEntering)
-			_tourTitleViewer.Exit();
-		*/
-
 		if (_toursTitleAnimator.IsEntering)
 			_toursTitleAnimator.Exit();
 
@@ -222,14 +194,9 @@ public class Game : MonoBehaviour
 
 	public void EnterFinalTitle()
 	{
-		//_isGameOver = true;
-
 		_finalTitleAnimator.Enter(out Coroutine enterFinishTitleJob);
 
 		_primitiveObjects.EnterPrimitives();
-		//_finishTitleViewer.Enter(_finalTitleText, _finalDescriptionText);
-
-		//_gameEvent.OnFinalTitleEnter?.Invoke();
 	}
 
 	public void ExitFinalTitle()
@@ -238,13 +205,6 @@ public class Game : MonoBehaviour
 			_finalTitleAnimator.Exit();
 
 		_primitiveObjects.ExitPrimitives();
-
-		/*
-		if (_finishTitleViewer.IsEntering)
-			_finishTitleViewer.Exit();
-
-		_gameEvent.OnFinalTitleExit?.Invoke();
-		*/
 	}
 
 	public bool TryGetNextQuestion(out bool isNeedChangeTour)
@@ -266,30 +226,7 @@ public class Game : MonoBehaviour
 		isNeedChangeTour = false;
 		return true;
 	}
-	/*
-	public void SetPauseWithTimeStop()
-	{
-		if (_isPauseWithTimeStop)
-			_isPauseWithTimeStop = false;
-		else
-			_isPauseWithTimeStop = true;
 
-		if (_isPauseWithTimeStop)
-		{
-			Time.timeScale = 0f;
-			_menu.SetPauseOnMainTitleButton(true);
-
-			WriteLog(LogMessages.TurnOnPauseWithStopTime);
-		}
-		else
-		{
-			//здесь стоит останавливать еще и плеера, ставить на паузу.
-			Time.timeScale = 1f;
-			_menu.SetPauseOnMainTitleButton(false);
-			WriteLog(LogMessages.TurnOffPauseWithStopTime);
-		}
-	}
-	*/
 	private void MarkCurrentQuestion(bool isRight)
 	{
 		if (IsQuestionWithOption(out QuestionWithOptions questionWithOptions))
@@ -430,8 +367,6 @@ public class Game : MonoBehaviour
 		_finalTitleText = finalText;
 		_finalTitleAnimator.SetName(_finalTitleText);
 		PlayerPrefs.SetString("FinalText", _finalTitleText);
-
-		//OnChangedGameTextEvent?.Invoke(_name, _finalTitleText);
 	}
 
 	private void CheckSavedGameTexts()
@@ -536,7 +471,6 @@ public class Game : MonoBehaviour
 			_currentNumTeam = num;
 
 			_toursTitleAnimator.ChangeCurrentTeam(_teams[_currentNumTeam].Name);
-			//_tourTitleViewer.ChangeDescription(_teams[_currentNumTeam].Name);
 		}
 		else
 			Debug.Log("Не нашел такой команды в игре.");
@@ -545,8 +479,6 @@ public class Game : MonoBehaviour
 	public void AddMoneyToTeamFromMenu(int numTeam, int money)
 	{
 		_teamsTitleAnimator.ChangeTeamMoney(numTeam, money, true, out _changeTeamMoneyJob);
-
-		//_teams[numTeam].AddingMoney(money);
 	}
 
 
@@ -642,8 +574,6 @@ public class Game : MonoBehaviour
 			var question = _tours[CurrentNumTour].Questions[CurrentNumQuestion] as IQuestionThatNeedsPlayer;
 
 			question.SetNormalizedPauseMark(normalizedPauseMark);
-
-			//_gameEvent.SetNormalizedPauseMark(normalizedPauseMark);
 		}
 		else
 			WriteLog("Вопрос без аудио или видео контента.");
@@ -717,6 +647,7 @@ public class Game : MonoBehaviour
 	{
 		_menu.WriteLog(text);
 	}
+
 	private void SetCurrentNumTeam(Team team)
 	{
 		for (int i = 0; i < _teams.Count; i++)
@@ -746,14 +677,8 @@ public class Game : MonoBehaviour
 			_questionAnimator.SetActivityOnPlate(true);
 
 		_questionAnimator.ResetViewers();
-		//_mainTitleViewer.ResetViewer();
-		//_finishTitleViewer.ResetViewer();
-		//_tourTitleViewer.ResetViewer();
-		//_preparationTeamsViewer.ResetViewer();
 
-		//mainTitleAnimator.Reset(); нужно реализовать еще у этого класса
-
-		_menu.ResetMenu(); //явно тут что-то пропустил, не все меню ресетю
+		_menu.ResetMenu();
 
 		ResetTeams();
 		ResetAllQuestions();
@@ -769,7 +694,6 @@ public class Game : MonoBehaviour
 		_isAskQuestionState = false;
 		_isPreparationState = false;
 		_isNeedRemoveMoneyWhenTeamsTitleStart = false;
-		//_isGameOver = false;
 	}
 
 	private void ResetAllQuestions()
@@ -829,7 +753,6 @@ public class Game : MonoBehaviour
 			{
 				_currentNumTeam = i;
 
-				//_menu.RefreshTeamsDropdown(_teams, _currentNumTeam);
 				_menu.RefreshTeamsDropdown(_teams);
 
 				_teamsTitleAnimator.PreparationTeam(i, _initialCapital, out _preparationTeamJob);
@@ -869,23 +792,5 @@ public class Game : MonoBehaviour
 
 			yield return _changeTeamMoneyJob;
 		}
-		/*
-		else if (_isFinished)
-		{
-			for (int i = 0; i < _teams.Count; i++)
-			{
-				if (_teams[i].IsWinner)
-				{
-					_teamsTitleAnimator.SelectWinner(i);
-				}
-			}
-		}
-		*/
 	}
-	/*
-	private IEnumerator ChangeTeamNameJob(int numTeam, string newName)
-	{
-		_teamsTitleAnimator.ChangeTeamName(numTeam, newName);
-	}
-	*/
 }

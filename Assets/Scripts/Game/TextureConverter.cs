@@ -7,12 +7,6 @@ using UnityEngine;
 
 public class TextureConverter : MonoBehaviour
 {
-	//[SerializeField] private int _width;
-	//[SerializeField] private int _height;
-
-	//private int _currentWidth;
-	//[SerializeField] int _currentHeight;
-
 	public Texture2D GetTexture2DFromBytes(byte[] bytes, int width, int height)
 	{
 		Texture2D tex2D = new Texture2D(width, height, TextureFormat.ARGB32, mipChain: false, linear: false);
@@ -48,7 +42,6 @@ public class TextureConverter : MonoBehaviour
 
 		// Get PNG bytes
 		//byte[] bytes = tex.EncodeToPNG();
-
 		byte[] bytes = tex.GetRawTextureData();
 
 		// Destroy

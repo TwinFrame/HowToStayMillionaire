@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ThemeMenu : MonoBehaviour
 {
@@ -40,9 +36,6 @@ public class ThemeMenu : MonoBehaviour
 	[Header("AudioMixer")]
 	[SerializeField] private Sprite _audioLine;
 	[Space]
-	//[Header("Menu Background Texture")]
-	//[SerializeField] private Texture _backgroundTexture;
-
 	[Header("Fonts")]
 	[SerializeField] private Color _textColor;
 
@@ -79,9 +72,6 @@ public class ThemeMenu : MonoBehaviour
 	public Sprite SliderHandle => _sliderHandle;
 
 	public Sprite AudioLine => _audioLine;
-
-
-	//public Texture BackgroundTexture => _backgroundTexture;
 
 	public Color TextColor => _textColor;
 }

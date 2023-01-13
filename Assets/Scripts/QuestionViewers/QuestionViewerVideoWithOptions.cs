@@ -38,8 +38,6 @@ public class QuestionViewerVideoWithOptions : QuestionViewerTemplateWithOptions,
 	private float _rawImageCurrentTime;
 	private float _rawImageCurrentTimeNormalize;
 
-	//public AdvancedVideoPlayer VideoReadOnly => _player;
-
 	public void FillTemplate(string question, VideoClip video, float normalizedPauseTime, List<string> optionText, int rightOption)
 	{
 		_question.text = question;
@@ -56,7 +54,6 @@ public class QuestionViewerVideoWithOptions : QuestionViewerTemplateWithOptions,
 	{
 		//ћен€ем руками дл€ каждого шаблона
 		Type = TypesOfQuestions.Type.videoWithOptions;
-		//IsHaveVideo = true;
 
 		_questionRectTransform = _question.gameObject.GetComponent<RectTransform>();
 		_questionStartPosition = _questionRectTransform.anchoredPosition3D;
@@ -91,10 +88,6 @@ public class QuestionViewerVideoWithOptions : QuestionViewerTemplateWithOptions,
 
 	public override void Enter(Question question)
 	{
-		//_question.color = _questionTransparentColor;
-		//_rawImage.color = _rawImageTransparentColor;
-		//ScrollOptionsCanvasGroup.alpha = 0;
-
 		if (_enterQuestionJob != null)
 			StopCoroutine(_enterQuestionJob);
 
@@ -103,12 +96,6 @@ public class QuestionViewerVideoWithOptions : QuestionViewerTemplateWithOptions,
 
 	public override void Exit(QuestionViewer questionViewer)
 	{
-		/*
-		if (_exitQuestionJob != null)
-			StopCoroutine(_exitQuestionJob);
-		_exitQuestionJob = StartCoroutine(ExitQuestionJob(questionViewer));
-		*/
-
 		questionViewer.CloseViewer();
 
 		DeleteOptions();
@@ -119,7 +106,6 @@ public class QuestionViewerVideoWithOptions : QuestionViewerTemplateWithOptions,
 		_question.text = string.Empty;
 		_normalizedPauseTime = 0;
 		_player.ClearPlayer();
-		//IsStartCountdown = false; //нужно дл€ каждого Viewer
 
 		ResetOptions();
 	}
@@ -173,40 +159,7 @@ public class QuestionViewerVideoWithOptions : QuestionViewerTemplateWithOptions,
 
 	private IEnumerator EnterQuestionJob(Question question)
 	{
-		//_player.ReleaseRenderTexture();
-
-		//_player.PreparePlayer();
-
 		yield return _player.IsPrepared;
-
-		//Video.PlayFull();
-
-		//yield return new WaitUntil(() => Video.Time > 0);
-
-		//_videoPlayer.Restart();
-
-		//yield return WaitBetweenViewers;
-		/*
-		if (_fadeInQuestion != null)
-			StopCoroutine(_fadeInQuestion);
-		_fadeInQuestion = StartCoroutine(FadeInQuestion());
-
-		yield return WaitBetweenElements;
-
-		if (_fadeInRawImage != null)
-			StopCoroutine(_fadeInRawImage);
-		_fadeInRawImage = StartCoroutine(FadeInRawImage());
-		//yield return WaitBetweenElements;
-		yield return _fadeInRawImage;
-		*/
-
-		/*
-		if (FadeInOptionsCoroutine != null)
-			StopCoroutine(FadeInOptionsCoroutine);
-		FadeInOptionsCoroutine = StartCoroutine(FadeInOptionsJob());
-
-		yield return FadeInOptionsCoroutine;
-		*/
 
 		_player.PlayUntilPauseMark(_normalizedPauseTime);
 
@@ -245,16 +198,7 @@ public class QuestionViewerVideoWithOptions : QuestionViewerTemplateWithOptions,
 			StopCoroutine(_fadeOutQuestion);
 		_fadeOutQuestion = StartCoroutine(FadeOutQuestion());
 
-		//yield return WaitBetweenElements;
 		yield return _fadeOutQuestion;
-
-		/*
-		if (FadeOutOptionsCoroutine != null)
-			StopCoroutine(FadeOutOptionsCoroutine);
-		FadeOutOptionsCoroutine = StartCoroutine(FadeOutOptionsJob());
-
-		yield return FadeOutOptionsCoroutine;
-		*/
 
 		questionViewer.CloseViewer();
 

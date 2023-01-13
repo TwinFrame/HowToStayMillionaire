@@ -131,7 +131,6 @@ public class MenuLoadImageWindow : MenuWindow
 	{
 		
 		FileBrowser.SetFilters(true, new FileBrowser.Filter("Image", ".png", ".tga", ".jpg", ".jpeg"));
-		//FileBrowser.SetDefaultFilter("Image");
 		FileBrowser.SetExcludedExtensions(".lnk", ".tmp", ".zip", ".rar", ".exe");
 
 		if (_showLoadDialogCoroutine != null)

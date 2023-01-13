@@ -14,9 +14,10 @@ public class ClientMenu : BaseMenu
 	[SerializeField] private ClientPreviewMenu _previewMenu;
 	[Header("Service")]
 	[SerializeField] private GameClient _gameClient;
-	//[SerializeField] private DisplayController _clientDisplaySettings;
-	//[SerializeField] private MenuThemeChanger _menuThemeChanger;
 	[SerializeField] private ClientProperties _properties;
+
+	private List<ColorPalette> _palettesToClient = new List<ColorPalette>();
+	private int _currentNumPalette;
 
 	private byte[] _currentRawTextureBytes;
 	private Texture2D _currentTexture2D;
@@ -38,8 +39,6 @@ public class ClientMenu : BaseMenu
 		//PreviewMenu
 		_previewMenu.OnDoubleClickedPreviewEvent += OnDoubleClickedPreview;
 		_previewMenu.OnRequestPreviewTextureEvent += (width, height) => OnRequestPreviewTexture(width, height);
-		//_previewMenu.OnChangedPreviewQualityEvent += (normalizeValue) => OnChangedPreviewQuality(normalizeValue);
-		//_previewMenu.OnChangedPreviewFPSEvent += (value) => OnChangedPreviewFPS(value);
 
 		foreach (var button in TabButtons)
 		{
@@ -162,8 +161,6 @@ public class ClientMenu : BaseMenu
 		//PreviewMenu
 		_previewMenu.OnDoubleClickedPreviewEvent -= OnDoubleClickedPreview;
 		_previewMenu.OnRequestPreviewTextureEvent -= (width, height) => OnRequestPreviewTexture(width, height);
-		//_previewMenu.OnChangedPreviewQualityEvent -= (normalizeValue) => OnChangedPreviewQuality(normalizeValue);
-		//_previewMenu.OnChangedPreviewFPSEvent -= (value) => OnChangedPreviewFPS(value);
 
 		foreach (var button in TabButtons)
 		{
@@ -283,9 +280,6 @@ public class ClientMenu : BaseMenu
 
 		_gameClient.Client.Shutdown();
 		_previewMenu.SwitchOff(_properties.ThemeMenuChanger.GetDisabledColor());
-
-		//SetGameTabInteractables(false);
-		//SetTeamsTabInteractables(false);
 	}
 
 	public override ConnectState GetConnectState()
@@ -550,83 +544,6 @@ public class ClientMenu : BaseMenu
 	{
 		TrySendToServer(new NetRestartPrimitives());
 	}
-	/*
-	private void SetGameTabInteractables(bool isInteractable)
-	{
-		bool[] isInteractables = new bool[9];
-
-		for (int i = 0; i < isInteractables.Length; i++)
-		{
-			isInteractables[i] = isInteractable;
-		}
-
-		SetGameTabInteractables(isInteractables);
-	}
-	*/
-	/*
-	public void SetSpriteOnMainTitleButton(TypesOfButtonState state)
-	{
-		GameTab tab = Tabs.Find(t => t.TypesMenuReadOnly == TypesOfMenu.Game) as GameTab;
-
-		if (tab != null)
-		{
-			switch (state)
-			{
-				default:
-				case TypesOfButtonState.Default:
-					tab.SetSpriteOnMainTitleButton(_properties.ThemeMenuChanger.GetButtonSprite());
-					break;
-
-				case TypesOfButtonState.Pause:
-					tab.SetSpriteOnMainTitleButton(_properties.ThemeMenuChanger.GetRedSprite());
-					break;
-			}
-		}
-	}
-	*/
-	/*
-	public void InteractableNextButton(bool isInteractable)
-	{
-		GameTab tab = _Tabs.Find(t => t.TypesMenuReadOnly == TypesMenu.Game) as GameTab;
-
-		if (tab != null)
-			tab.InteractableNextButton(isInteractable);
-	}
-
-	public void InteractableAnswerButtons(bool isInteractable)
-	{
-		GameTab tab = _Tabs.Find(t => t.TypesMenuReadOnly == TypesMenu.Game) as GameTab;
-
-		if (tab != null)
-			tab.InteractableAnswerButtons(isInteractable);
-	}
-	public void InteractableCountdownButton(bool isInteractable)
-	{
-		GameTab tab = _Tabs.Find(t => t.TypesMenuReadOnly == TypesMenu.Game) as GameTab;
-
-		if (tab != null)
-			tab.InteractableCountdownButton(isInteractable);
-	}
-
-	public void EnableOptionsButtons(int optionsCount)
-	{
-		GameTab tab = _Tabs.Find(t => t.TypesMenuReadOnly == TypesMenu.Game) as GameTab;
-
-		if (tab != null)
-		{
-			tab.EnableOptionsButtons();
-			tab.DisableUnusedOptionsButtons(optionsCount);
-		}
-	}
-
-	public void DisableOptionsButtons()
-	{
-		GameTab tab = _Tabs.Find(t => t.TypesMenuReadOnly == TypesMenu.Game) as GameTab;
-
-		if (tab != null)
-			tab.DisableOptionsButtons();
-	}
-	*/
 
 	#endregion
 
@@ -646,34 +563,6 @@ public class ClientMenu : BaseMenu
 	{
 		TrySendToServer(new NetAddMoneyToTeam(numTeam, money));
 	}
-
-	/*
-	public void InteractableReplaceCurrentTeams(bool isInteractable)
-	{
-		TeamsTab tab = _Tabs.Find(t => t.TypesMenuReadOnly == TypesMenu.Teams) as TeamsTab;
-
-		if (tab != null)
-			tab.InteractableReplaceCurrentTeam(isInteractable);
-	}
-
-	public void InteractableAddMoneyToTeam(bool isInteractable)
-	{
-		TeamsTab tab = _Tabs.Find(t => t.TypesMenuReadOnly == TypesMenu.Teams) as TeamsTab;
-
-		if (tab != null)
-			tab.InteractableAddMoney(isInteractable);
-
-	}
-
-	public void InteractableChangeName(bool isInteractable)
-	{
-		TeamsTab tab = _Tabs.Find(t => t.TypesMenuReadOnly == TypesMenu.Teams) as TeamsTab;
-
-		if (tab != null)
-			tab.InteractableDisableChangeName(isInteractable);
-	}
-	#endregion
-	*/
 
 	public void InteractableReplaceCurrentTeam(bool isInteractable)
 	{
@@ -959,8 +848,6 @@ public class ClientMenu : BaseMenu
 			else
 				WriteLog("Не корректный порт");
 		}
-
-		WriteLog("Кнопка подлкючения нажата безуспешно.");
 	}
 
 	private void ConnectedClient()
@@ -1013,7 +900,7 @@ public class ClientMenu : BaseMenu
 
 		ConnectButtonIndicator.image.sprite = _properties.ThemeMenuChanger.GetGreenSprite();
 
-		_previewMenu.SwitchOn(_properties.ThemeMenuChanger.GetTextColor());
+		//_previewMenu.SwitchOn(_properties.ThemeMenuChanger.GetTextColor());
 	}
 
 	#endregion
@@ -1033,11 +920,6 @@ public class ClientMenu : BaseMenu
 		//LogMenu
 		NetUtility.C_WRITE_LOG += OnWriteLogClient;
 
-		//GameTab
-		//NetUtility.C_MAIN_TITLE_STATE_BUTTON += OnMainTitleStateClient;
-		//NetUtility.C_INTERACTABLE_NEXT_BUTTON += OnIntaractibleNextButtonClient;
-		//NetUtility.C_INTERACTABLE_ANSWER_BUTTONS += OnIntaractibleAnswerButtonsClient;
-
 		//TeamsTab
 		NetUtility.C_INTERACTABLE_REPLACE_CURRENT_TEAM += OnInteractableReplaceCurrentTeamClient;
 		NetUtility.C_REFRESH_TEAMS_DROPDOWN += OnRefresfTeamsDropdownClient;
@@ -1049,6 +931,7 @@ public class ClientMenu : BaseMenu
 
 		//PropertiesTab
 		NetUtility.C_GAME_DISPLAY_INFO += OnGameDisplayInfoClient;
+
 		NetUtility.C_COLOR_PALETTES += OnRefreshPalettesClient;
 
 		NetUtility.C_GAME_TEXTS += OnRefreshGameTextClient;
@@ -1071,11 +954,6 @@ public class ClientMenu : BaseMenu
 		//LogMenu
 		NetUtility.C_WRITE_LOG -= OnWriteLogClient;
 
-		//GameTab
-		//NetUtility.C_MAIN_TITLE_STATE_BUTTON -= OnMainTitleStateClient;
-		//NetUtility.C_INTERACTABLE_NEXT_BUTTON -= OnIntaractibleNextButtonClient;
-		//NetUtility.C_INTERACTABLE_ANSWER_BUTTONS -= OnIntaractibleAnswerButtonsClient;
-
 		//TeamsTab
 		NetUtility.C_INTERACTABLE_REPLACE_CURRENT_TEAM -= OnInteractableReplaceCurrentTeamClient;
 		NetUtility.C_REFRESH_TEAMS_DROPDOWN -= OnRefresfTeamsDropdownClient;
@@ -1087,6 +965,7 @@ public class ClientMenu : BaseMenu
 
 		//PropertiesTab
 		NetUtility.C_GAME_DISPLAY_INFO -= OnGameDisplayInfoClient;
+
 		NetUtility.C_COLOR_PALETTES -= OnRefreshPalettesClient;
 
 		NetUtility.C_GAME_TEXTS -= OnRefreshGameTextClient;
@@ -1162,40 +1041,10 @@ public class ClientMenu : BaseMenu
 			case TypesOfTab.Player:
 				SetTabInteractables(TypesOfTab.Player, netTabInteractables.IsInteractables);
 				break;
-				/*
-			case TypesOfTab.PropertiesOnServer:
-				break;
-			case TypesOfTab.PropertiesOnClient:
-				break;
-				*/
 			default:
 				break;
 		}
 	}
-
-	/*
-	private void OnMainTitleStateClient(NetMessage msg)
-	{
-		NetMainTitleStateButton netMainTitleSpriteButton = msg as NetMainTitleStateButton;
-
-		SetSpriteOnMainTitleButton(netMainTitleSpriteButton.ButtonState);
-	}
-	*/
-	/*
-	private void OnIntaractibleNextButtonClient(NetMessage msg)
-	{
-		NetInteractableNextButton netInteractableNextButton = msg as NetInteractableNextButton;
-		
-		InteractableNextButton(netInteractableNextButton.IsOnBool);
-	}
-
-	private void OnIntaractibleAnswerButtonsClient(NetMessage msg)
-	{
-		NetInteractableAnswerButtons netInteractableAnswerButtons = msg as NetInteractableAnswerButtons;
-
-		InteractableAnswerButtons(netInteractableAnswerButtons.IsOnBool);
-	}
-	*/
 
 	#endregion
 
@@ -1268,12 +1117,12 @@ public class ClientMenu : BaseMenu
 
 	private void OnRefreshPalettesClient(NetMessage msg)
 	{
-		NetColorPalettes netRefreshPalettes = msg as NetColorPalettes;
+		NetColorPalettes netColorPalettes = msg as NetColorPalettes;
 
-		RefreshPalettesInMenu(netRefreshPalettes.Palettes, netRefreshPalettes.CurrentNumPalette);
+		_palettesToClient = netColorPalettes.PalettesToClient;
+		_currentNumPalette = netColorPalettes.CurrentNumPalette;
 
-		if (netRefreshPalettes.Parent != null)
-			Destroy(netRefreshPalettes.Parent);
+		RefreshPalettesInMenu(_palettesToClient, _currentNumPalette);
 	}
 
 	private void OnRefreshGameTextClient(NetMessage msg)

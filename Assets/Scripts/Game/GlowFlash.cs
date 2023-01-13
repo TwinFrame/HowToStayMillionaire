@@ -48,8 +48,6 @@ public class GlowFlash : MonoBehaviour
 
 		_glowingJob = StartCoroutine(GlowingJob(_glowRightThreshold, _glowRightIntensity, _properties.GlowColor,
 			_properties.GameColorChanger.GetRightColor(), _properties.FadeInBurstTime, _properties.FadeOutBurstTime));
-
-		//RightGlowColor
 	}
 
 	public void GlowingWrongAnswer()
@@ -59,8 +57,6 @@ public class GlowFlash : MonoBehaviour
 
 		_glowingJob = StartCoroutine(GlowingJob(_glowWrongThreshold, _glowWrongIntensity, _properties.GlowColor,
 			_properties.GameColorChanger.GetWrongColor(), _properties.FadeInBurstTime, _properties.FadeOutBurstTime));
-
-		//WrongGlowColor
 	}
 	
 	private IEnumerator GlowingJob(float glowThreshold, float glowIntensity, Color initialColor, Color glowColor,

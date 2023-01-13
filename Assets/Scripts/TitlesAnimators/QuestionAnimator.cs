@@ -50,8 +50,6 @@ public class QuestionAnimator : TitleAnimator
 		_questionViewer.Exit();
 
 		_countdown.ResetIndicator();
-		//_mainPlate.gameObject.SetActive(false);
-		//_mainPlate.enabled = false;
 	}
 
 	protected override void ResetTitle()

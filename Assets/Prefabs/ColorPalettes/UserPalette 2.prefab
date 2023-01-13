@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7990c0056843a41961375d856da345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: User2
+  _name: User 2
   _isUserAllowedChange: 1
   _mainColor: {r: 0.8666667, g: 0.13333334, b: 0.33333334, a: 1}
   _slaveColor: {r: 0.26666668, g: 0, b: 0.039215688, a: 1}

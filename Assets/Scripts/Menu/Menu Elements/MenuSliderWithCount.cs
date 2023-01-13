@@ -56,9 +56,7 @@ public class MenuSliderWithCount : BaseMenuElement
 	{
 		normalizeValue = Mathf.Clamp(normalizeValue, 0, 1);
 
-		_slider.value = normalizeValue; //SetValueWithoutNotify(normalizeValue);
-
-		//_slider.onValueChanged?.Invoke(normalizeValue);
+		_slider.value = normalizeValue;
 	}
 
 	private void OnChangedSlider(float normalizeValue)

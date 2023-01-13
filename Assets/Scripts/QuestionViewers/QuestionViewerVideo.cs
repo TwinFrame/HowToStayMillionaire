@@ -38,8 +38,6 @@ public class QuestionViewerVideo : QuestionViewerTemplate, IQuestionViewerWithPl
 	private float _rawImageCurrentTime;
 	private float _rawImageCurrentTimeNormalize;
 
-	//public AdvancedVideoPlayer VideoReadOnly => _player;
-
 	public void FillTemplate(string question, VideoClip video, float normalizedPauseTime)
 	{
 		_question.text = question;
@@ -54,7 +52,6 @@ public class QuestionViewerVideo : QuestionViewerTemplate, IQuestionViewerWithPl
 	{
 		//Меняем руками для каждого шаблона
 		Type = TypesOfQuestions.Type.video;
-		//IsHaveVideo = true;
 
 		_questionRectTransform = _question.gameObject.GetComponent<RectTransform>();
 		_questionStartPosition = _questionRectTransform.anchoredPosition3D;
@@ -74,15 +71,12 @@ public class QuestionViewerVideo : QuestionViewerTemplate, IQuestionViewerWithPl
 		_player.ReleaseRenderTexture();
 
 		_player.PreparePlayer();
-		//Тут надо дожидаться когда закончится Prepared
+
 		_player.SetupAudio();
 	}
 
 	public override void Enter(Question question)
 	{
-		//_question.color = _questionTransparentColor;
-		//_rawImage.color = _rawImageTransparentColor;
-
 		if (_enterQuestionJob != null)
 			StopCoroutine(_enterQuestionJob);
 		_enterQuestionJob = StartCoroutine(EnterQuestionJob(question));
@@ -90,12 +84,6 @@ public class QuestionViewerVideo : QuestionViewerTemplate, IQuestionViewerWithPl
 
 	public override void Exit(QuestionViewer questionViewer)
 	{
-		/*
-		if (_exitQuestionJob != null)
-			StopCoroutine(_exitQuestionJob);
-		_exitQuestionJob = StartCoroutine(ExitQuestionJob(questionViewer));
-		*/
-
 		questionViewer.CloseViewer();
 	}
 
@@ -104,7 +92,6 @@ public class QuestionViewerVideo : QuestionViewerTemplate, IQuestionViewerWithPl
 		_question.text = string.Empty;
 		_normalizedPauseTime = 0;
 		_player.ClearPlayer();
-		//IsStartCountdown = false; //нужно для каждого Viewer
 	}
 
 	public IAdvancedPlayer GetPlayer()
@@ -156,29 +143,8 @@ public class QuestionViewerVideo : QuestionViewerTemplate, IQuestionViewerWithPl
 
 	private IEnumerator EnterQuestionJob(Question question)
 	{
-		//_player.ReleaseRenderTexture();
-
-		//_player.PreparePlayer();
-
 		yield return new WaitUntil(() => _player.IsPrepared);
-		//yield return _player.IsPrepared;
 
-		//_player.SetupAudio();
-		/*
-		yield return WaitBetweenViewers;
-
-		if (_fadeInQuestion != null)
-			StopCoroutine(_fadeInQuestion);
-		_fadeInQuestion = StartCoroutine(FadeInQuestion());
-
-		yield return WaitBetweenElements;
-
-		if (_fadeInRawImage != null)
-			StopCoroutine(_fadeInRawImage);
-		_fadeInRawImage = StartCoroutine(FadeInRawImage());
-
-		yield return _fadeInRawImage;
-		*/
 		_player.PlayUntilPauseMark(_normalizedPauseTime);
 
 		yield return new WaitUntil(() => question.IsAskedReadOnly);

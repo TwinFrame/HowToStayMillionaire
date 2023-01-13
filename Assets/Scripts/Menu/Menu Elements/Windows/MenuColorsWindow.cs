@@ -126,8 +126,6 @@ public class MenuColorsWindow : MenuWindow
 		currentNumPalette = Mathf.Clamp(currentNumPalette, 0, palettes.Count - 1);
 
 		_palettesDropdown.SetValueWithoutNotify(currentNumPalette);
-
-		//_palettesDropdown.onValueChanged?.Invoke(currentNumPalette);
 	}
 
 	public void OnClickChangeMainColor()

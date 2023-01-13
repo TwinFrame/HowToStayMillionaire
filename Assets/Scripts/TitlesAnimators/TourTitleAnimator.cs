@@ -1,5 +1,4 @@
 using System.Collections;
-//using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -25,8 +24,6 @@ public class TourTitleAnimator : TitleAnimator
 	{
 		yield return WaitBetweenViewers;
 
-		//_gameEvent.OnMainTitleEnter?.Invoke();
-
 		_titlePlate.gameObject.SetActive(true);
 		_titlePlate.enabled = true;
 
@@ -39,8 +36,6 @@ public class TourTitleAnimator : TitleAnimator
 
 	protected override IEnumerator ExitJob()
 	{
-		//_gameEvent.OnMainTitleExit?.Invoke();
-
 		_titlePlate.Exit(out _exitPlateJob);
 
 		yield return _exitPlateJob;

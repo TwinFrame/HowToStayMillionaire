@@ -5,12 +5,7 @@ public class EffectorForPrimitives : MonoBehaviour
 {
 	private Vector3 _currentNormalizeDirection = new Vector3();
 	private float _randomForce;
-	/*
-	private void Update()
-	{
-		ShowRay();
-	}
-	*/
+
 	public void AttractionToCenter(List<Rigidbody> rigidbodies, float force, bool isRandomizingForce = false)
 	{
 		if (isRandomizingForce)
@@ -19,7 +14,6 @@ public class EffectorForPrimitives : MonoBehaviour
 			{
 				_randomForce = Random.Range(0.8f, 1.2f);
 
-				//как разберешься. поменяй обратно transform.position на Vector3.zero
 				_currentNormalizeDirection = GetNormalizeDirection(rigidbody.transform.position, Vector3.zero);
 
 				AddForce(rigidbody, force * _randomForce, _currentNormalizeDirection);

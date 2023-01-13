@@ -32,4 +32,3 @@ public class NetMainTitle : NetMessage
 		NetUtility.S_MAIN_TITLE?.Invoke(this, networkConnection);
 	}
 }
-

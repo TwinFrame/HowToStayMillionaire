@@ -98,13 +98,6 @@ public class GameTab : BaseTab
 
 	public override void RefreshTab()
 	{
-		//_startCountdownButton.interactable = false;
-		/*
-		_sliderMaser;
-		_sliderFx;
-		_sliderCountdown;
-		_symbolDropdown;
-		*/
 	}
 
 	public override bool[] GetInteractables()
@@ -288,10 +281,4 @@ public class GameTab : BaseTab
 		if (optionsCount <= 1)
 			_options2Button.interactable = false;
 	}
-	/*
-	public void SetSpriteOnMainTitleButton(Sprite pause)
-	{
-		_mainTitleButton.image.sprite = pause;
-	}
-	*/
 }

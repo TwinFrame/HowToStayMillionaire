@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class ClientPreviewMenu : BasePreviewMenu
 {
 	[SerializeField] private Texture2D _defaultTexture;
-	//[SerializeField] private RenderTexture _previewTexture;
 	[SerializeField] private RawImage _previewImage;
 	[Space]
 	[SerializeField] private MenuSliderWithCount _qualitySlider;
@@ -19,8 +18,6 @@ public class ClientPreviewMenu : BasePreviewMenu
 	[SerializeField] private MenuSliderWithCount _fpsSlider;
 	[Range(0, 50)]
 	[SerializeField] private int _defaultFPS;
-	//[Header("Service")]
-	//[SerializeField] private TextureConverter _textureConverter;
 
 	private int _minFPSValue = 0;
 	private int _maxFPSValue = 50;
@@ -188,7 +185,6 @@ public class ClientPreviewMenu : BasePreviewMenu
 		normalizeValue = Mathf.Clamp(normalizeValue, 0, 1);
 
 		_currentValue = Convert.ToInt32(minValue + normalizeValue * (maxValue - minValue));
-		//_currentNormalizeValue = _minNormalizeValue + ((valueIndB - _minValue) * (_maxNormalizeValue - _minNormalizeValue)) / (_maxValue - _minValue);
 
 		return _currentValue;
 	}

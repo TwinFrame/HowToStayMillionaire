@@ -8,10 +8,7 @@ public class MenuThemeChanger : MonoBehaviour
 {
 	[Header("Menu Fonts")]
 	[SerializeField] private Material[] _fontMaterials;
-	//[Header("Menu BG")]
-	//[SerializeField] private Material _BGMaterial;
 	[Header("Service")]
-	[SerializeField] private Game _game;
 	[SerializeField] private BaseMenu _menu;
 
 	private ThemeMenu[] _themes;
@@ -32,7 +29,6 @@ public class MenuThemeChanger : MonoBehaviour
 	private List<Image> _checkmarksInToggle = new List<Image>();
 	private List<TMP_Dropdown> _dropdowns = new List<TMP_Dropdown>();
 	private List<Image> _dropdownsTemplate = new List<Image>();
-	//private RectTransform[] _dropdownsChildRectTransforms;
 	private List<Image> _dropdownsArrow = new List<Image>();
 	private List<Image> _dropdownsItemBG = new List<Image>();
 	private List<Image> _dropdownsItemCheckmark = new List<Image>();
@@ -109,13 +105,11 @@ public class MenuThemeChanger : MonoBehaviour
 	private void SetTheme()
 	{
 		ChangeFontsColor();
-		//ChangeTextureBG();
 		ChangePanels();
 		ChangePanelsWithStroke();
 		ChangeAudioMixers();
 		ChangeSliders();
 		ChangeButtonsSprite();
-		//ChangePauseButtonSprite();
 		ChangeToggles();
 		ChangeDropdowns();
 		ChangeInputFields();
@@ -307,12 +301,7 @@ public class MenuThemeChanger : MonoBehaviour
 		foreach (Material font in _fontMaterials)
 			font.SetColor("_FaceColor", _themes[_currentTheme].TextColor);
 	}
-	/*
-	private void ChangeTextureBG()
-	{
-		_BGMaterial.mainTexture = _themes[_currentTheme].BackgroundTexture;
-	}
-	*/
+
 	private void ChangePanels()
 	{
 		foreach (Image panel in _panels)

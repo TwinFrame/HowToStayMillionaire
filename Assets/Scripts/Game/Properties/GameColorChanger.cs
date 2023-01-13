@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.U2D;
-using UnityEngine.UI;
 
 public class GameColorChanger : MonoBehaviour
 {
@@ -30,9 +28,6 @@ public class GameColorChanger : MonoBehaviour
 	[Space]
 	[SerializeField] private Material _material3;
 	[SerializeField] private Material _material4;
-	//[Space]
-	//[SerializeField] private Material _material5;
-	//[SerializeField] private Material _material6;
 	[Space]
 	[SerializeField] private Material _mainBarMaterial;
 	[SerializeField] private Material _glassIndicator;
@@ -120,7 +115,6 @@ public class GameColorChanger : MonoBehaviour
 	public List<ColorPalette> GetPalettes(out int currentNumPalette)
 	{
 		currentNumPalette = _currentNumPalette;
-		//paletteNames = GetPaletteNames();
 		return _palettes;
 	}
 

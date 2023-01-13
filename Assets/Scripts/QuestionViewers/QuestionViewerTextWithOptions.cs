@@ -28,8 +28,6 @@ public class QuestionViewerTextWithOptions : QuestionViewerTemplateWithOptions
 		_question.text = text;
 
 		FillOptions(optionText, rightOption);
-
-		//SetSameFontSizeInOptions();
 	}
 
 	public override void InitTemplate()
@@ -59,9 +57,6 @@ public class QuestionViewerTextWithOptions : QuestionViewerTemplateWithOptions
 
 	public override void Enter(Question question)
 	{
-		//_question.color = _questionTransparentColor;
-		//ScrollOptionsCanvasGroup.alpha = 0;
-
 		if (_enterQuestionJob != null)
 			StopCoroutine(_enterQuestionJob);
 		_enterQuestionJob = StartCoroutine(EnterQuestionJob(question));
@@ -69,12 +64,6 @@ public class QuestionViewerTextWithOptions : QuestionViewerTemplateWithOptions
 
 	public override void Exit(QuestionViewer questionViewer)
 	{
-		/*
-		if (_exitQuestionJob != null)
-			StopCoroutine(_exitQuestionJob);
-		_exitQuestionJob = StartCoroutine(ExitQuestionJob(questionViewer));
-		*/
-
 		questionViewer.CloseViewer();
 
 		DeleteOptions();
@@ -87,8 +76,6 @@ public class QuestionViewerTextWithOptions : QuestionViewerTemplateWithOptions
 		_questionRectTransform.anchoredPosition3D = _questionStartPosition;
 		_question.color = _questionStartColor;
 
-		//IsStartCountdown = false; //нужно для каждого Viewer
-
 		ResetOptions();
 	}
 
@@ -96,20 +83,6 @@ public class QuestionViewerTextWithOptions : QuestionViewerTemplateWithOptions
 	private IEnumerator EnterQuestionJob(Question question)
 	{
 		IsChoosedOption = false;
-
-		/*
-		yield return WaitBetweenViewers;
-
-		if (_fadeInQuestionJob != null)
-			StopCoroutine(_fadeInQuestionJob);
-		_fadeInQuestionJob = StartCoroutine(FadeInQuestionJob());
-
-		yield return WaitBetweenElements;
-
-		if (FadeInOptionsCoroutine != null)
-			StopCoroutine(FadeInOptionsCoroutine);
-		FadeInOptionsCoroutine = StartCoroutine(FadeInOptionsJob());
-		*/
 
 		yield return new WaitUntil(() => IsChoosedOption);
 
@@ -132,26 +105,6 @@ public class QuestionViewerTextWithOptions : QuestionViewerTemplateWithOptions
 
 	private IEnumerator ExitQuestionJob(QuestionViewer questionViewer)
 	{
-		/*
-		if (_fadeOutQuestionJob != null)
-			StopCoroutine(_fadeOutQuestionJob);
-		_fadeOutQuestionJob = StartCoroutine(FadeOutQuestionJob());
-
-		if (ZoomOutOptionCoroutine != null)
-			StopCoroutine(ZoomOutOptionCoroutine);
-		ZoomOutOptionCoroutine = StartCoroutine(ZoomOutOptionJob());
-
-		//yield return WaitBetweenElements;
-
-		yield return ZoomOutOptionCoroutine;
-
-		if (FadeOutOptionsCoroutine != null)
-			StopCoroutine(FadeOutOptionsCoroutine);
-		FadeOutOptionsCoroutine = StartCoroutine(FadeOutOptionsJob());
-
-		yield return FadeOutOptionsCoroutine;
-		*/
-
 		yield return null;
 
 		questionViewer.CloseViewer();

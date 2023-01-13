@@ -134,13 +134,6 @@ public class PropertiesTabOnClient : BaseTab
 
 	public override void RefreshTab()
 	{
-		//_startCountdownButton.interactable = false;
-		/*
-		_sliderMaser;
-		_sliderFx;
-		_sliderCountdown;
-		_symbolDropdown;
-		*/
 	}
 
 	public override bool[] GetInteractables()
@@ -330,15 +323,11 @@ public class PropertiesTabOnClient : BaseTab
 	private void OnDeleteLogo()
 	{
 		OnDeleteLogoEvent?.Invoke();
-
-		//OnCloseLoadImageWindow();
 	}
 
 	private void OnUserLoadedLogo(Texture2D logo, string path)
 	{
 		OnUserLoadedLogoEvent?.Invoke(logo, path);
-
-		//OnCloseLoadImageWindow();
 	}
 
 	private void OnOpenLoadImageWindow()
@@ -364,12 +353,6 @@ public class PropertiesTabOnClient : BaseTab
 	#endregion
 
 	#region ColorsWindow
-
-	//_colors.RefreshPalettes остался только на клиентн и по логике должен автоматом остаться без линка
-	public void RefreshPalettes(List<ColorPalette> palettes, int currentNumPalette)
-	{
-		_colorsWindow.RefreshPalettesInMenu(palettes, currentNumPalette);
-	}
 
 	public void SetColorsFromPalette(List<ColorPalette> colorPalettes, int numPalette)
 	{

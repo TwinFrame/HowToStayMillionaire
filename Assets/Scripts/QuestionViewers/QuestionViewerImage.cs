@@ -71,9 +71,6 @@ public class QuestionViewerImage : QuestionViewerTemplate
 
 	public override void Enter(Question question)
 	{
-		//_question.color = _questionTransparentColor;
-		//_image.color = _imageTransparentColor;
-
 		if (_enterQuestionJob != null)
 			StopCoroutine(_enterQuestionJob);
 		_enterQuestionJob = StartCoroutine(EnterQuestionJob(question));
@@ -81,12 +78,6 @@ public class QuestionViewerImage : QuestionViewerTemplate
 
 	public override void Exit(QuestionViewer questionViewer)
 	{
-		/*
-		if (_exitQuestionJob != null)
-			StopCoroutine(_exitQuestionJob);
-		_exitQuestionJob = StartCoroutine(ExitQuestionJob(questionViewer));
-		*/
-
 		questionViewer.CloseViewer();
 	}
 
@@ -104,7 +95,6 @@ public class QuestionViewerImage : QuestionViewerTemplate
 
 		_imageRectTransform.anchoredPosition3D = _imageStartPosition;
 		_image.color = Color.white;
-		//IsStartCountdown = false; //нужно для каждого Viewer
 	}
 
 	public void FillTemplate(string question, string answer, Sprite image)
@@ -118,19 +108,6 @@ public class QuestionViewerImage : QuestionViewerTemplate
 
 	private IEnumerator EnterQuestionJob(Question question)
 	{
-		/*
-		yield return WaitBetweenViewers;
-
-		if (_fadeInQuestion != null)
-			StopCoroutine(_fadeInQuestion);
-		_fadeInQuestion = StartCoroutine(FadeInQuestion());
-
-		yield return WaitBetweenElements;
-
-		if (_fadeInImage != null)
-			StopCoroutine(_fadeInImage);
-		_fadeInImage = StartCoroutine(FadeInImage());
-		*/
 		yield return new WaitUntil(() => question.IsAskedReadOnly);
 
 		if (_fadeOutImage != null)

@@ -28,13 +28,10 @@ public class AdvancedAudioPlayer : MonoBehaviour, IAdvancedPlayer
 	public void LoadContent(AudioClip audio)
 	{
 		_audio.clip = audio;
-		//_audio.clip.LoadAudioData();
-		//_audio.Stop();
 	}
 
 	public void PreparePlayer()
 	{
-		//_audio.clip.LoadAudioData();
 		_audio.Stop();
 		Seek(0);
 	}
@@ -78,7 +75,6 @@ public class AdvancedAudioPlayer : MonoBehaviour, IAdvancedPlayer
 		if (pauseMark >= 1 - _inaccuracyTime)
 		{
 			Seek(0);
-			//Seek(1 - _inaccuracyTime); так удачно обновлялось текущее время в Menu\DisplayTime
 			Play();
 			return;
 		}
@@ -218,7 +214,6 @@ public class AdvancedAudioPlayer : MonoBehaviour, IAdvancedPlayer
 			}
 		}
 
-		//Seek(endNTime - _inaccuracyTime);
 		_audio.Pause();
 	}
 
@@ -255,9 +250,6 @@ public class AdvancedAudioPlayer : MonoBehaviour, IAdvancedPlayer
 				yield return new WaitUntil(() => NormalizeTime - _inaccuracyTime >= loopStopNormalizeTime);
 			}
 		}
-
-		//Seek(endNTime - _inaccuracyTime);
-		//_audio.Pause();
 	}
 
 	private double ClampDouble(double value, double min, double max)

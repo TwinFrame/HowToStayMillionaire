@@ -118,14 +118,6 @@ public class PropertiesTabOnServer : BaseTab
 		OnCloseTextsWindow();
 		OnCloseLoadImageWindow();
 		OnCloseColorsWindow();
-
-		//_startCountdownButton.interactable = false;
-		/*
-		_sliderMaser;
-		_sliderFx;
-		_sliderCountdown;
-		_symbolDropdown;
-		*/
 	}
 
 	public override bool[] GetInteractables()
@@ -275,15 +267,11 @@ public class PropertiesTabOnServer : BaseTab
 	private void OnDeleteLogo()
 	{
 		OnDeleteLogoEvent?.Invoke();
-
-		//OnCloseLoadImageWindow();
 	}
 
 	private void OnUserLoadedLogo(Texture2D logo, string path)
 	{
 		OnUserLoadedLogoEvent?.Invoke(logo, path);
-
-		//OnCloseLoadImageWindow();
 	}
 
 	private void OnOpenLoadImageWindow()
@@ -318,12 +306,6 @@ public class PropertiesTabOnServer : BaseTab
 		_colorsWindow.gameObject.SetActive(false);
 	}
 
-	//_colors.RefreshPalettes остался только на клиентн и по логике должен автоматом остаться без линка
-	public void RefreshPalettes(List<ColorPalette> palettes, List<string> paletteNames, int currentNumPalette)
-	{
-		_colorsWindow.RefreshPalettesInMenu(palettes, currentNumPalette);
-	}
-
 	public void SetColorsFromPalette(List<ColorPalette> colorPalettes, int numPalette)
 	{
 		_colorsWindow.SetColorsFromPalette(colorPalettes, numPalette);
@@ -342,6 +324,7 @@ public class PropertiesTabOnServer : BaseTab
 	#endregion
 
 	#region Audio Sliders
+
 	private void OnChangedAudioChannel(TypesOfAudioChannel channel, float normalizeValue)
 	{
 		OnChangedAudioChannelEvent?.Invoke(channel, normalizeValue);
@@ -366,5 +349,6 @@ public class PropertiesTabOnServer : BaseTab
 	{
 		_audioMixerUI.SetChannelWithoutNotify(channel, normalizedVolume);
 	}
+
 	#endregion
 }

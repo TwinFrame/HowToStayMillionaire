@@ -125,7 +125,5 @@ public class MenuDisplayWindow : MenuWindow
 	private void CloseResolutionWindow()
 	{
 		_resolutionWindow.gameObject.SetActive(false);
-
-		//_resolutionDropdown.SetValueWithoutNotify(_resolutionDropdown.options.Count - 1);
 	}
 }

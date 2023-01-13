@@ -49,5 +49,4 @@ public abstract class BasePlate : MonoBehaviour
 
 		yield return new WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).IsName("StartPosition"));
 	}
-
 }

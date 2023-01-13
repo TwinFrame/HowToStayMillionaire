@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4130362044600616838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4130362044600616836}
+  - component: {fileID: 4130362044600616839}
+  m_Layer: 0
+  m_Name: QuestionImageWithOptions 7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4130362044600616836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130362044600616838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4130362044600616839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130362044600616838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d8e59955940444793315e2817a44d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _options:
+  - The Legend of Zelda
+  - Metroid
+  - Donkey Kong
+  - Super Mario World
+  _rightOption: 3
+  _question: "\u0412 \u043A\u0430\u043A\u043E\u0439 \u0438\u0433\u0440\u0435 \u0432\u043F\u0435\u0440\u0432\u044B\u0435
+    \u043F\u043E\u044F\u0432\u0438\u043B\u0441\u044F \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436
+    \u041C\u0430\u0440\u0438\u043E?"
+  _image: {fileID: 21300000, guid: 25b75af6e79619e4782ac901b7a4c9a6, type: 3}

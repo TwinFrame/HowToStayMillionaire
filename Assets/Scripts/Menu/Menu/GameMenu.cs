@@ -108,7 +108,7 @@ public class GameMenu : BaseMenu
 					CurrentPlayerTab.PlayAfterPauseMarkEvent += OnPlayAfterPauseMark;
 					CurrentPlayerTab.PlayFullEvent += OnPlayFull;
 					CurrentPlayerTab.PauseEvent += OnPlayerPause;
-					CurrentPlayerTab.LoopEvent += (isLoop) => OnPlayerLoop(isLoop);
+					CurrentPlayerTab.LoopEvent += (isLoop) => SetPlayerLoop(isLoop);
 					CurrentPlayerTab.SetPauseMarkEvent += (pauseMark) => OnSetPauseMark(pauseMark);
 					CurrentPlayerTab.BlockHotkeyEvent += BlockHotkey;
 					CurrentPlayerTab.UnblockHotkeyEvent += UnblockHotkey;
@@ -225,7 +225,7 @@ public class GameMenu : BaseMenu
 					CurrentPlayerTab.PlayAfterPauseMarkEvent -= OnPlayAfterPauseMark;
 					CurrentPlayerTab.PlayFullEvent -= OnPlayFull;
 					CurrentPlayerTab.PauseEvent -= OnPlayerPause;
-					CurrentPlayerTab.LoopEvent -= (isLoop) => OnPlayerLoop(isLoop);
+					CurrentPlayerTab.LoopEvent -= (isLoop) => SetPlayerLoop(isLoop);
 					CurrentPlayerTab.SetPauseMarkEvent -= (pauseMark) => OnSetPauseMark(pauseMark);
 					CurrentPlayerTab.BlockHotkeyEvent -= BlockHotkey;
 					CurrentPlayerTab.UnblockHotkeyEvent -= UnblockHotkey;
@@ -302,7 +302,6 @@ public class GameMenu : BaseMenu
 	public void ResetMenu()
 	{
 		InteractableNextButton(true);
-		//Server and Client нужно тоже добавить
 		InteractableCountdownButton(false);
 		InteractableAnswerButtons(false);
 		InteractableReplaceCurrentTeams(false);
@@ -311,6 +310,7 @@ public class GameMenu : BaseMenu
 		DisableOptionsButtons();
 		DisablePlayerButtons();
 	}
+
 	#region TabsUpdate
 
 	public bool TryGetTabInteractebles(TypesOfTab type, out bool[] currentInteractables)
@@ -528,29 +528,7 @@ public class GameMenu : BaseMenu
 	{
 		_primitiveObjects.Restart();
 	}
-	/*
-	public void SetPauseOnMainTitleButton(bool isPause)
-	{
-		GameTab tab = Tabs.Find(t => t.TypesMenuReadOnly == TypesOfMenu.Game) as GameTab;
 
-		if (tab != null)
-		{
-			if (isPause)
-			{
-				//tab.SetPauseOnMainTitleButton(_properties.PauseButtonColor);
-				tab.SetSpriteOnMainTitleButton(_properties.ThemeMenuChanger.GetRedSprite());
-
-				TrySendBroadcast(new NetMainTitleStateButton(TypesOfButtonState.Pause));
-			}
-			else
-			{
-				tab.SetSpriteOnMainTitleButton(_properties.ThemeMenuChanger.GetButtonSprite());
-
-				TrySendBroadcast(new NetMainTitleStateButton(TypesOfButtonState.Default));
-			}
-		}
-	}
-	*/
 	public void InteractableNextButton(bool isInteractable)
 	{
 		GameTab tab = Tabs.Find(t => t.TypesMenuReadOnly == TypesOfTab.Game) as GameTab;
@@ -644,7 +622,6 @@ public class GameMenu : BaseMenu
 			tab.InteractableReplaceCurrentTeam(isInteractable);
 
 		UpdateClientTab(TypesOfTab.Teams);
-		//TrySendBroadcast(new NetInteractableReplaceCurrentTeam(isInteractable));
 	}
 
 	public void InteractableAddMoneyToTeam(bool isInteractable)
@@ -748,12 +725,12 @@ public class GameMenu : BaseMenu
 			return;
 
 		if (_currentPlayer.GetIsLoop())
-			OnPlayerLoop(false);
+			SetPlayerLoop(false);
 		else
-			OnPlayerLoop(true);
+			SetPlayerLoop(true);
 	}
 
-	private void OnPlayerLoop(bool isLoop)
+	private void SetPlayerLoop(bool isLoop)
 	{
 		if (_currentPlayer == null)
 			return;
@@ -789,8 +766,6 @@ public class GameMenu : BaseMenu
 
 	private void OnSetPauseMark(string pauseMark)
 	{
-		//pauseMark = PreparationNormalizedPauseMark(pauseMark);
-
 		if (TryGetConvertStringToFloat(pauseMark, out float pauseMarkFloat))
 		{
 			if (IsNormalizedPauseMark(pauseMarkFloat))
@@ -840,8 +815,6 @@ public class GameMenu : BaseMenu
 
 	public void DisablePlayerButtons()
 	{
-		//CurrentPlayerTab.DisablePlayerButtons();
-
 		PlayerTab tab = Tabs.Find(t => t.TypesMenuReadOnly == TypesOfTab.Player) as PlayerTab;
 
 		if (tab != null)
@@ -970,7 +943,7 @@ public class GameMenu : BaseMenu
 
 	private void SetColorsFromPalette(List<ColorPalette> palettes, int currentNumPalette)
 	{
-		//в Debug Mode обратил внимание, что несколько раз попадаю сюда подряд, когда выбираю новую палитру в меню.
+		//При выборе новой палитры, метод вызывается дважды в Debug Mode...
 		PropertiesTabOnServer tab = Tabs.Find(t => t.TypesMenuReadOnly == TypesOfTab.PropertiesOnServer) as PropertiesTabOnServer;
 		if (tab != null)
 			tab.SetColorsFromPalette(palettes, currentNumPalette);
@@ -987,7 +960,6 @@ public class GameMenu : BaseMenu
 	{
 		_properties.GameColorChanger.ChangeColorInPalette(numPalette, gameColor, color);
 	}
-
 
 	private void RefreshPalettesOnClient()
 	{
@@ -1093,7 +1065,6 @@ public class GameMenu : BaseMenu
 
 		//GameTab
 		NetUtility.S_NEXT_TITLE += OnNextTitleButtonServer;
-		//NetUtility.S_INTERACTABLE_NEXT_BUTTON += OnIntaractibleNextButtonServer;
 		NetUtility.S_MAIN_TITLE += OnMainTitleButtonServer;
 		NetUtility.S_TEAM_TITLE += OnTeamsTitleButtonServer;
 		NetUtility.S_RIGHT_ANSWER += OnRightAnswerButtonServer;
@@ -1151,7 +1122,6 @@ public class GameMenu : BaseMenu
 
 		//GameTab
 		NetUtility.S_NEXT_TITLE -= OnNextTitleButtonServer;
-		//NetUtility.S_INTERACTABLE_NEXT_BUTTON -= OnIntaractibleNextButtonServer;
 		NetUtility.S_MAIN_TITLE -= OnMainTitleButtonServer;
 		NetUtility.S_TEAM_TITLE -= OnTeamsTitleButtonServer;
 		NetUtility.S_RIGHT_ANSWER -= OnRightAnswerButtonServer;
@@ -1233,8 +1203,6 @@ public class GameMenu : BaseMenu
 		_currentNativeArray = NativeArrayExtension.FromRawBytes<byte>(_currentPreviewTexture, Allocator.Temp);
 
 		_gameServer.Server.SendToClient(networkConnection, new NetSendPreviewTexture(_currentNativeArray, _currentWidth, _currentHeight));
-		//TrySendBroadcast(new NetSendPreviewTexture(_currentPreviewTexture, _currentWidth, _currentHeight));
-		//_gameServer.Server.SendToClient(networkConnection, new NetSendPreviewTexture(_currentPreviewTexture, _currentWidth, _currentHeight));
 	}
 
 	#endregion
@@ -1335,23 +1303,10 @@ public class GameMenu : BaseMenu
 			case TypesOfTab.Player:
 				UpdateClientTab(TypesOfTab.Player);
 				break;
-				/*
-			case TypesOfTab.PropertiesOnServer:
-				break;
-			case TypesOfTab.PropertiesOnClient:
-				break;
-				*/
 			default:
 				break;
 		}
 	}
-
-	/*
-	private void OnIntaractibleNextButtonServer(NetMessage msg, NetworkConnection networkConnection)
-	{
-		WriteLog("Server: OnIntaractibleNextButtonServer");
-	}
-	*/
 
 	#endregion
 
@@ -1529,7 +1484,6 @@ public class GameMenu : BaseMenu
 				OnUserLoadedLogo(texture, netUserLoadedLogo.Path);
 		}
 	}
-
 
 	private void OnUserDeletedLogoServer(NetMessage msg, NetworkConnection networkConnection)
 	{

@@ -11,7 +11,5 @@ public class BaseProperties : MonoBehaviour
 
 	public MenuThemeChanger ThemeMenuChanger => _menuThemeChanger;
 	public DisplayController DisplayController => _displayController;
-
 	public TextureConverter TextureConverter =>  _textureConverter;
-
 }

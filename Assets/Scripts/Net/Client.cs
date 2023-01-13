@@ -56,7 +56,7 @@ public class Client : MonoBehaviour
 		}
 	}
 
-	public void OnDestroy() //maybe private
+	public void OnDestroy()
 	{
 		Shutdown();
 	}

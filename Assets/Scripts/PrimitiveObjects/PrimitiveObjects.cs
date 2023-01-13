@@ -39,12 +39,6 @@ public class PrimitiveObjects : MonoBehaviour
 		_rigidbodies = CollectChildRigidbodies();
 		_startScales = CollectStartScales(_rigidbodies);
 	}
-	/*
-	private void Start()
-	{
-		//Restart();
-	}
-	*/
 
 	public void EnterPrimitives()
 	{
@@ -101,12 +95,8 @@ public class PrimitiveObjects : MonoBehaviour
 
 		for (int i = 0; i < _startPositions.Count; i++)
 		{
-			//_rigidbodies[i].velocity = Vector3.zero;
-
 			_rigidbodies[i].transform.SetPositionAndRotation(_startPositions[i],
 				Quaternion.Euler(Random.Range(0, 359), Random.Range(0, 359), Random.Range(0, 359)));
-
-			//_rigidbodies[i].transform.position = _startPositions[i];
 		}
 	}
 
@@ -216,7 +206,6 @@ public class PrimitiveObjects : MonoBehaviour
 			yield return null;
 		}
 
-		//_effectorForPrimitives.ResetVelocity(_rigidbodies);
 		DisableAllPrimitives();
 		SetPrimitivesStartScale();
 
@@ -225,11 +214,6 @@ public class PrimitiveObjects : MonoBehaviour
 
 	private IEnumerator WaitExitJob()
 	{
-		//_effectorForPrimitives.ResetVelocity(_rigidbodies);
-
-		//if (_zoomOutPrimitives != null)
-		//	StopCoroutine(_zoomOutPrimitives);
-
 		yield return _zoomOutPrimitives;
 
 		SetPrimitivesStartScale();

@@ -1,19 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
-//using SimpleFileBrowser;
 
 public class OpenMenuOnMainDisplay : MonoBehaviour
 {
 	[SerializeField] private Camera _gameCamera;
 	[SerializeField] private GameMenu _gameMenu;
 	[SerializeField] private Toggle _openMenuToggle;
-	//[Header("Service")]
-	//[SerializeField] private Game _game;
 
 	private Canvas _menuCanvas;
 	private Camera _menuCamera;

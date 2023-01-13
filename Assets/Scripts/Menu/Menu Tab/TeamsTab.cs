@@ -54,10 +54,6 @@ public class TeamsTab : BaseTab
 
 	public override void RefreshTab()
 	{
-		/*
-		 * посмотреть что еще подойдет
-		_replaceTeamDropdown
-		*/
 	}
 
 	public override bool[] GetInteractables()
@@ -131,7 +127,6 @@ public class TeamsTab : BaseTab
 
 	public void OnBlockHotkey(string text)
 	{
-		//Debug.Log("Text from Event: " + text);
 		BlockHotkeyEvent?.Invoke();
 	}
 

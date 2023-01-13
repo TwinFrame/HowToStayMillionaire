@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class QuestionWithOptions : Question
 {
 	[SerializeField] protected List<string> _options;
-	[SerializeField] protected int _rightOption; //{ set { value = Mathf.Clamp(value, 0, _options.Count); } }
+	[SerializeField] protected int _rightOption;
 
 	public int RightOption => _rightOption;
 

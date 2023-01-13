@@ -49,9 +49,6 @@ public class AdvancedVideoPlayer : MonoBehaviour, IAdvancedPlayer
 	public void LoadContent(VideoClip video)
 	{
 		_videoPlayer.clip = video;
-		//SetupAudio();
-		//_video.Prepare();
-		//_video.Stop();
 	}
 
 	public void PreparePlayer()
@@ -68,13 +65,10 @@ public class AdvancedVideoPlayer : MonoBehaviour, IAdvancedPlayer
 
 	public void SetupAudio()
 	{
-		//if (!_videoPlayer.isPrepared)
-		//	return;
-
 		if (_videoPlayer.audioTrackCount <= 0)
 			return;
 
-		if (_audioSource == null && _videoPlayer.canSetDirectAudioVolume) //canSetDirectAudioVolume == false тут возмонжо должно быть так
+		if (_audioSource == null && _videoPlayer.canSetDirectAudioVolume)
 		{
 			_videoPlayer.audioOutputMode = VideoAudioOutputMode.Direct;
 		}
@@ -83,7 +77,6 @@ public class AdvancedVideoPlayer : MonoBehaviour, IAdvancedPlayer
 			_videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
 			_videoPlayer.EnableAudioTrack(0, true);
 			_videoPlayer.SetTargetAudioSource(0, _audioSource);
-			//_videoPlayer.controlledAudioTrackCount = 1;
 		}
 
 	}
@@ -234,24 +227,20 @@ public class AdvancedVideoPlayer : MonoBehaviour, IAdvancedPlayer
 
 	private void Started(VideoPlayer source)
 	{
-		//Debug.Log("Started");
 	}
 
 	private void SeekCompleted(VideoPlayer source)
 	{
-		//Debug.Log("SeekCompleted");
 		_isDone = false;
 	}
 
 	private void PrepareCompleted(VideoPlayer source)
 	{
-		//Debug.Log("PrepareCompleted");
 		_isDone = false;
 	}
 
 	private void LoopPointReached(VideoPlayer source)
 	{
-		//Debug.Log("LoopPointReached");
 		_isDone = true;
 	}
 

@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class DisplayController : MonoBehaviour
 {
@@ -29,16 +27,6 @@ public class DisplayController : MonoBehaviour
 			StopCoroutine(_delayRefreshDisplayInfoJob);
 		_delayRefreshDisplayInfoJob = StartCoroutine(DelayRefreshDisplayInfoJob());
 	}
-
-	/*
-	public void GetInfo(out string displayInfo, out bool isFullscreen)
-	{
-		displayInfo = $"Monitor: {Screen.currentResolution}; Display: {Display.main.renderingWidth} x" +
-			$"{Display.main.renderingHeight}";
-
-		isFullscreen = Screen.fullScreen;
-	}
-	*/
 
 	public string GetDisplayInfo()
 	{

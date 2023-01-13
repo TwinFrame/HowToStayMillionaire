@@ -8,15 +8,11 @@ public abstract class QuestionViewerTemplate : MonoBehaviour
 	[SerializeField] protected GameProperties _properties;
 
 	protected TypesOfQuestions.Type Type;
-	//protected bool IsStartCountdown = false;
 
 	protected WaitForSeconds WaitBetweenViewers;
 	protected WaitForSeconds WaitBetweenElements;
 
 	public TypesOfQuestions.Type TypeReadOnly => Type;
-	//public bool IsStartCountdownReadOnly => IsStartCountdown;
-
-	//public bool IsHaveVideoReadOnly => IsHaveVideo;
 
 	public abstract void ClearTemplate();
 

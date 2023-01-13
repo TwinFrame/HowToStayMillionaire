@@ -28,14 +28,6 @@ public static class NetUtility
 			case OpCode.NEXT_TITLE:
 				msg = new NetNextTitle(stream);
 				break;
-			/*
-		case OpCode.INTERACTABLE_NEXT_BUTTON:
-			msg = new NetInteractableNextButton(stream);
-			break;		
-		case OpCode.INTERACTABLE_ANSWER_BUTTONS:
-			msg = new NetInteractableAnswerButtons(stream);
-			break;	
-			*/
 			case OpCode.MAIN_TITLE:
 				msg = new NetMainTitle(stream);
 				break;
@@ -168,26 +160,6 @@ public static class NetUtility
 			case OpCode.TAB_INTERACTABLES:
 				msg = new NetTabInteractables(stream);
 				break;
-
-			/*
-		case OpCode.REFRESH_DISPLAY_INFO:
-			msg = new NetRefreshDisplayInfo(stream);
-			break;
-		case OpCode.NEED_REFRESH_GAME_TEXT:
-			msg = new NetNeedRefreshGameText(stream);
-			break;
-		case OpCode.NEED_REFRESH_MONETARY_UNITS:
-			msg = new NetNeedRefreshMonetaryUnits(stream);
-			break;
-		case OpCode.REFRESH_MONETARY_UNITS:
-			msg = new NetRefreshMonetaryUnits(stream);
-			break;
-			*/
-			/*
-		case OpCode.NEED_TO_UPDATE_TAB:
-			msg = new NetNeedToUpdateTab(stream);
-			break;
-			*/
 			default:
 				Debug.LogError("Message received had no OpCode");
 				break;
@@ -204,10 +176,7 @@ public static class NetUtility
 	public static Action<NetMessage> C_WELCOME;
 	public static Action<NetMessage> C_WRITE_LOG;
 	public static Action<NetMessage> C_NEXT_TITLE;
-	//public static Action<NetMessage> C_BLOCK_HOTKEY;
 	public static Action<NetMessage> C_SCREENSHOT;
-	//public static Action<NetMessage> C_INTERACTABLE_NEXT_BUTTON;
-	//public static Action<NetMessage> C_INTERACTABLE_ANSWER_BUTTONS;
 	public static Action<NetMessage> C_MAIN_TITLE;
 	public static Action<NetMessage> C_MAIN_TITLE_STATE_BUTTON;
 	public static Action<NetMessage> C_TEAM_TITLE;
@@ -236,7 +205,6 @@ public static class NetUtility
 	public static Action<NetMessage> C_SET_GAME_RESOLUTION;
 	public static Action<NetMessage> C_GAME_FULLSCREEN;
 	public static Action<NetMessage> C_GAME_DISPLAY_INFO;
-	//public static Action<NetMessage> C_REFRESH_DISPLAY_INFO;
 	public static Action<NetMessage> C_REFRESH_PALETTES;
 	public static Action<NetMessage> C_COLOR_PALETTES;
 	public static Action<NetMessage> C_CHANGE_PALETTE;
@@ -253,19 +221,12 @@ public static class NetUtility
 	public static Action<NetMessage> C_SEND_PREVIEW_TEXTURE;
 	public static Action<NetMessage> C_TAB_REFRESH;
 	public static Action<NetMessage> C_TAB_INTERACTABLES;
-	//public static Action<NetMessage> C_NEED_REFRESH_GAME_TEXT;
-	//public static Action<NetMessage> C_NEED_TO_UPDATE_TAB;
-	//public static Action<NetMessage> C_NEED_REFRESH_MONETARY_UNITS;
-	//public static Action<NetMessage> C_REFRESH_MONETARY_UNITS;
 
 	public static Action<NetMessage, NetworkConnection> S_KEEP_ALIVE;
 	public static Action<NetMessage, NetworkConnection> S_WELCOME;
 	public static Action<NetMessage, NetworkConnection> S_WRITE_LOG;
 	public static Action<NetMessage, NetworkConnection> S_NEXT_TITLE;
-	//public static Action<NetMessage, NetworkConnection> S_BLOCK_HOTKEY;
 	public static Action<NetMessage, NetworkConnection> S_SCREENSHOT;
-	//public static Action<NetMessage, NetworkConnection> S_INTERACTABLE_NEXT_BUTTON;
-	//public static Action<NetMessage, NetworkConnection> S_INTERACTABLE_ANSWER_BUTTONS;
 	public static Action<NetMessage, NetworkConnection> S_MAIN_TITLE;
 	public static Action<NetMessage, NetworkConnection> S_MAIN_TITLE_STATE_BUTTON;
 	public static Action<NetMessage, NetworkConnection> S_TEAM_TITLE;
@@ -294,7 +255,6 @@ public static class NetUtility
 	public static Action<NetMessage, NetworkConnection> S_SET_GAME_RESOLUTION;
 	public static Action<NetMessage, NetworkConnection> S_GAME_FULLSCREEN;
 	public static Action<NetMessage, NetworkConnection> S_GAME_DISPLAY_INFO;
-	//public static Action<NetMessage, NetworkConnection> S_REFRESH_DISPLAY_INFO;
 	public static Action<NetMessage, NetworkConnection> S_REFRESH_PALETTES;
 	public static Action<NetMessage, NetworkConnection> S_COLOR_PALETTES;
 	public static Action<NetMessage, NetworkConnection> S_CHANGE_PALETTE;
@@ -311,8 +271,4 @@ public static class NetUtility
 	public static Action<NetMessage, NetworkConnection> S_SEND_PREVIEW_TEXTURE;
 	public static Action<NetMessage, NetworkConnection> S_TAB_REFRESH;
 	public static Action<NetMessage, NetworkConnection> S_TAB_INTERACTABLES;
-	//public static Action<NetMessage, NetworkConnection> S_NEED_REFRESH_GAME_TEXT;
-	//public static Action<NetMessage, NetworkConnection> S_NEED_REFRESH_MONETARY_UNITS;
-	//public static Action<NetMessage, NetworkConnection> S_REFRESH_MONETARY_UNITS;
-	//public static Action<NetMessage, NetworkConnection> S_NEED_TO_UPDATE_TAB;
 }

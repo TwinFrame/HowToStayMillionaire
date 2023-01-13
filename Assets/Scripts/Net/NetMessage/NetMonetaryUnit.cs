@@ -5,8 +5,6 @@ public class NetMonetaryUnit : NetMessage
 {
 	public char MonetaryUnit { get; private set; }
 
-	//public char Symbol => _symbol;
-
 	public NetMonetaryUnit(char symbol)
 	{
 		Code = OpCode.MONETARY_UNIT;

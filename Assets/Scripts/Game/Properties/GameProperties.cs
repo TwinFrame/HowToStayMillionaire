@@ -10,14 +10,13 @@ public class GameProperties : BaseProperties
 
 
 	#region PreviewMenu
-
 	[Space]
 	[SerializeField] private RenderTexture _previewRenderTexture;
 	public RenderTexture PreviewRenderTexture => _previewRenderTexture;
-
 	#endregion
 
 	#region Animation Properties
+
 	[Header("Animation Properties")]
 	[Tooltip("The time for an UI Elements to fade in/out")]
 	[SerializeField] private float _fadeInOutUIElements;
@@ -63,8 +62,7 @@ public class GameProperties : BaseProperties
 	[Tooltip("The height of audio envelope")]
 	[SerializeField] private float _heightAudioEnvelope;
 	[Tooltip("The number of points in one half of the sound envelope, aka Quality")]
-	[Range(30, 230)]
-	//247 уже не показывал аудио с Левитаном.
+	[Range(30, 230)] //не более 247, иначе не визуализируется аудио огибающая.
 	[SerializeField] private int _sampleCount;
 
 	public float HeightAudioEnvelope => _heightAudioEnvelope;
@@ -106,17 +104,10 @@ public class GameProperties : BaseProperties
 	#endregion
 
 	#region Colors
-
 	[Header("Glow Colors")]
 	[SerializeField] private Color _glowColor;
-	[SerializeField] private Color _rightGlowColor;
-	[SerializeField] private Color _wrongGlowColor;
-	[Header("Option Colors")]
-	[SerializeField] private Color _defaultOption;
 
 	public Color GlowColor => _glowColor;
-	public Color RightGlowColor => _rightGlowColor;
-	public Color WrongGlowColor => _wrongGlowColor;
 	#endregion
 
 	#region Curves

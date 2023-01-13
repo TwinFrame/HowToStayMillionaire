@@ -75,10 +75,6 @@ public class QuestionViewerImageWithOptions : QuestionViewerTemplateWithOptions
 
 	public override void Enter(Question question)
 	{
-		//_question.color = _questionTransparentColor;
-		//_image.color = _imageTransparentColor;
-		//ScrollOptionsCanvasGroup.alpha = 0;
-
 		if (_enterQuestionJob != null)
 			StopCoroutine(_enterQuestionJob);
 		_enterQuestionJob = StartCoroutine(EnterQuestionJob(question));
@@ -86,12 +82,6 @@ public class QuestionViewerImageWithOptions : QuestionViewerTemplateWithOptions
 
 	public override void Exit(QuestionViewer questionViewer)
 	{
-		/*
-		if (_exitQuestionJob != null)
-			StopCoroutine(_exitQuestionJob);
-		_exitQuestionJob = StartCoroutine(ExitQuestionJob(questionViewer));
-		*/
-
 		questionViewer.CloseViewer();
 
 		DeleteOptions();
@@ -101,7 +91,6 @@ public class QuestionViewerImageWithOptions : QuestionViewerTemplateWithOptions
 	{
 		_question.text = string.Empty;
 		_image.sprite = null;
-		//IsStartCountdown = false; //нужно для каждого Viewer
 
 		ResetOptions();
 	}
@@ -111,25 +100,6 @@ public class QuestionViewerImageWithOptions : QuestionViewerTemplateWithOptions
 	{
 		IsChoosedOption = false;
 
-		/*
-		yield return WaitBetweenViewers;
-
-		if (_fadeInQuestionJob != null)
-			StopCoroutine(_fadeInQuestionJob);
-		_fadeInQuestionJob = StartCoroutine(FadeInQuestionJob());
-
-		yield return WaitBetweenElements;
-
-		if (_fadeInImageJob != null)
-			StopCoroutine(_fadeInImageJob);
-		_fadeInImageJob = StartCoroutine(FadeInImage());
-
-		yield return WaitBetweenElements;
-
-		if (FadeInOptionsCoroutine != null)
-			StopCoroutine(FadeInOptionsCoroutine);
-		FadeInOptionsCoroutine = StartCoroutine(FadeInOptionsJob());
-		*/
 		yield return new WaitUntil(() => IsChoosedOption);
 
 		if (ZoomInOptionCoroutine != null)
@@ -166,15 +136,8 @@ public class QuestionViewerImageWithOptions : QuestionViewerTemplateWithOptions
 			StopCoroutine(_fadeOutImageJob);
 		_fadeOutImageJob = StartCoroutine(FadeOutImage());
 
-		//yield return WaitBetweenElements;
 		yield return _fadeOutImageJob;
-		/*
-		if (FadeOutOptionsCoroutine != null)
-			StopCoroutine(FadeOutOptionsCoroutine);
-		FadeOutOptionsCoroutine = StartCoroutine(FadeOutOptionsJob());
 
-		yield return FadeOutOptionsCoroutine;
-		*/
 		questionViewer.CloseViewer();
 
 		DeleteOptions();

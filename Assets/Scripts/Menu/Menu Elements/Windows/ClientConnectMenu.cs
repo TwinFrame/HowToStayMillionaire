@@ -25,7 +25,7 @@ public class ClientConnectMenu : BaseMenuElement
 
 	private void Awake()
 	{
-		_hintIPButton.GetComponentInChildren<TMP_Text>().text = "Localhost"; //_ipAddress.ToString();
+		_hintIPButton.GetComponentInChildren<TMP_Text>().text = _ipAddress.ToString();
 		_hintPortButton.GetComponentInChildren<TMP_Text>().text = _port.ToString();
 	}
 

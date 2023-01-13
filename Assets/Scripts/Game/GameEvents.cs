@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -63,18 +61,6 @@ public class GameEvents : MonoBehaviour
 		_questionViewer.StopQuestionWithPlayer -= StopQuestionWithPlayer;
 	}
 
-	/* —транные два метода DepositeMoney, возможно переписать
-	public UnityEvent StartDepositMoney()
-	{
-		return OnStartDepositMoney;
-	}
-
-	public UnityEvent FinishedDepositMoney()
-	{
-		return OnFinishedDepositMoney;
-	}
-	*/
-
 	public void StartQuestion()
 	{
 		OnStartQuestion?.Invoke();
@@ -114,10 +100,4 @@ public class GameEvents : MonoBehaviour
 	{
 		OnStopCountdown?.Invoke();
 	}
-	/*
-	public void SetNormalizedPauseMark(float normalizedPauseMark)
-	{
-		OnSetNormalizedPauseMark?.Invoke(normalizedPauseMark);
-	}
-	*/
 }

@@ -45,13 +45,9 @@ public class AudioVizualizator : MonoBehaviour
 		{
 			VizualizeShapeSound(_points);
 
-			//if (TryGetShapeRenderer(out List<SpriteShapeRenderer> renderers))
-			//	ColorizeShapeSound(renderers);
-			
 			if (_fillInAlreadyPlayedPartJob != null)
 				StopCoroutine(_fillInAlreadyPlayedPartJob);
-			_fillInAlreadyPlayedPartJob = StartCoroutine(FillInAlreadyPlayedPartJob());
-			
+			_fillInAlreadyPlayedPartJob = StartCoroutine(FillInAlreadyPlayedPartJob());			
 		}
 	}
 
@@ -65,7 +61,6 @@ public class AudioVizualizator : MonoBehaviour
 
 	public bool TryGetShapeRenderer(out List<SpriteShapeRenderer> renderers)
 	{
-
 		if (_audioShape.TryGetComponent<SpriteShapeRenderer>(out SpriteShapeRenderer audioRenderer))
 		{
 			if (_audioMaskShape.TryGetComponent<SpriteShapeRenderer>(out SpriteShapeRenderer audioMaskRenderer))
@@ -76,7 +71,6 @@ public class AudioVizualizator : MonoBehaviour
 				renderers.Add(audioMaskRenderer);
 				return true;
 			}
-
 		}
 
 		renderers = null;
@@ -96,6 +90,7 @@ public class AudioVizualizator : MonoBehaviour
 			}
 			return false;
 		}
+
 		return false;
 	}
 
@@ -146,8 +141,11 @@ public class AudioVizualizator : MonoBehaviour
 
 		for (int i = 0; i < samples.Length; i++)
 		{
-			_upLinePoints[i] = new Vector3(i * _stepBeetwenPoints.x, samples[i] * _normalizeScale * _properties.HeightAudioEnvelope + i * _stepBeetwenPoints.y, 0);
-			_downLinePoints[i] = new Vector3(i * _stepBeetwenPoints.x, -samples[i] * _normalizeScale * _properties.HeightAudioEnvelope + i * _stepBeetwenPoints.y, 0);
+			_upLinePoints[i] = new Vector3(i * _stepBeetwenPoints.x, samples[i] * _normalizeScale * 
+				_properties.HeightAudioEnvelope + i * _stepBeetwenPoints.y, 0);
+
+			_downLinePoints[i] = new Vector3(i * _stepBeetwenPoints.x, -samples[i] * _normalizeScale * 
+				_properties.HeightAudioEnvelope + i * _stepBeetwenPoints.y, 0);
 		}
 
 		_points = new Vector3[_upLinePoints.Length + _downLinePoints.Length - 1];
@@ -180,7 +178,8 @@ public class AudioVizualizator : MonoBehaviour
 			return false;
 		}
 
-		_maskArea = new Vector3(_soundDistance.x, _properties.HeightAudioEnvelope * 2 + Mathf.Abs(_endPoint.localPosition.y * 2) + _reserveMaskArea, _soundDistance.z);
+		_maskArea = new Vector3(_soundDistance.x, _properties.HeightAudioEnvelope * 2 + 
+			Mathf.Abs(_endPoint.localPosition.y * 2) + _reserveMaskArea, _soundDistance.z);
 
 		_audioMask.transform.localScale = _maskArea;
 
@@ -247,8 +246,6 @@ public class AudioVizualizator : MonoBehaviour
 		{
 			spline.InsertPointAt(i, points[i]);
 			spline.SetTangentMode(i, ShapeTangentMode.Continuous);
-			//spline.SetRightTangent(i, Vector3.down * _tangentLength);
-			//spline.SetLeftTangent(i, Vector3.up * _tangentLength);
 		}
 	}
 
@@ -259,13 +256,6 @@ public class AudioVizualizator : MonoBehaviour
 		_soundDistance = Vector3.zero;
 		_stepBeetwenPoints = Vector3.zero;
 		_maxSample = 0;
-		/*
-		_upLinePoints = null;
-		_downLinePoints = null;
-		_points = null;
-		_samples = null;
-		_averageSamples = null;
-		*/
 	}
 
 	private double ClampDouble(double value, double min, double max)

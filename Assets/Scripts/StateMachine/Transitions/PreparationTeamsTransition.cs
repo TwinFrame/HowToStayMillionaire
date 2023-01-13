@@ -21,12 +21,4 @@ public class PreparationTeamsTransition : Transition
 	{
 		Game.WriteLog("Пока не готовы все команды.");
 	}
-
-	/*
-	public void OnFinishedPreparationTeams()
-	{
-		if (Game.IsTeamsReady)
-			IsReadyTransit = true;
-	}
-	*/
 }

@@ -4,8 +4,6 @@ using System.Collections;
 
 public static class DisplayResolutions
 {
-	//public static List<string> Resolution = new List<string>(_resolution);
-
 	public static string[] Resolution = new string[]
 	{
 		"320x320",

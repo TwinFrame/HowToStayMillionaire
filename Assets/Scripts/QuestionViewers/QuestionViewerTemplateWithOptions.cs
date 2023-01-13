@@ -19,9 +19,6 @@ public abstract class QuestionViewerTemplateWithOptions : QuestionViewerTemplate
 
 	protected List<RectTransform> OptionsRectTransform = new List<RectTransform>();
 	protected List<Vector3> OptionsStartScale = new List<Vector3>();
-	//protected List<Vector3> OptionsStartPosition = new List<Vector3>();
-	//protected List<Color> OptionsStartColor = new List<Color>();
-	//protected List<Color> OptionsTransparentColor = new List<Color>();
 
 	protected float OptionsCurrentTime;
 	protected float OptionsCurrentTimeNormalize;
@@ -143,57 +140,7 @@ public abstract class QuestionViewerTemplateWithOptions : QuestionViewerTemplate
 	}
 
 	//Этот код копипастится в зависимости от наличия полей
-	/*
-	protected IEnumerator FadeInOptionsJob()
-	{
-		//SetSameFontSizeInOptions();
 
-		OptionsCurrentTime = 0;
-
-		OptionsFolder.anchoredPosition = ScrollOptionsStartPosition + _properties.OffsetPosition;
-
-		while (OptionsCurrentTime <= _properties.FadeInOutUIElements)
-		{
-			OptionsCurrentTime += Time.deltaTime;
-
-			OptionsCurrentTimeNormalize = OptionsCurrentTime / _properties.FadeInOutUIElements;
-
-			OptionsFolder.anchoredPosition = Vector2.Lerp(ScrollOptionsStartPosition + _properties.OffsetPosition,
-					ScrollOptionsStartPosition, _properties.FadeIn.Evaluate(OptionsCurrentTimeNormalize));
-
-			ScrollOptionsCanvasGroup.alpha = Mathf.Lerp(0, 1, _properties.FadeIn.Evaluate(OptionsCurrentTimeNormalize));
-
-			yield return null;
-		}
-
-		ScrollOptionsCanvasGroup.alpha = 1;
-		OptionsFolder.anchoredPosition = ScrollOptionsStartPosition;
-	}
-
-	protected IEnumerator FadeOutOptionsJob()
-	{
-		OptionsCurrentTime = 0;
-
-		OptionsFolder.anchoredPosition = ScrollOptionsStartPosition + _properties.OffsetPosition;
-
-		while (OptionsCurrentTime <= _properties.FadeInOutUIElements)
-		{
-			OptionsCurrentTime += Time.deltaTime;
-
-			OptionsCurrentTimeNormalize = OptionsCurrentTime / _properties.FadeInOutUIElements;
-
-			OptionsFolder.anchoredPosition = Vector2.Lerp(ScrollOptionsStartPosition,
-				ScrollOptionsStartPosition - _properties.OffsetPosition, _properties.FadeOut.Evaluate(OptionsCurrentTimeNormalize));
-
-			ScrollOptionsCanvasGroup.alpha = Mathf.Lerp(1, 0, _properties.FadeOut.Evaluate(OptionsCurrentTimeNormalize));
-
-			yield return null;
-		}
-
-		ScrollOptionsCanvasGroup.alpha = 0;
-		OptionsFolder.anchoredPosition = ScrollOptionsStartPosition;
-	}
-	*/
 	protected IEnumerator ZoomInOptionJob()
 	{
 		ZoomInOptionCurrentTime = 0;
