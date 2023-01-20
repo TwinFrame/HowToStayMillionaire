@@ -20,7 +20,7 @@ public class FinalTitleAnimator : TitleAnimator
 	{
 		yield return WaitBetweenViewers;
 
-		GameEvent.OnFinalTitleEnter?.Invoke();
+		GameEvent.FinalTitleEnteredEvent?.Invoke();
 
 		_titlePlate.gameObject.SetActive(true);
 		_titlePlate.enabled = true;
@@ -34,7 +34,7 @@ public class FinalTitleAnimator : TitleAnimator
 
 	protected override IEnumerator ExitJob()
 	{
-		GameEvent.OnFinalTitleExit?.Invoke();
+		GameEvent.FinalTitleExitedEvent?.Invoke();
 
 		_titlePlate.Exit(out _exitPlateJob);
 

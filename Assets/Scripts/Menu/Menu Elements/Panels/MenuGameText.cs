@@ -11,9 +11,9 @@ public class MenuGameText : BaseMenuElement
 	[SerializeField] private TMP_InputField _finalText;
 	[SerializeField] private Button _setTextButton;
 
-	public UnityAction<string, string> OnChangeGameTextEvent;
-	public UnityAction OnBlockHotkeyEvent;
-	public UnityAction OnUnblockHotkeyEvent;
+	public UnityAction<string, string> ChangedGameTextEvent;
+	public UnityAction BlockedHotkeyEvent;
+	public UnityAction UnblockedHotkeyEvent;
 
 	private void OnEnable()
 	{
@@ -41,16 +41,16 @@ public class MenuGameText : BaseMenuElement
 
 	private void ChangeGameText()
 	{
-		OnChangeGameTextEvent?.Invoke(_nameOfGame.text, _finalText.text);
+		ChangedGameTextEvent?.Invoke(_nameOfGame.text, _finalText.text);
 	}
 
 	private void OnBlockHotkey(string text)
 	{
-		OnBlockHotkeyEvent?.Invoke();
+		BlockedHotkeyEvent?.Invoke();
 	}
 
 	private void OnUnblockHotkey(string text)
 	{
-		OnUnblockHotkeyEvent?.Invoke();
+		UnblockedHotkeyEvent?.Invoke();
 	}
 }

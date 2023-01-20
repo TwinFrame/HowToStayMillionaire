@@ -45,12 +45,12 @@ public class GameMenu : BaseMenu
 
 		RegisterServerEvents();
 
-		_properties.DisplayController.OnRefreshDisplayInfoEvent += (displayInfo, isFullscreen) => OnRefreshGameDisplayInfoInMenu(displayInfo, isFullscreen);
+		_properties.DisplayController.RefreshedDisplayInfoEvent += (displayInfo, isFullscreen) => OnRefreshGameDisplayInfoInMenu(displayInfo, isFullscreen);
 
-		_properties.GameColorChanger.OnChangedLogoEvent += (logo, path) => OnChangedLogo(logo, path);
-		_properties.GameColorChanger.OnSetColorsFromPalette += (palettes, currentNumPalette) => SetColorsFromPalette(palettes, currentNumPalette);
+		_properties.GameColorChanger.ChangedLogoEvent += (logo, path) => OnChangedLogo(logo, path);
+		_properties.GameColorChanger.SetColorsFromPaletteEvent += (palettes, currentNumPalette) => SetColorsFromPalette(palettes, currentNumPalette);
 
-		_audioMixer.OnChangedChannelEvent += (channel, normalizeValue) => OnSetAudioChannelInMenu(channel, normalizeValue);
+		_audioMixer.ChangedChannelEvent += (channel, normalizeValue) => OnSetAudioChannelInMenu(channel, normalizeValue);
 
 		//Server
 		_gameServer.Server.NoClientConnectionEvent += NoClientConnection;
@@ -81,22 +81,22 @@ public class GameMenu : BaseMenu
 					gameTab.Option3ButtonEvent += OnOption3Button;
 					gameTab.Option4ButtonEvent += OnOption4Button;
 					gameTab.Option5ButtonEvent += OnOption5Button;
-					gameTab.FireworksEvent += OnFireworksButton;
-					gameTab.FlashEvent += OnFlashButton;
-					gameTab.ForceEvent += (value, isInside) => OnForceOnPrimitives(value, isInside);
-					gameTab.RestartPrimitivesEvent += OnRestartPrimitives;
-					gameTab.Force.BlockHotkeyEvent += BlockHotkey;
-					gameTab.Force.UnblockHotkeyEvent += UnblockHotkey;
+					gameTab.FireworkedEvent += OnFireworksButton;
+					gameTab.FlashedEvent += OnFlashButton;
+					gameTab.ForcedEvent += (value, isInside) => OnForceOnPrimitives(value, isInside);
+					gameTab.RestartedPrimitivesEvent += OnRestartPrimitives;
+					gameTab.Force.BlockedHotkeyEvent += BlockHotkey;
+					gameTab.Force.UnblockedHotkeyEvent += UnblockHotkey;
 					break;
 
 				case TypesOfTab.Teams:
 					TeamsTab teamsTab = tab as TeamsTab;
 
-					teamsTab.ReplaceCurrentTeamEvent += (newNumTeam) => ReplaceCurrentTeam(newNumTeam);
-					teamsTab.ChangeTeamNameEvent += (newNumTeam, newNameTeam) => ChangeTeamName(newNumTeam, newNameTeam);
-					teamsTab.AddMoneyEvent += (numTeam, newMoney) => AddMoneyToTeam(numTeam, newMoney);
-					teamsTab.BlockHotkeyEvent += BlockHotkey;
-					teamsTab.UnblockHotkeyEvent += UnblockHotkey;
+					teamsTab.ReplacedCurrentTeamEvent += (newNumTeam) => ReplaceCurrentTeam(newNumTeam);
+					teamsTab.ChangedTeamNameEvent += (newNumTeam, newNameTeam) => ChangeTeamName(newNumTeam, newNameTeam);
+					teamsTab.AddedMoneyEvent += (numTeam, newMoney) => AddMoneyToTeam(numTeam, newMoney);
+					teamsTab.BlockedHotkeyEvent += BlockHotkey;
+					teamsTab.UnblockedHotkeyEvent += UnblockHotkey;
 					break;
 
 				case TypesOfTab.Player:
@@ -104,47 +104,47 @@ public class GameMenu : BaseMenu
 					if (CurrentPlayerTab == null)
 						CurrentPlayerTab = tab as PlayerTab;
 
-					CurrentPlayerTab.PlayUntilPauseMarkEvent += OnPlayUntilPauseMark;
-					CurrentPlayerTab.PlayAfterPauseMarkEvent += OnPlayAfterPauseMark;
-					CurrentPlayerTab.PlayFullEvent += OnPlayFull;
-					CurrentPlayerTab.PauseEvent += OnPlayerPause;
-					CurrentPlayerTab.LoopEvent += (isLoop) => SetPlayerLoop(isLoop);
+					CurrentPlayerTab.PlayedUntilPauseMarkEvent += OnPlayUntilPauseMark;
+					CurrentPlayerTab.PlayedAfterPauseMarkEvent += OnPlayAfterPauseMark;
+					CurrentPlayerTab.PlayedFullEvent += OnPlayFull;
+					CurrentPlayerTab.PausedEvent += OnPlayerPause;
+					CurrentPlayerTab.LoopedEvent += (isLoop) => SetPlayerLoop(isLoop);
 					CurrentPlayerTab.SetPauseMarkEvent += (pauseMark) => OnSetPauseMark(pauseMark);
-					CurrentPlayerTab.BlockHotkeyEvent += BlockHotkey;
-					CurrentPlayerTab.UnblockHotkeyEvent += UnblockHotkey;
+					CurrentPlayerTab.BlockedHotkeyEvent += BlockHotkey;
+					CurrentPlayerTab.UnBlockedHotkeyEvent += UnblockHotkey;
 					break;
 
 				case TypesOfTab.PropertiesOnServer:
 					PropertiesTabOnServer propertiesTab = tab as PropertiesTabOnServer;
 
-					propertiesTab.OnBlockHotkeyEvent += BlockHotkey;
-					propertiesTab.OnUnblockHotkeyEvent += UnblockHotkey;
+					propertiesTab.BlockedHotkeyEvent += BlockHotkey;
+					propertiesTab.UnblockedHotkeyEvent += UnblockHotkey;
 
 					//AudioMixer
-					propertiesTab.OnChangedAudioChannelEvent += (channel, normalizeValue) => OnChangedAudioChannel(channel, normalizeValue);
-					propertiesTab.OnChannelDoubleClickedEvent += (channel) => OnChannelDoubleClicked(channel);
+					propertiesTab.ChangedAudioChannelEvent += (channel, normalizeValue) => OnChangedAudioChannel(channel, normalizeValue);
+					propertiesTab.ChannelDoubleClickedEvent += (channel) => OnChannelDoubleClicked(channel);
 
 					//ColorsWindow
-					propertiesTab.OnChangedPaletteEvent += (numPalette) => OnChangedPalette(numPalette);
-					propertiesTab.OnChangedColorInPaletteEvent += (numPalette, gameColor, color) => OnChangedColorInPalette(numPalette,
+					propertiesTab.ChangedPaletteEvent += (numPalette) => OnChangedPalette(numPalette);
+					propertiesTab.ChangedColorInPaletteEvent += (numPalette, gameColor, color) => OnChangedColorInPalette(numPalette,
 						gameColor, color);
 
 					//ServerMenu
-					propertiesTab.OnServerButtonEvent += (port) => OnConnectButton(port);
+					propertiesTab.ServerButtonEvent += (port) => OnConnectButton(port);
 
 					//GameDisplayWindow
-					propertiesTab.OnRefreshGameDisplayInfoEvent += OnRefreshGameDisplayInfo;
-					propertiesTab.OnChangedGameDisplayResolutionEvent += (width, height) => OnSetGameDisplayResolution(width, height);
-					propertiesTab.OnSwitchedGameDisplayFullscreenEvent += (isFullscreen) => OnSwitchedGameDisplayFullscreen(isFullscreen);
+					propertiesTab.RefreshedGameDisplayInfoEvent += OnRefreshGameDisplayInfo;
+					propertiesTab.ChangedGameDisplayResolutionEvent += (width, height) => OnSetGameDisplayResolution(width, height);
+					propertiesTab.SwitchedGameDisplayFullscreenEvent += (isFullscreen) => OnSwitchedGameDisplayFullscreen(isFullscreen);
 
 					//GameTextsWindow
-					propertiesTab.OnRefreshGameTextsEvent += OnRefreshGameTexts;
-					propertiesTab.OnChangedCurrentMonetaryUnitEvent += (monetaryUnit) => OnChangedCurentMonetaryUnit(monetaryUnit);
-					propertiesTab.OnChangedGameTextsEvent += (name, finalText) => OnChangedGameTexts(name, finalText);
+					propertiesTab.RefreshedGameTextsEvent += OnRefreshGameTexts;
+					propertiesTab.ChangedCurrentMonetaryUnitEvent += (monetaryUnit) => OnChangedCurentMonetaryUnit(monetaryUnit);
+					propertiesTab.ChangedGameTextsEvent += (name, finalText) => OnChangedGameTexts(name, finalText);
 
 					//LoadImageWindow
-					propertiesTab.OnUserLoadedLogoEvent += (logo, path) => OnUserLoadedLogo(logo, path);
-					propertiesTab.OnDeleteLogoEvent += OnDeleteLogo;
+					propertiesTab.UserLoadedLogoEvent += (logo, path) => OnUserLoadedLogo(logo, path);
+					propertiesTab.DeletedLogoEvent += OnDeleteLogo;
 					break;
 
 				case TypesOfTab.PropertiesOnClient:
@@ -162,12 +162,12 @@ public class GameMenu : BaseMenu
 
 		UnregisterEvents();
 
-		_properties.DisplayController.OnRefreshDisplayInfoEvent -= (displayInfo, isFullscreen) => OnRefreshGameDisplayInfoInMenu(displayInfo, isFullscreen);
+		_properties.DisplayController.RefreshedDisplayInfoEvent -= (displayInfo, isFullscreen) => OnRefreshGameDisplayInfoInMenu(displayInfo, isFullscreen);
 
-		_properties.GameColorChanger.OnChangedLogoEvent -= (logo, path) => OnChangedLogo(logo, path);
-		_properties.GameColorChanger.OnSetColorsFromPalette -= (currentNumPalette, numPalette) => SetColorsFromPalette(currentNumPalette, numPalette);
+		_properties.GameColorChanger.ChangedLogoEvent -= (logo, path) => OnChangedLogo(logo, path);
+		_properties.GameColorChanger.SetColorsFromPaletteEvent -= (currentNumPalette, numPalette) => SetColorsFromPalette(currentNumPalette, numPalette);
 
-		_audioMixer.OnChangedChannelEvent -= (channel, normalizeValue) => OnSetAudioChannelInMenu(channel, normalizeValue);
+		_audioMixer.ChangedChannelEvent -= (channel, normalizeValue) => OnSetAudioChannelInMenu(channel, normalizeValue);
 
 		//Server
 		_gameServer.Server.NoClientConnectionEvent -= NoClientConnection;
@@ -198,22 +198,22 @@ public class GameMenu : BaseMenu
 					gameTab.Option3ButtonEvent -= OnOption3Button;
 					gameTab.Option4ButtonEvent -= OnOption4Button;
 					gameTab.Option5ButtonEvent -= OnOption5Button;
-					gameTab.FireworksEvent -= OnFireworksButton;
-					gameTab.FlashEvent -= OnFlashButton;
-					gameTab.ForceEvent -= (value, isInside) => OnForceOnPrimitives(value, isInside);
-					gameTab.RestartPrimitivesEvent -= OnRestartPrimitives;
-					gameTab.Force.BlockHotkeyEvent -= BlockHotkey;
-					gameTab.Force.UnblockHotkeyEvent -= UnblockHotkey;
+					gameTab.FireworkedEvent -= OnFireworksButton;
+					gameTab.FlashedEvent -= OnFlashButton;
+					gameTab.ForcedEvent -= (value, isInside) => OnForceOnPrimitives(value, isInside);
+					gameTab.RestartedPrimitivesEvent -= OnRestartPrimitives;
+					gameTab.Force.BlockedHotkeyEvent -= BlockHotkey;
+					gameTab.Force.UnblockedHotkeyEvent -= UnblockHotkey;
 					break;
 
 				case TypesOfTab.Teams:
 					TeamsTab teamsTab = tab as TeamsTab;
 
-					teamsTab.ReplaceCurrentTeamEvent -= (newNumTeam) => ReplaceCurrentTeam(newNumTeam);
-					teamsTab.ChangeTeamNameEvent -= (numTeam, newNameTeam) => ChangeTeamName(numTeam, newNameTeam);
-					teamsTab.AddMoneyEvent -= (numTeam, newMoney) => AddMoneyToTeam(numTeam, newMoney);
-					teamsTab.BlockHotkeyEvent -= BlockHotkey;
-					teamsTab.UnblockHotkeyEvent -= UnblockHotkey;
+					teamsTab.ReplacedCurrentTeamEvent -= (newNumTeam) => ReplaceCurrentTeam(newNumTeam);
+					teamsTab.ChangedTeamNameEvent -= (numTeam, newNameTeam) => ChangeTeamName(numTeam, newNameTeam);
+					teamsTab.AddedMoneyEvent -= (numTeam, newMoney) => AddMoneyToTeam(numTeam, newMoney);
+					teamsTab.BlockedHotkeyEvent -= BlockHotkey;
+					teamsTab.UnblockedHotkeyEvent -= UnblockHotkey;
 					break;
 
 				case TypesOfTab.Player:
@@ -221,14 +221,14 @@ public class GameMenu : BaseMenu
 					if (CurrentPlayerTab == null)
 						CurrentPlayerTab = tab as PlayerTab;
 
-					CurrentPlayerTab.PlayUntilPauseMarkEvent -= OnPlayUntilPauseMark;
-					CurrentPlayerTab.PlayAfterPauseMarkEvent -= OnPlayAfterPauseMark;
-					CurrentPlayerTab.PlayFullEvent -= OnPlayFull;
-					CurrentPlayerTab.PauseEvent -= OnPlayerPause;
-					CurrentPlayerTab.LoopEvent -= (isLoop) => SetPlayerLoop(isLoop);
+					CurrentPlayerTab.PlayedUntilPauseMarkEvent -= OnPlayUntilPauseMark;
+					CurrentPlayerTab.PlayedAfterPauseMarkEvent -= OnPlayAfterPauseMark;
+					CurrentPlayerTab.PlayedFullEvent -= OnPlayFull;
+					CurrentPlayerTab.PausedEvent -= OnPlayerPause;
+					CurrentPlayerTab.LoopedEvent -= (isLoop) => SetPlayerLoop(isLoop);
 					CurrentPlayerTab.SetPauseMarkEvent -= (pauseMark) => OnSetPauseMark(pauseMark);
-					CurrentPlayerTab.BlockHotkeyEvent -= BlockHotkey;
-					CurrentPlayerTab.UnblockHotkeyEvent -= UnblockHotkey;
+					CurrentPlayerTab.BlockedHotkeyEvent -= BlockHotkey;
+					CurrentPlayerTab.UnBlockedHotkeyEvent -= UnblockHotkey;
 
 					CurrentPlayerTab = null;
 					break;
@@ -236,34 +236,34 @@ public class GameMenu : BaseMenu
 				case TypesOfTab.PropertiesOnServer:
 					PropertiesTabOnServer propertiesTab = tab as PropertiesTabOnServer;
 
-					propertiesTab.OnBlockHotkeyEvent -= BlockHotkey;
-					propertiesTab.OnUnblockHotkeyEvent -= UnblockHotkey;
+					propertiesTab.BlockedHotkeyEvent -= BlockHotkey;
+					propertiesTab.UnblockedHotkeyEvent -= UnblockHotkey;
 
 					//AudioMixer
-					propertiesTab.OnChangedAudioChannelEvent -= (channel, normalizeValue) => OnChangedAudioChannel(channel, normalizeValue);
-					propertiesTab.OnChannelDoubleClickedEvent -= (channel) => OnChannelDoubleClicked(channel);
+					propertiesTab.ChangedAudioChannelEvent -= (channel, normalizeValue) => OnChangedAudioChannel(channel, normalizeValue);
+					propertiesTab.ChannelDoubleClickedEvent -= (channel) => OnChannelDoubleClicked(channel);
 
 					//ColorsWindow
-					propertiesTab.OnChangedPaletteEvent -= (numPalette) => OnChangedPalette(numPalette);
-					propertiesTab.OnChangedColorInPaletteEvent -= (numPalette, gameColor, color) => OnChangedColorInPalette(numPalette,
+					propertiesTab.ChangedPaletteEvent -= (numPalette) => OnChangedPalette(numPalette);
+					propertiesTab.ChangedColorInPaletteEvent -= (numPalette, gameColor, color) => OnChangedColorInPalette(numPalette,
 						gameColor, color);
 
 					//ServerMenu
-					propertiesTab.OnServerButtonEvent -= (port) => OnConnectButton(port);
+					propertiesTab.ServerButtonEvent -= (port) => OnConnectButton(port);
 
 					//GameDisplayWindow
-					propertiesTab.OnRefreshGameDisplayInfoEvent -= OnRefreshGameDisplayInfo;
-					propertiesTab.OnChangedGameDisplayResolutionEvent -= (width, height) => OnSetGameDisplayResolution(width, height);
-					propertiesTab.OnSwitchedGameDisplayFullscreenEvent -= (isFullscreen) => OnSwitchedGameDisplayFullscreen(isFullscreen);
+					propertiesTab.RefreshedGameDisplayInfoEvent -= OnRefreshGameDisplayInfo;
+					propertiesTab.ChangedGameDisplayResolutionEvent -= (width, height) => OnSetGameDisplayResolution(width, height);
+					propertiesTab.SwitchedGameDisplayFullscreenEvent -= (isFullscreen) => OnSwitchedGameDisplayFullscreen(isFullscreen);
 
 					//GameTextsWindow
-					propertiesTab.OnRefreshGameTextsEvent -= OnRefreshGameTexts;
-					propertiesTab.OnChangedCurrentMonetaryUnitEvent -= (monetaryUnit) => OnChangedCurentMonetaryUnit(monetaryUnit);
-					propertiesTab.OnChangedGameTextsEvent -= (name, finalText) => OnChangedGameTexts(name, finalText);
+					propertiesTab.RefreshedGameTextsEvent -= OnRefreshGameTexts;
+					propertiesTab.ChangedCurrentMonetaryUnitEvent -= (monetaryUnit) => OnChangedCurentMonetaryUnit(monetaryUnit);
+					propertiesTab.ChangedGameTextsEvent -= (name, finalText) => OnChangedGameTexts(name, finalText);
 
 					//LoadImageWindow
-					propertiesTab.OnUserLoadedLogoEvent -= (logo, path) => OnUserLoadedLogo(logo, path);
-					propertiesTab.OnDeleteLogoEvent -= OnDeleteLogo;
+					propertiesTab.UserLoadedLogoEvent -= (logo, path) => OnUserLoadedLogo(logo, path);
+					propertiesTab.DeletedLogoEvent -= OnDeleteLogo;
 					break;
 
 				case TypesOfTab.PropertiesOnClient:

@@ -20,11 +20,11 @@ public class TeamsTab : BaseTab
 	[SerializeField] private TMP_InputField _addMoneyField;
 	[SerializeField] private TMP_Dropdown _addMoneyTeamsDropdown;
 
-	public UnityAction<int> ReplaceCurrentTeamEvent;
-	public UnityAction<int, string> ChangeTeamNameEvent;
-	public UnityAction<int, string> AddMoneyEvent;
-	public UnityAction BlockHotkeyEvent;
-	public UnityAction UnblockHotkeyEvent;
+	public UnityAction<int> ReplacedCurrentTeamEvent;
+	public UnityAction<int, string> ChangedTeamNameEvent;
+	public UnityAction<int, string> AddedMoneyEvent;
+	public UnityAction BlockedHotkeyEvent;
+	public UnityAction UnblockedHotkeyEvent;
 
 	private void OnEnable()
 	{
@@ -102,7 +102,7 @@ public class TeamsTab : BaseTab
 
 	public void OnReplaceCurrentTeam(int newNumTeam)
 	{
-		ReplaceCurrentTeamEvent?.Invoke(newNumTeam);
+		ReplacedCurrentTeamEvent?.Invoke(newNumTeam);
 	}
 
 	private void ChangeTeamName()
@@ -112,7 +112,7 @@ public class TeamsTab : BaseTab
 
 	public void OnChangeTeamName(int numTeam, string newName)
 	{
-		ChangeTeamNameEvent?.Invoke(numTeam, newName);
+		ChangedTeamNameEvent?.Invoke(numTeam, newName);
 	}
 
 	private void AddMoneyToTeam()
@@ -122,17 +122,17 @@ public class TeamsTab : BaseTab
 
 	public void OnAddMoneyToTeam(int numTeam, string newMoney)
 	{
-		AddMoneyEvent?.Invoke(numTeam, newMoney);
+		AddedMoneyEvent?.Invoke(numTeam, newMoney);
 	}
 
 	public void OnBlockHotkey(string text)
 	{
-		BlockHotkeyEvent?.Invoke();
+		BlockedHotkeyEvent?.Invoke();
 	}
 
 	public void OnUnblockHotkey(string text)
 	{
-		UnblockHotkeyEvent?.Invoke();
+		UnblockedHotkeyEvent?.Invoke();
 	}
 
 	public void InteractableReplaceCurrentTeam(bool isInteractable)

@@ -13,12 +13,12 @@ public class MenuGameTextsWindows : MenuWindow
 	[SerializeField] private TMP_InputField _finalTextInputField;
 	[SerializeField] private Button _setButton;
 
-	public UnityAction OnCloseWindowEvent;
-	public UnityAction<char> OnChangeCurrentSymbolEvent;
-	public UnityAction<string, string> OnChangedGameTextsEvent;
+	public UnityAction ClosedWindowEvent;
+	public UnityAction<char> ChangedCurrentSymbolEvent;
+	public UnityAction<string, string> ChangedGameTextsEvent;
 
-	public UnityAction OnBlockHotkeyEvent;
-	public UnityAction OnUnblockHotkeyEvent;
+	public UnityAction BlockedHotkeyEvent;
+	public UnityAction UnblockedHotkeyEvent;
 
 	private readonly List<TMP_Dropdown.OptionData> _currentMonetaryUnits = new List<TMP_Dropdown.OptionData>();
 
@@ -64,26 +64,26 @@ public class MenuGameTextsWindows : MenuWindow
 	{
 		char[] symbolChar = _monetaryUnitsDropdown.options[numSymbol].text.ToCharArray();
 
-		OnChangeCurrentSymbolEvent?.Invoke(symbolChar[0]);
+		ChangedCurrentSymbolEvent?.Invoke(symbolChar[0]);
 	}
 
 	private void CloseWindow()
 	{
-		OnCloseWindowEvent?.Invoke();
+		ClosedWindowEvent?.Invoke();
 	}
 
 	private void SetGameTexts()
 	{
-		OnChangedGameTextsEvent?.Invoke(_nameInputField.text, _finalTextInputField.text);
+		ChangedGameTextsEvent?.Invoke(_nameInputField.text, _finalTextInputField.text);
 	}
 
 	public void OnBlockHotkey(string text)
 	{
-		OnBlockHotkeyEvent?.Invoke();
+		BlockedHotkeyEvent?.Invoke();
 	}
 
 	public void OnUnblockHotkey(string text)
 	{
-		OnUnblockHotkeyEvent?.Invoke();
+		UnblockedHotkeyEvent?.Invoke();
 	}
 }

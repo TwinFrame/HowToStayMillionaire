@@ -48,7 +48,7 @@ public class TeamsTitleAnimator : TitleAnimator
 
 		yield return WaitBetweenViewers;
 
-		GameEvent.OnTeamsTitleEnter?.Invoke();
+		GameEvent.TeamsTitleEnteredEvent?.Invoke();
 
 		_mainPlate.gameObject.SetActive(true);
 		_mainPlate.enabled = true;
@@ -62,7 +62,7 @@ public class TeamsTitleAnimator : TitleAnimator
 
 	protected override IEnumerator ExitJob()
 	{
-		GameEvent.OnTeamsTitleExit?.Invoke();
+		GameEvent.TeamsTitleExitedEvent?.Invoke();
 
 		_mainPlate.Exit(out _exitPlateJob);
 
@@ -145,7 +145,7 @@ public class TeamsTitleAnimator : TitleAnimator
 
 	private IEnumerator ÑhangeTeamMoneyJob(int numTeam, int money, bool isWithScaling)
 	{
-		GameEvent.OnStartChangeMoneyOfTeam?.Invoke();
+		GameEvent.StartedChangeMoneyOfTeamEvent?.Invoke();
 
 		_startMoney = _game.Teams[numTeam].Bank;
 		_endMoney = _startMoney + money;
@@ -177,7 +177,7 @@ public class TeamsTitleAnimator : TitleAnimator
 
 		_teamFieldsList[numTeam].SetBank(_convertMoney.MoneyFormat(_endMoney.ToString(), _game.CurrentMonetaryUnit));
 
-		GameEvent.OnStopChangeMoneyOfTeam?.Invoke();
+		GameEvent.StopedChangeMoneyOfTeamEvent?.Invoke();
 
 		if (isWithScaling)
 		{

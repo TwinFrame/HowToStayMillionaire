@@ -6,8 +6,8 @@ public class ConnectTab : BaseTab
 	protected string _localhost = "127.0.0.1";
 	protected string _port = "8007";
 
-	public UnityAction BlockHotkeyEvent;
-	public UnityAction UnblockHotkeyEvent;
+	public UnityAction BlockedHotkeyEvent;
+	public UnityAction UnBlockedHotkeyEvent;
 
 	public override void RefreshTab()
 	{
@@ -26,11 +26,11 @@ public class ConnectTab : BaseTab
 	public void OnBlockHotkey(string text)
 	{
 		Debug.Log("Text from Event: " + text);
-		BlockHotkeyEvent?.Invoke();
+		BlockedHotkeyEvent?.Invoke();
 	}
 
 	public void OnUnblockHotkey(string text)
 	{
-		UnblockHotkeyEvent?.Invoke();
+		UnBlockedHotkeyEvent?.Invoke();
 	}
 }

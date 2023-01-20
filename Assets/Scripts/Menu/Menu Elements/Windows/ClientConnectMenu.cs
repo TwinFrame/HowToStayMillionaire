@@ -16,9 +16,9 @@ public class ClientConnectMenu : BaseMenuElement
 	[SerializeField] private TMP_InputField _portInputField;
 	[SerializeField] private Button _hintPortButton;
 
-	public UnityAction<string, string> OnClickClientButtonEvent;
-	public UnityAction OnBlockHotkeyEvent;
-	public UnityAction OnUnblockHotkeyEvent;
+	public UnityAction<string, string> ClickedClientButtonEvent;
+	public UnityAction BlockedHotkeyEvent;
+	public UnityAction UnblockedHotkeyEvent;
 
 	private string _ipAddress = "127.0.0.1";
 	private int _port = 8007;
@@ -76,17 +76,17 @@ public class ClientConnectMenu : BaseMenuElement
 
 	private void OnClickClientButton()
 	{
-		//OnClickClientButtonEvent?.Invoke(_portInputField.text);
+		//ClickedClientButtonEvent?.Invoke(_portInputField.text);
 	}
 
 	private void OnBlockHotkey(string text)
 	{
-		OnBlockHotkeyEvent?.Invoke();
+		BlockedHotkeyEvent?.Invoke();
 	}
 
 	private void OnUnblockHotkey(string text)
 	{
-		OnUnblockHotkeyEvent?.Invoke();
+		UnblockedHotkeyEvent?.Invoke();
 	}
 
 	private void OnHintIPButton()

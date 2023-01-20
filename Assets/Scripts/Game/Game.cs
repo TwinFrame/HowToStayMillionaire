@@ -58,7 +58,7 @@ public class Game : MonoBehaviour
 	private Coroutine _preparationTeamJob;
 	private Coroutine _changeTeamMoneyJob;
 
-	public UnityAction<string, string> OnChangedGameTextEvent;
+	public UnityAction<string, string> ChangedGameTextEvent;
 
 	public string Name => _name;
 	public string FinalTitleText => _finalTitleText;
@@ -160,7 +160,7 @@ public class Game : MonoBehaviour
 
 		_primitiveObjects.EnterPrimitives();
 
-		_gameEvents.OnTourTitleEnter?.Invoke();
+		_gameEvents.TourTitleEnteredEvent?.Invoke();
 	}
 
 	public void ExitTourTitle()
@@ -170,7 +170,7 @@ public class Game : MonoBehaviour
 
 		_primitiveObjects.ExitPrimitives();
 
-		_gameEvents.OnTourTitleExit?.Invoke();
+		_gameEvents.TourTitleExitedEvent?.Invoke();
 	}
 
 	public void EnterTeamsTitle()
@@ -254,7 +254,7 @@ public class Game : MonoBehaviour
 	{
 		_tours[_currentNumTour].Questions[_currentNumQuestion].OnRightAnswerAndAsked();
 
-		_gameEvents.OnRightAnswer?.Invoke();
+		_gameEvents.RightAnsweredEvent?.Invoke();
 
 		_isNeedRemoveMoneyWhenTeamsTitleStart = false;
 	}
@@ -263,7 +263,7 @@ public class Game : MonoBehaviour
 	{
 		_tours[_currentNumTour].Questions[_currentNumQuestion].OnWrongAnswerAndAsked();
 
-		_gameEvents.OnWrongAnswer?.Invoke();
+		_gameEvents.WrongAnsweredEvent?.Invoke();
 
 		_isNeedRemoveMoneyWhenTeamsTitleStart = true;
 	}
@@ -639,8 +639,8 @@ public class Game : MonoBehaviour
 
 	public void OnFlashGlow()
 	{
-		if(_gameEvents.OnFlash != null)
-			_gameEvents.OnFlash?.Invoke();
+		if(_gameEvents.FlashedEvent != null)
+			_gameEvents.FlashedEvent?.Invoke();
 	}
 
 	public void WriteLog(string text)
@@ -741,7 +741,7 @@ public class Game : MonoBehaviour
 
 	private IEnumerator PreparationTeamsJob()
 	{
-		_gameEvents.OnPreparationTitleEnter?.Invoke();
+		_gameEvents.PreparationTitleEnteredEvent?.Invoke();
 
 		_teamsTitleAnimator.Enter(out Coroutine enterJob);
 
@@ -775,7 +775,7 @@ public class Game : MonoBehaviour
 				WriteLog("После подготовки остались не готовые команды.");
 		}
 
-		_gameEvents.OnPreparationTitleExit?.Invoke();
+		_gameEvents.PreparationTitleExitedEvent?.Invoke();
 	}
 
 	private IEnumerator EnterTeamsTitleJob()

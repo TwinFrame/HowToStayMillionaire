@@ -15,8 +15,8 @@ public class MenuSliderWithCount : BaseMenuElement
 
 	public Slider Slider => _slider;
 
-	public UnityAction OnSliderDoubleClickedEvent;
-	public UnityAction<float> OnChangedSliderEvent;
+	public UnityAction SliderDoubleClickedEvent;
+	public UnityAction<float> ChangedSliderEvent;
 
 	private void Awake()
 	{
@@ -29,7 +29,7 @@ public class MenuSliderWithCount : BaseMenuElement
 		_slider.onValueChanged.AddListener(OnChangedSlider);
 
 		if (_sliderDoubleClick != null)
-			_sliderDoubleClick.OnDoubleClickDetectedEvent += OnSliderDoubleClicked;
+			_sliderDoubleClick.DoubleClickDetectedEvent += OnSliderDoubleClicked;
 	}
 
 	private void OnDisable()
@@ -37,7 +37,7 @@ public class MenuSliderWithCount : BaseMenuElement
 		_slider.onValueChanged.RemoveListener(OnChangedSlider);
 
 		if (_sliderDoubleClick != null)
-			_sliderDoubleClick.OnDoubleClickDetectedEvent -= OnSliderDoubleClicked;
+			_sliderDoubleClick.DoubleClickDetectedEvent -= OnSliderDoubleClicked;
 	}
 
 	public void DisplayValue(string text)
@@ -61,11 +61,11 @@ public class MenuSliderWithCount : BaseMenuElement
 
 	private void OnChangedSlider(float normalizeValue)
 	{
-		OnChangedSliderEvent?.Invoke(normalizeValue);
+		ChangedSliderEvent?.Invoke(normalizeValue);
 	}
 
 	private void OnSliderDoubleClicked()
 	{
-		OnSliderDoubleClickedEvent?.Invoke();
+		SliderDoubleClickedEvent?.Invoke();
 	}
 }

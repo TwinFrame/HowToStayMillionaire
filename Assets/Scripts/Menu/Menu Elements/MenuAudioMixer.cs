@@ -19,8 +19,8 @@ public class MenuAudioMixer : BaseMenuElement
 	private DoubleClickDetector _questionDoubleClick;
 	private DoubleClickDetector _musicDoubleClick;
 
-	public UnityAction<TypesOfAudioChannel, float> OnChangedAudioChannelEvent;
-	public UnityAction<TypesOfAudioChannel> OnChannelDoubleClickedEvent;
+	public UnityAction<TypesOfAudioChannel, float> ChangedAudioChannelEvent;
+	public UnityAction<TypesOfAudioChannel> ChannelDoubleClickedEvent;
 
 	private void Awake()
 	{
@@ -42,23 +42,23 @@ public class MenuAudioMixer : BaseMenuElement
 	private void OnEnable()
 	{
 		if (_masterDoubleClick != null)
-			_masterDoubleClick.OnDoubleClickDetectedEvent += OnMasterDoubleClick;
+			_masterDoubleClick.DoubleClickDetectedEvent += OnMasterDoubleClick;
 		_masterSlider.onValueChanged.AddListener(OnChangedMasterChannel);
 
 		if (_fxDoubleClick != null)
-			_fxDoubleClick.OnDoubleClickDetectedEvent += OnFxDoubleClick;
+			_fxDoubleClick.DoubleClickDetectedEvent += OnFxDoubleClick;
 		_fxSlider.onValueChanged.AddListener(OnChangedFxChannel);
 
 		if (_countdownDoubleClick != null)
-			_countdownDoubleClick.OnDoubleClickDetectedEvent += OnCountdownDoubleClick;
+			_countdownDoubleClick.DoubleClickDetectedEvent += OnCountdownDoubleClick;
 		_countdownSlider.onValueChanged.AddListener(OnChangedCountdownChannel);
 
 		if (_questionDoubleClick != null)
-			_questionDoubleClick.OnDoubleClickDetectedEvent += OnQuestionDoubleClick;
+			_questionDoubleClick.DoubleClickDetectedEvent += OnQuestionDoubleClick;
 		_questionSlider.onValueChanged.AddListener(OnChangedQuestionChannel);
 
 		if (_musicDoubleClick != null)
-			_musicDoubleClick.OnDoubleClickDetectedEvent += OnMusicDoubleClick;
+			_musicDoubleClick.DoubleClickDetectedEvent += OnMusicDoubleClick;
 		_musicSlider.onValueChanged.AddListener(OnChangedMusicChannel);
 
 	}
@@ -66,23 +66,23 @@ public class MenuAudioMixer : BaseMenuElement
 	private void OnDisable()
 	{
 		if (_masterDoubleClick != null)
-			_masterDoubleClick.OnDoubleClickDetectedEvent -= OnMasterDoubleClick;
+			_masterDoubleClick.DoubleClickDetectedEvent -= OnMasterDoubleClick;
 		_masterSlider.onValueChanged.RemoveListener(OnChangedMasterChannel);
 
 		if (_fxDoubleClick != null)
-			_fxDoubleClick.OnDoubleClickDetectedEvent -= OnFxDoubleClick;
+			_fxDoubleClick.DoubleClickDetectedEvent -= OnFxDoubleClick;
 		_fxSlider.onValueChanged.RemoveListener(OnChangedFxChannel);
 
 		if (_countdownDoubleClick != null)
-			_countdownDoubleClick.OnDoubleClickDetectedEvent -= OnCountdownDoubleClick;
+			_countdownDoubleClick.DoubleClickDetectedEvent -= OnCountdownDoubleClick;
 		_countdownSlider.onValueChanged.RemoveListener(OnChangedCountdownChannel);
 
 		if (_questionDoubleClick != null)
-			_questionDoubleClick.OnDoubleClickDetectedEvent -= OnQuestionDoubleClick;
+			_questionDoubleClick.DoubleClickDetectedEvent -= OnQuestionDoubleClick;
 		_questionSlider.onValueChanged.RemoveListener(OnChangedQuestionChannel);
 
 		if (_musicDoubleClick != null)
-			_musicDoubleClick.OnDoubleClickDetectedEvent -= OnMusicDoubleClick;
+			_musicDoubleClick.DoubleClickDetectedEvent -= OnMusicDoubleClick;
 		_musicSlider.onValueChanged.RemoveListener(OnChangedMusicChannel);
 
 	}
@@ -138,52 +138,52 @@ public class MenuAudioMixer : BaseMenuElement
 
 	private void OnChangedMasterChannel(float normalizeValue)
 	{
-		OnChangedAudioChannelEvent?.Invoke(TypesOfAudioChannel.Master, normalizeValue);
+		ChangedAudioChannelEvent?.Invoke(TypesOfAudioChannel.Master, normalizeValue);
 	}
 
 	private void OnChangedFxChannel(float normalizeValue)
 	{
-		OnChangedAudioChannelEvent?.Invoke(TypesOfAudioChannel.Fx, normalizeValue);
+		ChangedAudioChannelEvent?.Invoke(TypesOfAudioChannel.Fx, normalizeValue);
 	}
 
 	private void OnChangedCountdownChannel(float normalizeValue)
 	{
-		OnChangedAudioChannelEvent?.Invoke(TypesOfAudioChannel.Countown, normalizeValue);
+		ChangedAudioChannelEvent?.Invoke(TypesOfAudioChannel.Countown, normalizeValue);
 	}
 
 	private void OnChangedQuestionChannel(float normalizeValue)
 	{
-		OnChangedAudioChannelEvent?.Invoke(TypesOfAudioChannel.Question, normalizeValue);
+		ChangedAudioChannelEvent?.Invoke(TypesOfAudioChannel.Question, normalizeValue);
 	}
 
 	private void OnChangedMusicChannel(float normalizeValue)
 	{
-		OnChangedAudioChannelEvent?.Invoke(TypesOfAudioChannel.Music, normalizeValue);
+		ChangedAudioChannelEvent?.Invoke(TypesOfAudioChannel.Music, normalizeValue);
 	}
 
 	private void OnMasterDoubleClick()
 	{
-		OnChannelDoubleClickedEvent?.Invoke(TypesOfAudioChannel.Master);
+		ChannelDoubleClickedEvent?.Invoke(TypesOfAudioChannel.Master);
 	}
 
 	private void OnFxDoubleClick()
 	{
-		OnChannelDoubleClickedEvent?.Invoke(TypesOfAudioChannel.Fx);
+		ChannelDoubleClickedEvent?.Invoke(TypesOfAudioChannel.Fx);
 	}
 
 	private void OnCountdownDoubleClick()
 	{
-		OnChannelDoubleClickedEvent?.Invoke(TypesOfAudioChannel.Countown);
+		ChannelDoubleClickedEvent?.Invoke(TypesOfAudioChannel.Countown);
 	}
 
 
 	private void OnQuestionDoubleClick()
 	{
-		OnChannelDoubleClickedEvent?.Invoke(TypesOfAudioChannel.Question);
+		ChannelDoubleClickedEvent?.Invoke(TypesOfAudioChannel.Question);
 	}
 
 	private void OnMusicDoubleClick()
 	{
-		OnChannelDoubleClickedEvent?.Invoke(TypesOfAudioChannel.Music);
+		ChannelDoubleClickedEvent?.Invoke(TypesOfAudioChannel.Music);
 	}
 }

@@ -16,7 +16,7 @@ public class MenuColorChannel : BaseMenuElement
 	private float _maxChannel = 255;
 
 	public Slider Slider => _slider;
-	public UnityAction<float> ChangeChannelEvent;
+	public UnityAction<float> ChangedChannelEvent;
 
 	private void OnEnable()
 	{
@@ -46,7 +46,7 @@ public class MenuColorChannel : BaseMenuElement
 	{
 		_inputField.text = Mathf.Round(RemapValue(value, _minNormalize, _maxNormalize, _minChannel, _maxChannel)).ToString();
 
-		ChangeChannelEvent?.Invoke(value);
+		ChangedChannelEvent?.Invoke(value);
 	}
 
 	public void OnChangeChannelWithoutNotify(float value)

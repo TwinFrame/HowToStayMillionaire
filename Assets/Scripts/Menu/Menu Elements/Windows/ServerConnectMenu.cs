@@ -11,9 +11,9 @@ public class ServerConnectMenu : MenuPanel
 	[SerializeField] private TMP_InputField _portInputField;
 	[SerializeField] private Button _hintPortButton;
 
-	public UnityAction<string> OnClickServerButtonEvent;
-	public UnityAction OnBlockHotkeyEvent;
-	public UnityAction OnUnblockHotkeyEvent;
+	public UnityAction<string> ClickedServerButtonEvent;
+	public UnityAction BlockedHotkeyEvent;
+	public UnityAction UnblockedHotkeyEvent;
 
 	private int _port = 8007;
 
@@ -62,12 +62,12 @@ public class ServerConnectMenu : MenuPanel
 
 	private void OnBlockHotkey(string text)
 	{
-		OnBlockHotkeyEvent?.Invoke();
+		BlockedHotkeyEvent?.Invoke();
 	}
 
 	private void OnUnblockHotkey(string text)
 	{
-		OnUnblockHotkeyEvent?.Invoke();
+		UnblockedHotkeyEvent?.Invoke();
 	}
 
 	private void OnHintPortButton()

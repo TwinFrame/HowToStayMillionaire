@@ -31,11 +31,11 @@ public class MenuColorsWindow : MenuWindow
 	private List<string> _currentPaletteNames = new List<string>();
 	private bool _isUserAllowedChange = false;
 
-	public UnityAction OnCloseWindowEvent;
-	public UnityAction<int> OnChangedPaletteEvent;
-	public UnityAction<int, TypesOfGameColor, Color> OnChangedColorInPaletteEvent;
-	public UnityAction OnBlockHotkeyEvent;
-	public UnityAction OnUnblockHotkeyEvent;
+	public UnityAction ClosedWindowEvent;
+	public UnityAction<int> ChangedPaletteEvent;
+	public UnityAction<int, TypesOfGameColor, Color> ChangedColorInPaletteEvent;
+	public UnityAction BlockedHotkeyEvent;
+	public UnityAction UnblockedHotkeyEvent;
 
 
 	private void OnEnable()
@@ -53,8 +53,8 @@ public class MenuColorsWindow : MenuWindow
 
 		_palettesDropdown.onValueChanged.AddListener(OnChangedPalette);
 
-		_colorPickerWindow.OnChangedColorEvent += (color) => OnChangedColor(color);
-		_colorPickerWindow.CloseWindowEvent += CloseColorWindow;
+		_colorPickerWindow.ChangedColorEvent += (color) => OnChangedColor(color);
+		_colorPickerWindow.ClosedWindowEvent += CloseColorWindow;
 	}
 
 	private void OnDisable()
@@ -72,13 +72,13 @@ public class MenuColorsWindow : MenuWindow
 
 		_palettesDropdown.onValueChanged.RemoveListener(OnChangedPalette);
 
-		_colorPickerWindow.OnChangedColorEvent -= (color) => OnChangedColor(color);
-		_colorPickerWindow.CloseWindowEvent -= CloseColorWindow;
+		_colorPickerWindow.ChangedColorEvent -= (color) => OnChangedColor(color);
+		_colorPickerWindow.ClosedWindowEvent -= CloseColorWindow;
 	}
 
 	private void OnChangedPalette(int numPalette)
 	{
-		OnChangedPaletteEvent?.Invoke(numPalette);
+		ChangedPaletteEvent?.Invoke(numPalette);
 	}
 
 	public void SetColorsFromPalette(List<ColorPalette> colorPalettes, int numPalette)
@@ -180,7 +180,7 @@ public class MenuColorsWindow : MenuWindow
 	{
 		_showTextForTime.ClearText(_textField);
 
-		OnCloseWindowEvent?.Invoke();
+		ClosedWindowEvent?.Invoke();
 	}
 
 	private void OnChangedColor(Color color)
@@ -189,42 +189,42 @@ public class MenuColorsWindow : MenuWindow
 		{
 			case TypesOfGameColor.Main:
 				_mainColorButton.image.color = color;
-				OnChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Main, color);
+				ChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Main, color);
 				break;
 
 			case TypesOfGameColor.Slave:
 				_slaveColorButton.image.color = color;
-				OnChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Slave, color);
+				ChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Slave, color);
 				break;
 
 			case TypesOfGameColor.Additional1:
 				_add1ColorButton.image.color = color;
-				OnChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Additional1, color);
+				ChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Additional1, color);
 				break;
 
 			case TypesOfGameColor.Additional2:
 				_add2ColorButton.image.color = color;
-				OnChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Additional2, color);
+				ChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Additional2, color);
 				break;
 
 			case TypesOfGameColor.Text:
 				_textColorButton.image.color = color;
-				OnChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Text, color);
+				ChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Text, color);
 				break;
 
 			case TypesOfGameColor.Selected:
 				_selectedColorButton.image.color = color;
-				OnChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Selected, color);
+				ChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Selected, color);
 				break;
 
 			case TypesOfGameColor.Right:
 				_rightColorButton.image.color = color;
-				OnChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Right, color);
+				ChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Right, color);
 				break;
 
 			case TypesOfGameColor.Wrong:
 				_wrongColorButton.image.color = color;
-				OnChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Wrong, color);
+				ChangedColorInPaletteEvent?.Invoke(_palettesDropdown.value, TypesOfGameColor.Wrong, color);
 				break;
 
 			default:
@@ -294,7 +294,7 @@ public class MenuColorsWindow : MenuWindow
 
 		_colorPickerWindow.SetChannelSliders(color);
 
-		OnBlockHotkeyEvent?.Invoke();
+		BlockedHotkeyEvent?.Invoke();
 	}
 
 	private void CloseColorWindow()
@@ -303,6 +303,6 @@ public class MenuColorsWindow : MenuWindow
 
 		_colorPickerWindow.gameObject.SetActive(false);
 
-		OnUnblockHotkeyEvent?.Invoke();
+		UnblockedHotkeyEvent?.Invoke();
 	}
 }

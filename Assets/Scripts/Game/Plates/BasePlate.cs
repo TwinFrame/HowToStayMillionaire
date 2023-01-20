@@ -11,6 +11,15 @@ public abstract class BasePlate : MonoBehaviour
 	private Coroutine _enterJob;
 	private Coroutine _exitJob;
 
+	private int _introHash;
+	private int _outroHash;
+
+	private void Awake()
+	{
+		_introHash = Animator.StringToHash("Intro");
+		_outroHash = Animator.StringToHash("Outro");
+	}
+
 	public void Enter(out Coroutine enterJob)
 	{
 		if (_enterJob != null)
@@ -31,21 +40,21 @@ public abstract class BasePlate : MonoBehaviour
 
 	public void Reset()
 	{
-		_animator.ResetTrigger("Outro");
-		_animator.ResetTrigger("Intro");
+		_animator.ResetTrigger(_outroHash);
+		_animator.ResetTrigger(_introHash);
 	}
 
 	private IEnumerator EnterJob()
 	{
-		_animator.SetTrigger("Intro");
+		_animator.SetTrigger(_introHash);
 
 		yield return new WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"));
 	}
 
 	private IEnumerator ExitJob()
 	{
-		_animator.SetTrigger("Outro");
-		_animator.ResetTrigger("Intro");
+		_animator.SetTrigger(_outroHash);
+		_animator.ResetTrigger(_introHash);
 
 		yield return new WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).IsName("StartPosition"));
 	}

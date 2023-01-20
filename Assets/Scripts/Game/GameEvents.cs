@@ -4,100 +4,100 @@ using UnityEngine.Events;
 public class GameEvents : MonoBehaviour
 {
 	[Header("Main Title")]
-	public UnityEvent OnMainTitleEnter;
-	public UnityEvent OnMainTitleExit;
+	public UnityEvent MainTitleEnteredEvent;
+	public UnityEvent MainTitleExitedEvent;
 	[Header("Teams Title")]
-	public UnityEvent OnTeamsTitleEnter;
-	public UnityEvent OnTeamsTitleExit;
+	public UnityEvent TeamsTitleEnteredEvent;
+	public UnityEvent TeamsTitleExitedEvent;
 	[Header("Tour Title")]
-	public UnityEvent OnTourTitleEnter;
-	public UnityEvent OnTourTitleExit;
+	public UnityEvent TourTitleEnteredEvent;
+	public UnityEvent TourTitleExitedEvent;
 	[Header("Preparation Title")]
-	public UnityEvent OnPreparationTitleEnter;
-	public UnityEvent OnPreparationTitleExit;
+	public UnityEvent PreparationTitleEnteredEvent;
+	public UnityEvent PreparationTitleExitedEvent;
 	[Header("Final Title")]
-	public UnityEvent OnFinalTitleEnter;
-	public UnityEvent OnFinalTitleExit;
+	public UnityEvent FinalTitleEnteredEvent;
+	public UnityEvent FinalTitleExitedEvent;
 	[Header("Question Title")]
 	[Header("Start Question")]
-	public UnityEvent OnStartQuestion;
-	public UnityEvent<int> OnStartQuestionWithOptions;
-	public UnityEvent<IAdvancedPlayer, float> OnStartQuestionWithPlayer;
+	public UnityEvent StartedQuestionEvent;
+	public UnityEvent<int> StartedQuestionWithOptionsEvent;
+	public UnityEvent<IAdvancedPlayer, float> StartedQuestionWithPlayerEvent;
 	[Header("Stop Question")]
-	public UnityEvent OnStopQuestion;
-	public UnityEvent OnStopQuestionWithOptions;
-	public UnityEvent OnStopQuestionWithPlayer;
+	public UnityEvent StopedQuestionEvent;
+	public UnityEvent StopedQuestionWithOptionsEvent;
+	public UnityEvent StopedQuestionWithPlayerEvent;
 	[Header("Answer")]
-	public UnityEvent OnRightAnswer;
-	public UnityEvent OnWrongAnswer;
+	public UnityEvent RightAnsweredEvent;
+	public UnityEvent WrongAnsweredEvent;
 	[Space]
-	public UnityEvent OnFlash;
+	public UnityEvent FlashedEvent;
 	[Header("Change money to Team")]
-	public UnityEvent OnStartChangeMoneyOfTeam;
-	public UnityEvent OnStopChangeMoneyOfTeam;
+	public UnityEvent StartedChangeMoneyOfTeamEvent;
+	public UnityEvent StopedChangeMoneyOfTeamEvent;
 	[Header("Countdown")]
-	public UnityEvent OnStartCountdown;
-	public UnityEvent OnStopCountdown;
+	public UnityEvent StartedCountdownEvent;
+	public UnityEvent StopedCountdownEvent;
 	[Header("Service")]
 	[SerializeField] private QuestionViewer _questionViewer;
 
 	private void OnEnable()
 	{
-		_questionViewer.StartQuestion += StartQuestion;
-		_questionViewer.StopQuestion += StopQuestion;
-		_questionViewer.StartQuestionWithOptions += (count) => StartQuestionWithOptions(count);
-		_questionViewer.StopQuestionWithOptions += StopQuestionWithOptions;
-		_questionViewer.StartQuestionWithPlayer += (player, pauseMark) => StartQuestionWithPlayer(player, pauseMark);
-		_questionViewer.StopQuestionWithPlayer += StopQuestionWithPlayer;
+		_questionViewer.StartedQuestionEvent += StartQuestion;
+		_questionViewer.StoppedQuestionEvent += StopQuestion;
+		_questionViewer.StartedQuestionWithOptionsEvent += (count) => StartQuestionWithOptions(count);
+		_questionViewer.StoppedQuestionWithOptionsEvent += StopQuestionWithOptions;
+		_questionViewer.StartedQuestionWithPlayerEvent += (player, pauseMark) => StartQuestionWithPlayer(player, pauseMark);
+		_questionViewer.StoppedQuestionWithPlayerEvent += StopQuestionWithPlayer;
 	}
 
 	private void OnDisable()
 	{
-		_questionViewer.StartQuestion -= StartQuestion;
-		_questionViewer.StopQuestion -= StopQuestion;
-		_questionViewer.StartQuestionWithOptions -= (count) => StartQuestionWithOptions(count);
-		_questionViewer.StopQuestionWithOptions -= StopQuestionWithOptions;
-		_questionViewer.StartQuestionWithPlayer -= (player, pauseMark) => StartQuestionWithPlayer(player, pauseMark);
-		_questionViewer.StopQuestionWithPlayer -= StopQuestionWithPlayer;
+		_questionViewer.StartedQuestionEvent -= StartQuestion;
+		_questionViewer.StoppedQuestionEvent -= StopQuestion;
+		_questionViewer.StartedQuestionWithOptionsEvent -= (count) => StartQuestionWithOptions(count);
+		_questionViewer.StoppedQuestionWithOptionsEvent -= StopQuestionWithOptions;
+		_questionViewer.StartedQuestionWithPlayerEvent -= (player, pauseMark) => StartQuestionWithPlayer(player, pauseMark);
+		_questionViewer.StoppedQuestionWithPlayerEvent -= StopQuestionWithPlayer;
 	}
 
 	public void StartQuestion()
 	{
-		OnStartQuestion?.Invoke();
+		StartedQuestionEvent?.Invoke();
 	}
 
 	public void StopQuestion()
 	{
-		OnStopQuestion?.Invoke();
+		StopedQuestionEvent?.Invoke();
 	}
 
 	public void StartQuestionWithOptions(int optionsCount)
 	{
-		OnStartQuestionWithOptions?.Invoke(optionsCount);
+		StartedQuestionWithOptionsEvent?.Invoke(optionsCount);
 	}
 
 	public void StopQuestionWithOptions()
 	{
-		OnStopQuestionWithOptions?.Invoke();
+		StopedQuestionWithOptionsEvent?.Invoke();
 	}
 
 	public void StartQuestionWithPlayer(IAdvancedPlayer player, float currentPauseMark)
 	{
-		OnStartQuestionWithPlayer?.Invoke(player, currentPauseMark);
+		StartedQuestionWithPlayerEvent?.Invoke(player, currentPauseMark);
 	}
 
 	public void StopQuestionWithPlayer()
 	{
-		OnStopQuestionWithPlayer?.Invoke();
+		StopedQuestionWithPlayerEvent?.Invoke();
 	}
 
 	public void StartCountdown()
 	{
-		OnStartCountdown?.Invoke();
+		StartedCountdownEvent?.Invoke();
 	}
 
 	public void StopCountdown()
 	{
-		OnStopCountdown?.Invoke();
+		StopedCountdownEvent?.Invoke();
 	}
 }

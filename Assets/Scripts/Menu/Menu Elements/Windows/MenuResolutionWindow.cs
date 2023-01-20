@@ -17,8 +17,8 @@ public class MenuResolutionWindow : MenuWindow
 	private int _currentHeight = 0;
 	private int _currentWidth = 0;
 
-	public UnityAction<int, int> OnSetUserResolutionEvent;
-	public UnityAction OnQuitWindowEvent;
+	public UnityAction<int, int> SetUserResolutionEvent;
+	public UnityAction QuitWindowEvent;
 
 	private void OnEnable()
 	{
@@ -47,7 +47,7 @@ public class MenuResolutionWindow : MenuWindow
 		}
 		else
 		{
-			OnSetUserResolutionEvent?.Invoke(_currentWidth, _currentHeight);
+			SetUserResolutionEvent?.Invoke(_currentWidth, _currentHeight);
 
 			_displayText.text = string.Empty;
 			_inputField.text = string.Empty;
@@ -103,6 +103,6 @@ public class MenuResolutionWindow : MenuWindow
 		_displayText.text = string.Empty;
 		_setButton.interactable = false;
 
-		OnQuitWindowEvent?.Invoke();
+		QuitWindowEvent?.Invoke();
 	}
 }

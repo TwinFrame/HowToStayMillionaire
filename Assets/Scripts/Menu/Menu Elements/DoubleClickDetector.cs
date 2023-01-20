@@ -12,7 +12,7 @@ public class DoubleClickDetector : MonoBehaviour, IPointerUpHandler
     private float _timeFirstClick;
     private Coroutine _doubleClickJob;
 
-    public UnityAction OnDoubleClickDetectedEvent;
+    public UnityAction DoubleClickDetectedEvent;
 
     public void OnPointerUp(PointerEventData eventData)
     {
@@ -31,7 +31,7 @@ public class DoubleClickDetector : MonoBehaviour, IPointerUpHandler
 
             _clickCount = 0;
 
-            OnDoubleClickDetectedEvent?.Invoke();
+            DoubleClickDetectedEvent?.Invoke();
         }
         
     }

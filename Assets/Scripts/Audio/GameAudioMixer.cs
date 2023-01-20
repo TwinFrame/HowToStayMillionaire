@@ -39,7 +39,7 @@ public class GameAudioMixer : MonoBehaviour
 	private float _currentValueIndB;
 	private float _currentNormalizeValue;
 
-	public UnityAction<TypesOfAudioChannel, float> OnChangedChannelEvent;
+	public UnityAction<TypesOfAudioChannel, float> ChangedChannelEvent;
 
 	public float GetNormalizeValue(float valueIndB)
 	{
@@ -78,14 +78,14 @@ public class GameAudioMixer : MonoBehaviour
 	{
 		_masterMixer.audioMixer.SetFloat("MasterVolume", GetValueIndB(normalizeValue));
 
-		OnChangedChannelEvent?.Invoke(TypesOfAudioChannel.Master, normalizeValue);
+		ChangedChannelEvent?.Invoke(TypesOfAudioChannel.Master, normalizeValue);
 	}
 
 	private void SetFxChannel(float normalizeValue)
 	{
 		_fxMixer.audioMixer.SetFloat("FxVolume", GetValueIndB(normalizeValue));
 
-		OnChangedChannelEvent?.Invoke(TypesOfAudioChannel.Fx, normalizeValue);
+		ChangedChannelEvent?.Invoke(TypesOfAudioChannel.Fx, normalizeValue);
 
 	}
 
@@ -93,21 +93,21 @@ public class GameAudioMixer : MonoBehaviour
 	{
 		_countdownMixer.audioMixer.SetFloat("CountdownVolume", GetValueIndB(normalizeValue));
 
-		OnChangedChannelEvent?.Invoke(TypesOfAudioChannel.Countown, normalizeValue);
+		ChangedChannelEvent?.Invoke(TypesOfAudioChannel.Countown, normalizeValue);
 	}
 
 	private void SetQuestionChannel(float normalizeValue)
 	{
 		_questionMixer.audioMixer.SetFloat("QuestionVolume", GetValueIndB(normalizeValue));
 
-		OnChangedChannelEvent?.Invoke(TypesOfAudioChannel.Question, normalizeValue);
+		ChangedChannelEvent?.Invoke(TypesOfAudioChannel.Question, normalizeValue);
 	}
 
 	private void SetMusicChannel(float normalizeValue)
 	{
 		_musicMixer.audioMixer.SetFloat("MusicVolume", GetValueIndB(normalizeValue));
 
-		OnChangedChannelEvent?.Invoke(TypesOfAudioChannel.Music, normalizeValue);
+		ChangedChannelEvent?.Invoke(TypesOfAudioChannel.Music, normalizeValue);
 	}
 
 	private float GetValueIndB(float normalizeValue)

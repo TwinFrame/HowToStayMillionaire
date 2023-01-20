@@ -13,10 +13,10 @@ public class ForceInfluenceOnPrimitivesObjects : MonoBehaviour
 	[Range(0, 300)]
 	[SerializeField] private float defaultForce = 100f;
 
-	public UnityAction<float, bool> OnForceEvents;
-	public UnityAction OnRestartEvents;
-	public UnityAction BlockHotkeyEvent;
-	public UnityAction UnblockHotkeyEvent;
+	public UnityAction<float, bool> ForcedEvent;
+	public UnityAction RestartedEvent;
+	public UnityAction BlockedHotkeyEvent;
+	public UnityAction UnblockedHotkeyEvent;
 
 	private void Awake()
 	{
@@ -45,22 +45,22 @@ public class ForceInfluenceOnPrimitivesObjects : MonoBehaviour
 	{
 		if (float.TryParse(_forceValue.text, out float value))
 		{
-			OnForceEvents?.Invoke(value, _forceDirection.isOn);
+			ForcedEvent?.Invoke(value, _forceDirection.isOn);
 		}
 	}
 
 	private void OnClickRestartButton()
 	{
-		OnRestartEvents?.Invoke();
+		RestartedEvent?.Invoke();
 	}
 
 	public void OnBlockHotkey(string text)
 	{
-		BlockHotkeyEvent?.Invoke();
+		BlockedHotkeyEvent?.Invoke();
 	}
 
 	public void OnUnblockHotkey(string text)
 	{
-		UnblockHotkeyEvent?.Invoke();
+		UnblockedHotkeyEvent?.Invoke();
 	}
 }

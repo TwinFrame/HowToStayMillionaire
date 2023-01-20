@@ -22,14 +22,14 @@ public class PlayerTab : BaseTab
 	public Button PlayFullButton => _playFullButton;
 	public Button PauseButton => _pauseButton;
 
-	public UnityAction PlayUntilPauseMarkEvent;
-	public UnityAction PlayAfterPauseMarkEvent;
-	public UnityAction PlayFullEvent;
-	public UnityAction PauseEvent;
-	public UnityAction<bool> LoopEvent;
+	public UnityAction PlayedUntilPauseMarkEvent;
+	public UnityAction PlayedAfterPauseMarkEvent;
+	public UnityAction PlayedFullEvent;
+	public UnityAction PausedEvent;
+	public UnityAction<bool> LoopedEvent;
 	public UnityAction<string> SetPauseMarkEvent;
-	public UnityAction BlockHotkeyEvent;
-	public UnityAction UnblockHotkeyEvent;
+	public UnityAction BlockedHotkeyEvent;
+	public UnityAction UnBlockedHotkeyEvent;
 
 
 	private void OnEnable()
@@ -125,22 +125,22 @@ public class PlayerTab : BaseTab
 
 	private void PlayUntilPauseMark()
 	{
-		PlayUntilPauseMarkEvent?.Invoke();
+		PlayedUntilPauseMarkEvent?.Invoke();
 	}
 
 	private void PlayAfterPauseMark()
 	{
-		PlayAfterPauseMarkEvent?.Invoke();
+		PlayedAfterPauseMarkEvent?.Invoke();
 	}
 
 	private void PlayFull()
 	{
-		PlayFullEvent?.Invoke();
+		PlayedFullEvent?.Invoke();
 	}
 
 	private void PlayerPause()
 	{
-		PauseEvent?.Invoke();
+		PausedEvent?.Invoke();
 	}
 
 	public void SetPlayerLoopWithoutNotify(bool isLoop)
@@ -150,7 +150,7 @@ public class PlayerTab : BaseTab
 
 	private void PlayerLoop(bool isLoop)
 	{
-		LoopEvent?.Invoke(isLoop);
+		LoopedEvent?.Invoke(isLoop);
 	}
 
 	private void SetPauseMark()
@@ -160,11 +160,11 @@ public class PlayerTab : BaseTab
 
 	private void OnBlockHotkey(string text)
 	{
-		BlockHotkeyEvent?.Invoke();
+		BlockedHotkeyEvent?.Invoke();
 	}
 
 	private void OnUnblockHotkey(string text)
 	{
-		UnblockHotkeyEvent?.Invoke();
+		UnBlockedHotkeyEvent?.Invoke();
 	}
 }

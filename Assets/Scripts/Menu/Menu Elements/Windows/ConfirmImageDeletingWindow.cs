@@ -11,8 +11,8 @@ public class ConfirmImageDeletingWindow : MenuWindow
 	[SerializeField] private Button _yesButton;
 	[SerializeField] private Button _noButton;
 
-	public UnityAction OnCloseWindowEvent;
-	public UnityAction OnDeleteLogoEvent;
+	public UnityAction ClosedWindowEvent;
+	public UnityAction DeletedLogoEvent;
 
 	private void OnEnable()
 	{
@@ -35,11 +35,11 @@ public class ConfirmImageDeletingWindow : MenuWindow
 
 	private void CloseWindow()
 	{
-		OnCloseWindowEvent?.Invoke();
+		ClosedWindowEvent?.Invoke();
 	}
 
 	private void DeleteLogo()
 	{
-		OnDeleteLogoEvent?.Invoke();
+		DeletedLogoEvent?.Invoke();
 	}
 }

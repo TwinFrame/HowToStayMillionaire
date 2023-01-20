@@ -36,10 +36,10 @@ public class ClientPreviewMenu : BasePreviewMenu
 	public RawImage PreviewImage => _previewImage;
 	public bool IsOn => _isOn;
 
-	public UnityAction<float> OnChangedPreviewQualityEvent;
-	public UnityAction<int> OnChangedPreviewFPSEvent;
-	public UnityAction OnDoubleClickedPreviewEvent;
-	public UnityAction<int, int> OnRequestPreviewTextureEvent;
+	public UnityAction<float> ChangedPreviewQualityEvent;
+	public UnityAction<int> ChangedPreviewFPSEvent;
+	public UnityAction DoubleClickedPreviewEvent;
+	public UnityAction<int, int> RequestedPreviewTextureEvent;
 
 	private DoubleClickDetector _previewDoubleClick;
 
@@ -50,27 +50,27 @@ public class ClientPreviewMenu : BasePreviewMenu
 
 	private void OnEnable()
 	{
-		_qualitySlider.OnChangedSliderEvent += (normalizeValue) => OnChangedPreviewQuality(normalizeValue);
-		_qualitySlider.OnSliderDoubleClickedEvent += OnQualityDoubleClick;
+		_qualitySlider.ChangedSliderEvent += (normalizeValue) => OnChangedPreviewQuality(normalizeValue);
+		_qualitySlider.SliderDoubleClickedEvent += OnQualityDoubleClick;
 
-		_fpsSlider.OnChangedSliderEvent += (normalizeValue) => OnChangedPreviewFPS(normalizeValue);
-		_fpsSlider.OnSliderDoubleClickedEvent += OnFPSDoubleClick;
+		_fpsSlider.ChangedSliderEvent += (normalizeValue) => OnChangedPreviewFPS(normalizeValue);
+		_fpsSlider.SliderDoubleClickedEvent += OnFPSDoubleClick;
 
 		if (_previewDoubleClick != null)
-			_previewDoubleClick.OnDoubleClickDetectedEvent += OnDoubleClickedPreview;
+			_previewDoubleClick.DoubleClickDetectedEvent += OnDoubleClickedPreview;
 	}
 
 	private void OnDisable()
 	{
-		_qualitySlider.OnChangedSliderEvent -= (normalizeValue) => OnChangedPreviewQuality(normalizeValue);
-		_qualitySlider.OnSliderDoubleClickedEvent -= OnQualityDoubleClick;
+		_qualitySlider.ChangedSliderEvent -= (normalizeValue) => OnChangedPreviewQuality(normalizeValue);
+		_qualitySlider.SliderDoubleClickedEvent -= OnQualityDoubleClick;
 
 
-		_fpsSlider.OnChangedSliderEvent -= (normalizeValue) => OnChangedPreviewFPS(normalizeValue);
-		_fpsSlider.OnSliderDoubleClickedEvent -= OnFPSDoubleClick;
+		_fpsSlider.ChangedSliderEvent -= (normalizeValue) => OnChangedPreviewFPS(normalizeValue);
+		_fpsSlider.SliderDoubleClickedEvent -= OnFPSDoubleClick;
 
 		if (_previewDoubleClick != null)
-			_previewDoubleClick.OnDoubleClickDetectedEvent -= OnDoubleClickedPreview;
+			_previewDoubleClick.DoubleClickDetectedEvent -= OnDoubleClickedPreview;
 	}
 
 	private void Start()
@@ -114,14 +114,14 @@ public class ClientPreviewMenu : BasePreviewMenu
 
 	private void OnDoubleClickedPreview()
 	{
-		OnDoubleClickedPreviewEvent?.Invoke();
+		DoubleClickedPreviewEvent?.Invoke();
 	}
 
 	private void OnChangedPreviewQuality(float normalizeValue)
 	{
 		_qualitySlider.DisplayValue(string.Format("{0:0.0}", normalizeValue));
 
-		OnChangedPreviewQualityEvent?.Invoke(normalizeValue);
+		ChangedPreviewQualityEvent?.Invoke(normalizeValue);
 	}
 
 	private void OnQualityDoubleClick()
@@ -155,7 +155,7 @@ public class ClientPreviewMenu : BasePreviewMenu
 
 		_fpsSlider.DisplayValue(value.ToString());
 
-		OnChangedPreviewFPSEvent?.Invoke(value);
+		ChangedPreviewFPSEvent?.Invoke(value);
 	}
 
 	private void OnFPSDoubleClick()
@@ -170,7 +170,7 @@ public class ClientPreviewMenu : BasePreviewMenu
 			_currentWidth = Convert.ToInt32(_previewImage.rectTransform.rect.width * _qualitySlider.Slider.value);
 			_currentHeight = Convert.ToInt32(_previewImage.rectTransform.rect.height * _qualitySlider.Slider.value);
 
-			OnRequestPreviewTextureEvent?.Invoke(_currentWidth, _currentHeight);
+			RequestedPreviewTextureEvent?.Invoke(_currentWidth, _currentHeight);
 
 			_currentFPS = RangeMapperFromNormalize(_fpsSlider.Slider.value, _minFPSValue, _maxFPSValue);
 

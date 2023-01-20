@@ -22,114 +22,114 @@ public class PropertiesTabOnClient : BaseTab
 	[SerializeField] private ClientConnectMenu _clientConnectMenu;
 	[SerializeField] private Button _clientButton;
 
-	public UnityAction<TypesOfAudioChannel, float> OnChangedAudioChannelEvent;
-	public UnityAction<TypesOfAudioChannel> OnChannelDoubleClickedEvent;
+	public UnityAction<TypesOfAudioChannel, float> ChangedAudioChannelEvent;
+	public UnityAction<TypesOfAudioChannel> ChannelDoubleClickedEvent;
 
-	public UnityAction OnRefreshGameDisplayInfoEvent;
-	public UnityAction<int, int> OnChangedGameDisplayResolutionEvent;
-	public UnityAction<bool> OnSwitchedGameDisplayFullscreenEvent;
+	public UnityAction RefreshedGameDisplayInfoEvent;
+	public UnityAction<int, int> ChangedGameDisplayResolutionEvent;
+	public UnityAction<bool> SwitchedGameDisplayFullscreenEvent;
 
-	public UnityAction OnRefreshMenuDisplayInfoEvent;
-	public UnityAction<int, int> OnChangedMenuDisplayResolutionEvent;
-	public UnityAction<bool> OnSwitchedMenuDisplayFullscreenEvent;
+	public UnityAction RefreshedMenuDisplayInfoEvent;
+	public UnityAction<int, int> ChangedMenuDisplayResolutionEvent;
+	public UnityAction<bool> SwitchedMenuDisplayFullscreenEvent;
 
-	public UnityAction OnRefreshGameTextsEvent;
-	public UnityAction<char> OnChangedCurrentMonetaryUnitEvent;
-	public UnityAction<string, string> OnChangedGameTextsEvent;
+	public UnityAction RefreshedGameTextsEvent;
+	public UnityAction<char> ChangedCurrentMonetaryUnitEvent;
+	public UnityAction<string, string> ChangedGameTextsEvent;
 
-	public UnityAction OnRefreshPalettesEvent;
-	public UnityAction<int> OnChangedPaletteEvent;
-	public UnityAction<int, TypesOfGameColor, Color> OnChangedColorInPaletteEvent;
+	public UnityAction RefreshedPalettesEvent;
+	public UnityAction<int> ChangedPaletteEvent;
+	public UnityAction<int, TypesOfGameColor, Color> ChangedColorInPaletteEvent;
 
-	public UnityAction OnRefreshLogoEvent;
-	public UnityAction<Texture2D, string> OnUserLoadedLogoEvent;
-	public UnityAction OnDeleteLogoEvent;
+	public UnityAction RefreshedLogoEvent;
+	public UnityAction<Texture2D, string> UserLoadedLogoEvent;
+	public UnityAction DeletedLogoEvent;
 
-	public UnityAction<string, string> OnClientButtonEvent;
+	public UnityAction<string, string> ClientButtonEvent;
 
-	public UnityAction OnBlockHotkeyEvent;
-	public UnityAction OnUnblockHotkeyEvent;
+	public UnityAction BlockedHotkeyEvent;
+	public UnityAction UnblockedHotkeyEvent;
 
 	private void OnEnable()
 	{
 		_gameDisplayButton.onClick.AddListener(OnOpenGameDisplayWindow);
-		_gameDisplayWindow.OnCloseWindowEvent += OnCloseGameDisplayWindow;
-		_gameDisplayWindow.OnRefreshDisplayInfoEvent += OnRefreshGameDisplayInfo;
-		_gameDisplayWindow.OnChangedResolutionEvent += OnChangedGameDisplayResolution;
-		_gameDisplayWindow.OnSwitchedFullscreenEvent += (isFullscreen) => OnSwitchedGameDisplayFullscreen(isFullscreen);
+		_gameDisplayWindow.ClosedWindowEvent += OnCloseGameDisplayWindow;
+		_gameDisplayWindow.RefreshedDisplayInfoEvent += OnRefreshGameDisplayInfo;
+		_gameDisplayWindow.ChangedResolutionEvent += OnChangedGameDisplayResolution;
+		_gameDisplayWindow.SwitchedFullscreenEvent += (isFullscreen) => OnSwitchedGameDisplayFullscreen(isFullscreen);
 
 		_menuDisplayButton.onClick.AddListener(OnOpenMenuDisplayWindow);
-		_menuDisplayWindow.OnCloseWindowEvent += OnCloseMenuDisplayWindow;
-		_menuDisplayWindow.OnRefreshDisplayInfoEvent += OnRefreshMenuDisplayInfo;
-		_menuDisplayWindow.OnChangedResolutionEvent += OnChangedResolutionOnMenuDisplay;
-		_menuDisplayWindow.OnSwitchedFullscreenEvent += (isFullscreen) => OnSwitchedFullscreenOnMenuDisplay(isFullscreen);
+		_menuDisplayWindow.ClosedWindowEvent += OnCloseMenuDisplayWindow;
+		_menuDisplayWindow.RefreshedDisplayInfoEvent += OnRefreshMenuDisplayInfo;
+		_menuDisplayWindow.ChangedResolutionEvent += OnChangedResolutionOnMenuDisplay;
+		_menuDisplayWindow.SwitchedFullscreenEvent += (isFullscreen) => OnSwitchedFullscreenOnMenuDisplay(isFullscreen);
 
 		_textsButton.onClick.AddListener(OnOpenTextsWindow);
-		_gameTextsWindows.OnCloseWindowEvent += OnCloseTextsWindow;
-		_gameTextsWindows.OnChangeCurrentSymbolEvent += (symbol) => OnChangeCurrentSymbol(symbol);
-		_gameTextsWindows.OnChangedGameTextsEvent += (name, finalText) => OnChangedGameTexts(name, finalText);
-		_gameTextsWindows.OnBlockHotkeyEvent += BlockHotkey;
-		_gameTextsWindows.OnUnblockHotkeyEvent += UnblockHotkey;
+		_gameTextsWindows.ClosedWindowEvent += OnCloseTextsWindow;
+		_gameTextsWindows.ChangedCurrentSymbolEvent += (symbol) => OnChangeCurrentSymbol(symbol);
+		_gameTextsWindows.ChangedGameTextsEvent += (name, finalText) => OnChangedGameTexts(name, finalText);
+		_gameTextsWindows.BlockedHotkeyEvent += BlockHotkey;
+		_gameTextsWindows.UnblockedHotkeyEvent += UnblockHotkey;
 
 		_colorsButton.onClick.AddListener(OnOpenColorsWindow);
-		_colorsWindow.OnCloseWindowEvent += OnCloseColorsWindow;
-		_colorsWindow.OnChangedPaletteEvent += (numPalette) => OnChangedPalette(numPalette);
-		_colorsWindow.OnChangedColorInPaletteEvent += (numPalette, gameColor, color) => OnChangedColorInPalette(numPalette, gameColor, color);
-		_colorsWindow.OnBlockHotkeyEvent += BlockHotkey;
-		_colorsWindow.OnUnblockHotkeyEvent += UnblockHotkey;
+		_colorsWindow.ClosedWindowEvent += OnCloseColorsWindow;
+		_colorsWindow.ChangedPaletteEvent += (numPalette) => OnChangedPalette(numPalette);
+		_colorsWindow.ChangedColorInPaletteEvent += (numPalette, gameColor, color) => OnChangedColorInPalette(numPalette, gameColor, color);
+		_colorsWindow.BlockedHotkeyEvent += BlockHotkey;
+		_colorsWindow.UnblockedHotkeyEvent += UnblockHotkey;
 
 		_loadImageButton.onClick.AddListener(OnOpenLoadImageWindow);
-		_loadImageWindow.OnCloseLoadImageWindowEvent += OnCloseLoadImageWindow;
-		_loadImageWindow.OnUserLoadedLogoEvent += (logo, path) => OnUserLoadedLogo(logo, path);
-		_loadImageWindow.OnDeleteLogoEvent += OnDeleteLogo;
+		_loadImageWindow.ClosedLoadImageWindowEvent += OnCloseLoadImageWindow;
+		_loadImageWindow.UserLoadedLogoEvent += (logo, path) => OnUserLoadedLogo(logo, path);
+		_loadImageWindow.DeletedLogoEvent += OnDeleteLogo;
 
-		_audioMixerUI.OnChangedAudioChannelEvent += (channel, normalizeValue) => OnChangedAudioChannel(channel, normalizeValue);
-		_audioMixerUI.OnChannelDoubleClickedEvent += (channel) => OnChannelDoubleClicked(channel);
+		_audioMixerUI.ChangedAudioChannelEvent += (channel, normalizeValue) => OnChangedAudioChannel(channel, normalizeValue);
+		_audioMixerUI.ChannelDoubleClickedEvent += (channel) => OnChannelDoubleClicked(channel);
 
 		_clientButton.onClick.AddListener(OnClickClientButton);
-		_clientConnectMenu.OnBlockHotkeyEvent += BlockHotkey;
-		_clientConnectMenu.OnUnblockHotkeyEvent += UnblockHotkey;
+		_clientConnectMenu.BlockedHotkeyEvent += BlockHotkey;
+		_clientConnectMenu.UnblockedHotkeyEvent += UnblockHotkey;
 	}
 
 	private void OnDisable()
 	{
 		_gameDisplayButton.onClick.RemoveListener(OnOpenGameDisplayWindow);
-		_gameDisplayWindow.OnCloseWindowEvent -= OnCloseGameDisplayWindow;
-		_gameDisplayWindow.OnRefreshDisplayInfoEvent -= OnRefreshGameDisplayInfo;
-		_gameDisplayWindow.OnChangedResolutionEvent -= OnChangedGameDisplayResolution;
-		_gameDisplayWindow.OnSwitchedFullscreenEvent -= (isFullscreen) => OnSwitchedGameDisplayFullscreen(isFullscreen);
+		_gameDisplayWindow.ClosedWindowEvent -= OnCloseGameDisplayWindow;
+		_gameDisplayWindow.RefreshedDisplayInfoEvent -= OnRefreshGameDisplayInfo;
+		_gameDisplayWindow.ChangedResolutionEvent -= OnChangedGameDisplayResolution;
+		_gameDisplayWindow.SwitchedFullscreenEvent -= (isFullscreen) => OnSwitchedGameDisplayFullscreen(isFullscreen);
 
 		_menuDisplayButton.onClick.RemoveListener(OnOpenMenuDisplayWindow);
-		_menuDisplayWindow.OnCloseWindowEvent -= OnCloseMenuDisplayWindow;
-		_menuDisplayWindow.OnRefreshDisplayInfoEvent -= OnRefreshMenuDisplayInfo;
-		_menuDisplayWindow.OnChangedResolutionEvent -= OnChangedResolutionOnMenuDisplay;
-		_menuDisplayWindow.OnSwitchedFullscreenEvent -= (isFullscreen) => OnSwitchedFullscreenOnMenuDisplay(isFullscreen);
+		_menuDisplayWindow.ClosedWindowEvent -= OnCloseMenuDisplayWindow;
+		_menuDisplayWindow.RefreshedDisplayInfoEvent -= OnRefreshMenuDisplayInfo;
+		_menuDisplayWindow.ChangedResolutionEvent -= OnChangedResolutionOnMenuDisplay;
+		_menuDisplayWindow.SwitchedFullscreenEvent -= (isFullscreen) => OnSwitchedFullscreenOnMenuDisplay(isFullscreen);
 
 		_textsButton.onClick.RemoveListener(OnOpenTextsWindow);
-		_gameTextsWindows.OnCloseWindowEvent -= OnCloseTextsWindow;
-		_gameTextsWindows.OnChangeCurrentSymbolEvent -= (symbol) => OnChangeCurrentSymbol(symbol);
-		_gameTextsWindows.OnChangedGameTextsEvent -= (name, finalText) => OnChangedGameTexts(name, finalText);
-		_gameTextsWindows.OnBlockHotkeyEvent -= BlockHotkey;
-		_gameTextsWindows.OnUnblockHotkeyEvent -= UnblockHotkey;
+		_gameTextsWindows.ClosedWindowEvent -= OnCloseTextsWindow;
+		_gameTextsWindows.ChangedCurrentSymbolEvent -= (symbol) => OnChangeCurrentSymbol(symbol);
+		_gameTextsWindows.ChangedGameTextsEvent -= (name, finalText) => OnChangedGameTexts(name, finalText);
+		_gameTextsWindows.BlockedHotkeyEvent -= BlockHotkey;
+		_gameTextsWindows.UnblockedHotkeyEvent -= UnblockHotkey;
 
 		_colorsButton.onClick.RemoveListener(OnOpenColorsWindow);
-		_colorsWindow.OnCloseWindowEvent -= OnCloseColorsWindow;
-		_colorsWindow.OnChangedPaletteEvent -= (numPalette) => OnChangedPalette(numPalette);
-		_colorsWindow.OnChangedColorInPaletteEvent -= (numPalette, gameColor, color) => OnChangedColorInPalette(numPalette, gameColor, color);
-		_colorsWindow.OnBlockHotkeyEvent -= BlockHotkey;
-		_colorsWindow.OnUnblockHotkeyEvent -= UnblockHotkey;
+		_colorsWindow.ClosedWindowEvent -= OnCloseColorsWindow;
+		_colorsWindow.ChangedPaletteEvent -= (numPalette) => OnChangedPalette(numPalette);
+		_colorsWindow.ChangedColorInPaletteEvent -= (numPalette, gameColor, color) => OnChangedColorInPalette(numPalette, gameColor, color);
+		_colorsWindow.BlockedHotkeyEvent -= BlockHotkey;
+		_colorsWindow.UnblockedHotkeyEvent -= UnblockHotkey;
 
 		_loadImageButton.onClick.RemoveListener(OnOpenLoadImageWindow);
-		_loadImageWindow.OnCloseLoadImageWindowEvent -= OnCloseLoadImageWindow;
-		_loadImageWindow.OnUserLoadedLogoEvent -= (logo, path) => OnUserLoadedLogo(logo, path);
-		_loadImageWindow.OnDeleteLogoEvent -= OnDeleteLogo;
+		_loadImageWindow.ClosedLoadImageWindowEvent -= OnCloseLoadImageWindow;
+		_loadImageWindow.UserLoadedLogoEvent -= (logo, path) => OnUserLoadedLogo(logo, path);
+		_loadImageWindow.DeletedLogoEvent -= OnDeleteLogo;
 
-		_audioMixerUI.OnChangedAudioChannelEvent -= (channel, normalizeValue) => OnChangedAudioChannel(channel, normalizeValue);
-		_audioMixerUI.OnChannelDoubleClickedEvent -= (channel) => OnChannelDoubleClicked(channel);
+		_audioMixerUI.ChangedAudioChannelEvent -= (channel, normalizeValue) => OnChangedAudioChannel(channel, normalizeValue);
+		_audioMixerUI.ChannelDoubleClickedEvent -= (channel) => OnChannelDoubleClicked(channel);
 
 		_clientButton.onClick.RemoveListener(OnClickClientButton);
-		_clientConnectMenu.OnBlockHotkeyEvent -= BlockHotkey;
-		_clientConnectMenu.OnUnblockHotkeyEvent -= UnblockHotkey;
+		_clientConnectMenu.BlockedHotkeyEvent -= BlockHotkey;
+		_clientConnectMenu.UnblockedHotkeyEvent -= UnblockHotkey;
 	}
 
 	public override void RefreshTab()
@@ -148,17 +148,17 @@ public class PropertiesTabOnClient : BaseTab
 
 	private void BlockHotkey()
 	{
-		OnBlockHotkeyEvent?.Invoke();
+		BlockedHotkeyEvent?.Invoke();
 	}
 
 	private void UnblockHotkey()
 	{
-		OnUnblockHotkeyEvent?.Invoke();
+		UnblockedHotkeyEvent?.Invoke();
 	}
 
 	private void OnChangeCurrentSymbol(char symbol)
 	{
-		OnChangedCurrentMonetaryUnitEvent?.Invoke(symbol);
+		ChangedCurrentMonetaryUnitEvent?.Invoke(symbol);
 	}
 
 	#region ServerMenu
@@ -177,7 +177,7 @@ public class PropertiesTabOnClient : BaseTab
 
 	private void OnClickClientButton()
 	{
-		OnClientButtonEvent?.Invoke(_clientConnectMenu.GetCurrentIP(), _clientConnectMenu.GetCurrentPort());
+		ClientButtonEvent?.Invoke(_clientConnectMenu.GetCurrentIP(), _clientConnectMenu.GetCurrentPort());
 	}
 
 	#endregion
@@ -202,7 +202,7 @@ public class PropertiesTabOnClient : BaseTab
 
 	private void OnRefreshGameDisplayInfo()
 	{
-		OnRefreshGameDisplayInfoEvent?.Invoke();
+		RefreshedGameDisplayInfoEvent?.Invoke();
 	}
 
 	public void RefreshGameDisplayInfoInMenu(string displayInfo, bool isFullscreen)
@@ -212,12 +212,12 @@ public class PropertiesTabOnClient : BaseTab
 
 	private void OnChangedGameDisplayResolution(int width, int height)
 	{
-		OnChangedGameDisplayResolutionEvent?.Invoke(width, height);
+		ChangedGameDisplayResolutionEvent?.Invoke(width, height);
 	}
 
 	private void OnSwitchedGameDisplayFullscreen(bool isFullscreen)
 	{
-		OnSwitchedGameDisplayFullscreenEvent?.Invoke(isFullscreen);
+		SwitchedGameDisplayFullscreenEvent?.Invoke(isFullscreen);
 	}
 
 	#endregion
@@ -242,7 +242,7 @@ public class PropertiesTabOnClient : BaseTab
 
 	private void OnRefreshMenuDisplayInfo()
 	{
-		OnRefreshMenuDisplayInfoEvent?.Invoke();
+		RefreshedMenuDisplayInfoEvent?.Invoke();
 	}
 
 	public void RefreshMenuDisplayInfoInMenu(string displayInfo, bool isFullscreen)
@@ -252,12 +252,12 @@ public class PropertiesTabOnClient : BaseTab
 
 	private void OnChangedResolutionOnMenuDisplay(int width, int height)
 	{
-		OnChangedMenuDisplayResolutionEvent?.Invoke(width, height);
+		ChangedMenuDisplayResolutionEvent?.Invoke(width, height);
 	}
 
 	private void OnSwitchedFullscreenOnMenuDisplay(bool isFullscreen)
 	{
-		OnSwitchedMenuDisplayFullscreenEvent?.Invoke(isFullscreen);
+		SwitchedMenuDisplayFullscreenEvent?.Invoke(isFullscreen);
 	}
 
 	#endregion
@@ -282,12 +282,12 @@ public class PropertiesTabOnClient : BaseTab
 
 	private void OnRefreshGameTexts()
 	{
-		OnRefreshGameTextsEvent?.Invoke();
+		RefreshedGameTextsEvent?.Invoke();
 	}
 
 	private void OnChangedGameTexts(string name, string finalText)
 	{
-		OnChangedGameTextsEvent?.Invoke(name, finalText);
+		ChangedGameTextsEvent?.Invoke(name, finalText);
 
 		OnCloseTextsWindow();
 	}
@@ -322,12 +322,12 @@ public class PropertiesTabOnClient : BaseTab
 
 	private void OnDeleteLogo()
 	{
-		OnDeleteLogoEvent?.Invoke();
+		DeletedLogoEvent?.Invoke();
 	}
 
 	private void OnUserLoadedLogo(Texture2D logo, string path)
 	{
-		OnUserLoadedLogoEvent?.Invoke(logo, path);
+		UserLoadedLogoEvent?.Invoke(logo, path);
 	}
 
 	private void OnOpenLoadImageWindow()
@@ -347,7 +347,7 @@ public class PropertiesTabOnClient : BaseTab
 	}
 	private void OnRefreshLoadImage()
 	{
-		OnRefreshLogoEvent?.Invoke();
+		RefreshedLogoEvent?.Invoke();
 	}
 
 	#endregion
@@ -377,17 +377,17 @@ public class PropertiesTabOnClient : BaseTab
 
 	private void OnChangedPalette(int numPalette)
 	{
-		OnChangedPaletteEvent?.Invoke(numPalette);
+		ChangedPaletteEvent?.Invoke(numPalette);
 	}
 
 	private void OnChangedColorInPalette(int numPalette, TypesOfGameColor gameColor, Color color)
 	{
-		OnChangedColorInPaletteEvent?.Invoke(numPalette, gameColor, color);
+		ChangedColorInPaletteEvent?.Invoke(numPalette, gameColor, color);
 	}
 
 	private void OnRefreshPalettes()
 	{
-		OnRefreshPalettesEvent?.Invoke();
+		RefreshedPalettesEvent?.Invoke();
 	}
 
 	#endregion
@@ -411,12 +411,12 @@ public class PropertiesTabOnClient : BaseTab
 
 	private void OnChangedAudioChannel(TypesOfAudioChannel channel, float normalizeValue)
 	{
-		OnChangedAudioChannelEvent?.Invoke(channel, normalizeValue);
+		ChangedAudioChannelEvent?.Invoke(channel, normalizeValue);
 	}
 
 	private void OnChannelDoubleClicked(TypesOfAudioChannel channel)
 	{
-		OnChannelDoubleClickedEvent?.Invoke(channel);
+		ChannelDoubleClickedEvent?.Invoke(channel);
 	}
 	#endregion
 }

@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class DisplayController : MonoBehaviour
 {
-	public UnityAction<string, bool> OnRefreshDisplayInfoEvent;
+	public UnityAction<string, bool> RefreshedDisplayInfoEvent;
 
 	private float _delayRefreshDispalyInfo = 0.5f;
 	private Coroutine _delayRefreshDisplayInfoJob;
@@ -49,6 +49,6 @@ public class DisplayController : MonoBehaviour
 			yield return null;
 		}
 
-		OnRefreshDisplayInfoEvent?.Invoke(GetDisplayInfo(), GetIsFullscreen());
+		RefreshedDisplayInfoEvent?.Invoke(GetDisplayInfo(), GetIsFullscreen());
 	}
 }

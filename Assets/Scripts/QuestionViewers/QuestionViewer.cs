@@ -14,12 +14,12 @@ public class QuestionViewer : MonoBehaviour
 	private QuestionViewerTemplate _currentQuestionViewer;
 	private Question _currentQuestion;
 
-	public UnityAction StartQuestion;
-	public UnityAction StopQuestion;
-	public UnityAction<int> StartQuestionWithOptions;
-	public UnityAction StopQuestionWithOptions;
-	public UnityAction<IAdvancedPlayer, float> StartQuestionWithPlayer;
-	public UnityAction StopQuestionWithPlayer;
+	public UnityAction StartedQuestionEvent;
+	public UnityAction StoppedQuestionEvent;
+	public UnityAction<int> StartedQuestionWithOptionsEvent;
+	public UnityAction StoppedQuestionWithOptionsEvent;
+	public UnityAction<IAdvancedPlayer, float> StartedQuestionWithPlayerEvent;
+	public UnityAction StoppedQuestionWithPlayerEvent;
 
 	private void Awake()
 	{
@@ -38,13 +38,13 @@ public class QuestionViewer : MonoBehaviour
 			var currentPlayer = currentQuestionViewer.GetPlayer();
 			var currentPauseMark = currentQuestion.GetNormalizedPauseMark();
 
-			StartQuestionWithPlayer?.Invoke(currentPlayer, currentPauseMark);
+			StartedQuestionWithPlayerEvent?.Invoke(currentPlayer, currentPauseMark);
 		}
 
 		if (_currentQuestionViewer is QuestionViewerTemplateWithOptions)
 		{
 			var currentQuestionViewer = _currentQuestionViewer as QuestionViewerTemplateWithOptions;
-			StartQuestionWithOptions?.Invoke(currentQuestionViewer.GetOptionsCount());
+			StartedQuestionWithOptionsEvent?.Invoke(currentQuestionViewer.GetOptionsCount());
 		}
 
 		_currentQuestionViewer.Enter(_currentQuestion);
@@ -58,10 +58,10 @@ public class QuestionViewer : MonoBehaviour
 		_currentQuestionViewer.Exit(this);
 
 		if (_currentQuestionViewer is IQuestionViewerWithPlayer)
-			StopQuestionWithPlayer?.Invoke();
+			StoppedQuestionWithPlayerEvent?.Invoke();
 
 		if (_currentQuestionViewer is QuestionViewerTemplateWithOptions)
-			StopQuestionWithOptions?.Invoke();
+			StoppedQuestionWithOptionsEvent?.Invoke();
 	}
 
 	public void ResetViewers()

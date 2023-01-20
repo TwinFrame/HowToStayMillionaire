@@ -26,10 +26,10 @@ public class MenuLoadImageWindow : MenuWindow
 
 	private DoubleClickDetector _doubleClickDetector;
 
-	public UnityAction OnCloseLoadImageWindowEvent;
+	public UnityAction ClosedLoadImageWindowEvent;
 
-	public UnityAction<Texture2D, string> OnUserLoadedLogoEvent;
-	public UnityAction OnDeleteLogoEvent;
+	public UnityAction<Texture2D, string> UserLoadedLogoEvent;
+	public UnityAction DeletedLogoEvent;
 
 	private void Awake()
 	{
@@ -43,10 +43,10 @@ public class MenuLoadImageWindow : MenuWindow
 		_deleteButton.onClick.AddListener(OpenCofirmDeleteLogoWindow);
 
 		if (_doubleClickDetector != null)
-			_doubleClickDetector.OnDoubleClickDetectedEvent += OpenCofirmDeleteLogoWindow;
+			_doubleClickDetector.DoubleClickDetectedEvent += OpenCofirmDeleteLogoWindow;
 
-		_confirmWindow.OnCloseWindowEvent += CloseConfirmDeleteLogoWindow;
-		_confirmWindow.OnDeleteLogoEvent += DeleteLogo;
+		_confirmWindow.ClosedWindowEvent += CloseConfirmDeleteLogoWindow;
+		_confirmWindow.DeletedLogoEvent += DeleteLogo;
 	}
 
 	private void OnDisable()
@@ -56,10 +56,10 @@ public class MenuLoadImageWindow : MenuWindow
 		_deleteButton.onClick.RemoveListener(OpenCofirmDeleteLogoWindow);
 
 		if (_doubleClickDetector != null)
-			_doubleClickDetector.OnDoubleClickDetectedEvent -= OpenCofirmDeleteLogoWindow;
+			_doubleClickDetector.DoubleClickDetectedEvent -= OpenCofirmDeleteLogoWindow;
 
-		_confirmWindow.OnCloseWindowEvent -= CloseConfirmDeleteLogoWindow;
-		_confirmWindow.OnDeleteLogoEvent -= DeleteLogo;
+		_confirmWindow.ClosedWindowEvent -= CloseConfirmDeleteLogoWindow;
+		_confirmWindow.DeletedLogoEvent -= DeleteLogo;
 	}
 
 	public void ChangeLogoInfo(Texture2D logo, string path)
@@ -112,12 +112,12 @@ public class MenuLoadImageWindow : MenuWindow
 	{
 		CloseConfirmDeleteLogoWindow();
 
-		OnDeleteLogoEvent?.Invoke();
+		DeletedLogoEvent?.Invoke();
 	}
 
 	private void OnCloseLoadImageWindow()
 	{
-		OnCloseLoadImageWindowEvent?.Invoke();
+		ClosedLoadImageWindowEvent?.Invoke();
 	}
 
 	private void OpenExplorerWindow()
@@ -140,7 +140,7 @@ public class MenuLoadImageWindow : MenuWindow
 		yield return _showLoadDialogCoroutine;
 
 		if(TryGetTextureFromLocalPath(_path, out Texture2D texture))
-			OnUserLoadedLogoEvent?.Invoke(texture, _path);
+			UserLoadedLogoEvent?.Invoke(texture, _path);
 	}
 
 	private IEnumerator ShowLoadDialogCoroutine()

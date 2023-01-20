@@ -10,8 +10,8 @@ public class ConfirmQuitWindow : MenuWindow
 	[SerializeField] private Button _yesButton;
 	[SerializeField] private Button _noButton;
 
-	public UnityAction OnCloseWindowEvent;
-	public UnityAction OnQuitEvent;
+	public UnityAction ClosedWindowEvent;
+	public UnityAction QuitEvent;
 
 	private void OnEnable()
 	{
@@ -29,11 +29,11 @@ public class ConfirmQuitWindow : MenuWindow
 
 	private void CloseWindow()
 	{
-		OnCloseWindowEvent?.Invoke();
+		ClosedWindowEvent?.Invoke();
 	}
 
 	private void QuitApplication()
 	{
-		OnQuitEvent?.Invoke();
+		QuitEvent?.Invoke();
 	}
 }

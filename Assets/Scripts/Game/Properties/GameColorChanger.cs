@@ -50,8 +50,8 @@ public class GameColorChanger : MonoBehaviour
 
 	public List<ColorPalette> Palettes => _palettes;
 
-	public UnityAction<Texture2D, string> OnChangedLogoEvent;
-	public UnityAction<List<ColorPalette>, int> OnSetColorsFromPalette;
+	public UnityAction<Texture2D, string> ChangedLogoEvent;
+	public UnityAction<List<ColorPalette>, int> SetColorsFromPaletteEvent;
 
 	private void Awake()
 	{
@@ -146,7 +146,7 @@ public class GameColorChanger : MonoBehaviour
 		ChangeAdd2Color(_palettes[_currentNumPalette].Add2Color);
 		ChangeTextColor(_palettes[_currentNumPalette].TextColor);
 
-		OnSetColorsFromPalette?.Invoke(_palettes, _currentNumPalette);
+		SetColorsFromPaletteEvent?.Invoke(_palettes, _currentNumPalette);
 
 	}
 
@@ -173,9 +173,9 @@ public class GameColorChanger : MonoBehaviour
 		_logoMaterial.SetTexture("_Logo", _logo);
 
 		if (_isLogo)
-			OnChangedLogoEvent?.Invoke(_logo, PlayerPrefs.GetString("LogoPath"));
+			ChangedLogoEvent?.Invoke(_logo, PlayerPrefs.GetString("LogoPath"));
 		else
-			OnChangedLogoEvent?.Invoke(_logo, _logoIsNotLoaded);
+			ChangedLogoEvent?.Invoke(_logo, _logoIsNotLoaded);
 	}
 
 	public void DeleteLogo()

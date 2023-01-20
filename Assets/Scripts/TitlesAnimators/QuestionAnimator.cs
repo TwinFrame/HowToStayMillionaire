@@ -23,7 +23,7 @@ public class QuestionAnimator : TitleAnimator
 
 		_questionViewer.Preparation();
 
-		GameEvent.OnStartQuestion?.Invoke();
+		GameEvent.StartedQuestionEvent?.Invoke();
 		
 		yield return WaitBetweenViewers;
 
@@ -41,7 +41,7 @@ public class QuestionAnimator : TitleAnimator
 
 	protected override IEnumerator ExitJob()
 	{
-		GameEvent.OnStopQuestion?.Invoke();
+		GameEvent.StopedQuestionEvent?.Invoke();
 
 		_mainPlate.Exit(out _exitPlateJob);
 

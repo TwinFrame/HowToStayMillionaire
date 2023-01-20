@@ -36,13 +36,13 @@ public abstract class BaseMenu : MonoBehaviour
 	protected void OnEnable()
 	{
 		_quitButton.onClick.AddListener(OpenQuitWindows);
-		_quitWindows.OnCloseWindowEvent += OnCloseQuitWindow;
-		_quitWindows.OnQuitEvent += QuitApplication;
+		_quitWindows.ClosedWindowEvent += OnCloseQuitWindow;
+		_quitWindows.QuitEvent += QuitApplication;
 
 		ThemeButton.onClick.AddListener(ChangeThemeMenu);
 		ConnectButtonIndicator.onClick.AddListener(OnClickConnectFromHeader);
 
-		LogMenu.OnClearLogEvent += ClearLog;
+		LogMenu.ClearedLogEvent += ClearLog;
 
 		_inputs = new InputGame();
 		_inputs.Enable();
@@ -70,13 +70,13 @@ public abstract class BaseMenu : MonoBehaviour
 	protected void OnDisable()
 	{
 		_quitButton.onClick.RemoveListener(OpenQuitWindows);
-		_quitWindows.OnCloseWindowEvent -= OnCloseQuitWindow;
-		_quitWindows.OnQuitEvent -= QuitApplication;
+		_quitWindows.ClosedWindowEvent -= OnCloseQuitWindow;
+		_quitWindows.QuitEvent -= QuitApplication;
 
 		ThemeButton.onClick.RemoveListener(ChangeThemeMenu);
 		ConnectButtonIndicator.onClick.RemoveListener(OnClickConnectFromHeader);
 
-		LogMenu.OnClearLogEvent -= ClearLog;
+		LogMenu.ClearedLogEvent -= ClearLog;
 
 		_inputs.Game.NextTitle.performed -= ctx => OnNextTitleButton();
 		_inputs.Game.Pause.performed -= ctx => OnMainTitleButton();

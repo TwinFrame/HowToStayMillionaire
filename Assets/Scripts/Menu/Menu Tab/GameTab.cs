@@ -43,10 +43,10 @@ public class GameTab : BaseTab
 	public UnityAction Option3ButtonEvent;
 	public UnityAction Option4ButtonEvent;
 	public UnityAction Option5ButtonEvent;
-	public UnityAction<float, bool> ForceEvent;
-	public UnityAction RestartPrimitivesEvent;
-	public UnityAction FlashEvent;
-	public UnityAction FireworksEvent;
+	public UnityAction<float, bool> ForcedEvent;
+	public UnityAction RestartedPrimitivesEvent;
+	public UnityAction FlashedEvent;
+	public UnityAction FireworkedEvent;
 
 	private void OnEnable()
 	{
@@ -65,8 +65,8 @@ public class GameTab : BaseTab
 		_options4Button.onClick.AddListener(OnOption4Button);
 		_options5Button.onClick.AddListener(OnOption5Button);
 
-		_force.OnForceEvents += (value, isInside) => OnForce(value, isInside);
-		_force.OnRestartEvents += OnRestartPrimitives;
+		_force.ForcedEvent += (value, isInside) => OnForce(value, isInside);
+		_force.RestartedEvent += OnRestartPrimitives;
 
 		_flash.onClick.AddListener(OnFlashButton);
 		_fireworks.onClick.AddListener(OnFireworksButton);
@@ -89,8 +89,8 @@ public class GameTab : BaseTab
 		_options4Button.onClick.RemoveListener(OnOption4Button);
 		_options5Button.onClick.RemoveListener(OnOption5Button);
 
-		_force.OnForceEvents -= (value, isInside) => OnForce(value, isInside);
-		_force.OnRestartEvents -= OnRestartPrimitives;
+		_force.ForcedEvent -= (value, isInside) => OnForce(value, isInside);
+		_force.RestartedEvent -= OnRestartPrimitives;
 
 		_flash.onClick.RemoveListener(OnFlashButton);
 		_fireworks.onClick.RemoveListener(OnFireworksButton);
@@ -188,22 +188,22 @@ public class GameTab : BaseTab
 
 	private void OnForce(float value, bool isInside)
 	{
-		ForceEvent?.Invoke(value, isInside);
+		ForcedEvent?.Invoke(value, isInside);
 	}
 
 	private void OnRestartPrimitives()
 	{
-		RestartPrimitivesEvent?.Invoke();
+		RestartedPrimitivesEvent?.Invoke();
 	}
 
 	private void OnFlashButton()
 	{
-		FlashEvent?.Invoke();
+		FlashedEvent?.Invoke();
 	}
 
 	private void OnFireworksButton()
 	{
-		FireworksEvent?.Invoke();
+		FireworkedEvent?.Invoke();
 	}
 
 	public void InteractableNextButton(bool isInteractable)

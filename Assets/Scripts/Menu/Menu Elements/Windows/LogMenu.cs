@@ -8,7 +8,7 @@ public class LogMenu : MenuPanelWithStroke
 	[SerializeField] private TMP_Text _logInputField;
 	[SerializeField] private Button _clearLogButton;
 
-	public UnityAction OnClearLogEvent;
+	public UnityAction ClearedLogEvent;
 
 	public TMP_Text LogInputField => _logInputField;
 
@@ -24,6 +24,6 @@ public class LogMenu : MenuPanelWithStroke
 
 	private void ClearLog()
 	{
-		OnClearLogEvent?.Invoke();
+		ClearedLogEvent?.Invoke();
 	}
 }

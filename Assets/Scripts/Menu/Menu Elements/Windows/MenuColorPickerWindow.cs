@@ -20,8 +20,8 @@ public class MenuColorPickerWindow : MenuWindow
 
 	private Color _currentColor = new Color();
 
-	public UnityAction<Color> OnChangedColorEvent;
-	public UnityAction CloseWindowEvent;
+	public UnityAction<Color> ChangedColorEvent;
+	public UnityAction ClosedWindowEvent;
 
 
 	private void OnEnable()
@@ -34,10 +34,10 @@ public class MenuColorPickerWindow : MenuWindow
 
 		_inputHexadecimal.onValueChanged.AddListener(ChangeHexadecimal);
 
-		_rChannel.ChangeChannelEvent += (value) => ChangeRedChannel(value);
-		_gChannel.ChangeChannelEvent += (value) => ChangeGreenChannel(value);
-		_bChannel.ChangeChannelEvent += (value) => ChangeBlueChannel(value);
-		_aChannel.ChangeChannelEvent += (value) => ChangeAlphaChannel(value);
+		_rChannel.ChangedChannelEvent += (value) => ChangeRedChannel(value);
+		_gChannel.ChangedChannelEvent += (value) => ChangeGreenChannel(value);
+		_bChannel.ChangedChannelEvent += (value) => ChangeBlueChannel(value);
+		_aChannel.ChangedChannelEvent += (value) => ChangeAlphaChannel(value);
 	}
 
 	private void OnDisable()
@@ -47,10 +47,10 @@ public class MenuColorPickerWindow : MenuWindow
 
 		_inputHexadecimal.onValueChanged.RemoveListener(ChangeHexadecimal);
 
-		_rChannel.ChangeChannelEvent -= (value) => ChangeRedChannel(value);
-		_gChannel.ChangeChannelEvent -= (value) => ChangeGreenChannel(value);
-		_bChannel.ChangeChannelEvent -= (value) => ChangeBlueChannel(value);
-		_aChannel.ChangeChannelEvent -= (value) => ChangeAlphaChannel(value);
+		_rChannel.ChangedChannelEvent -= (value) => ChangeRedChannel(value);
+		_gChannel.ChangedChannelEvent -= (value) => ChangeGreenChannel(value);
+		_bChannel.ChangedChannelEvent -= (value) => ChangeBlueChannel(value);
+		_aChannel.ChangedChannelEvent -= (value) => ChangeAlphaChannel(value);
 	}
 
 	public void SetChannelSliders(Color color)
@@ -71,12 +71,12 @@ public class MenuColorPickerWindow : MenuWindow
 
 	private void SetGameColor()
 	{
-		OnChangedColorEvent?.Invoke(_colorPreview.color);
+		ChangedColorEvent?.Invoke(_colorPreview.color);
 	}
 
 	private void CloseWindow()
 	{
-		CloseWindowEvent?.Invoke();
+		ClosedWindowEvent?.Invoke();
 	}
 
 	private void ChangeHexadecimal(string hexadecimal)
