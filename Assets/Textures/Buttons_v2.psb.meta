@@ -25,6 +25,7 @@ ScriptedImporter:
     streamingMipmaps: 1
     streamingMipmapsPriority: 0
     vTOnly: 0
+    ignoreMasterTextureLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
     spriteMode: 2
@@ -46,6 +47,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
+    cookieMode: 0
     filterMode: 1
     aniso: 1
     mipBias: 0
@@ -79,7 +81,6 @@ ScriptedImporter:
       width: 0
       height: 0
     spriteID: 
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -89,118 +90,9 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Arrow_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 420
-      y: 1876
-      width: 116
-      height: 101
-    spriteID: 80e879c049c0baa40b57c89eedbad420
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 378, y: 1827}
-  - name: Arrow_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 628
-      y: 212
-      width: 116
-      height: 101
-    spriteID: 974d6d2ec76f6b3468085ade910323b7
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 586, y: 163}
-  - name: Checkmark_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 1876
-      width: 120
-      height: 120
-    spriteID: 1706478583eba0a48a1d2710d24a60e4
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -36, y: 1835}
-  - name: Checkmark_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 212
-      y: 1876
-      width: 120
-      height: 120
-    spriteID: 5bd7eb36076e65748b7ec40b0e082dcb
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 172, y: 1835}
-  - name: Pause_Button_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 420
-      y: 1460
-      width: 200
-      height: 200
-    spriteID: 844b27c9a4483c143a40f8bb558179cf
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 420, y: 1460}
   - name: White
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -213,7 +105,6 @@ ScriptedImporter:
       width: 200
       height: 200
     spriteID: 3c8f84fe743fd694c8503b7504e43a12
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -223,468 +114,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
-  - name: Button_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 836
-      width: 200
-      height: 200
-    spriteID: 79121ea0278c7744bb91e671abebc537
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: 836}
-  - name: Button_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 1044
-      width: 200
-      height: 200
-    spriteID: a4b3e0b0ba98a4f44beca4de6f12f143
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: 1044}
-  - name: InputField_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 10, y: 10, z: 10, w: 10}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 1252
-      width: 200
-      height: 200
-    spriteID: 8642460c7edf11947b418d944886b75f
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: 1252}
-  - name: InputField_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 10, y: 10, z: 10, w: 10}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 1460
-      width: 200
-      height: 200
-    spriteID: 960f68a1422ecf14fb46efea067f2c2e
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: 1460}
-  - name: Selected_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 10, y: 10, z: 10, w: 10}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 1668
-      width: 200
-      height: 200
-    spriteID: ad1a6eceb9803254fb24de76f928f0ba
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: 1668}
-  - name: Selected_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 10, y: 10, z: 10, w: 10}
-    rect:
-      serializedVersion: 2
-      x: 212
-      y: 4
-      width: 200
-      height: 200
-    spriteID: 7831ccf5de1b2d94fa736788917f7911
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 212, y: 4}
-  - name: Quit_Button_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 212
-      y: 1460
-      width: 200
-      height: 200
-    spriteID: e8092377b7f98c64998c1bbe2fce30d9
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 212, y: 1460}
-  - name: PlayUntilMark_Button_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 420
-      y: 4
-      width: 200
-      height: 200
-    spriteID: 16a0bd1fc9e653f4f99502f3140d927c
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 420, y: 4}
-  - name: PlayUntilMark_Button_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 420
-      y: 212
-      width: 200
-      height: 200
-    spriteID: fb50a2f2ad4a47e4aa4696ae4c877485
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 420, y: 212}
-  - name: PlayAfterMark_Button_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 420
-      y: 420
-      width: 200
-      height: 200
-    spriteID: d9105e39b3c8d624aacbd2f1b1d3dc0d
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 420, y: 420}
-  - name: PlayAfterMark_Button_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 420
-      y: 628
-      width: 200
-      height: 200
-    spriteID: bbffe9a0b2e5c204495746264a757300
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 420, y: 628}
-  - name: Play_Button_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 420
-      y: 836
-      width: 200
-      height: 200
-    spriteID: da3cf916cfa51214a8098a7988dd2a61
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 420, y: 836}
-  - name: Play_Button_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 420
-      y: 1044
-      width: 200
-      height: 200
-    spriteID: f848b5954223eb141b6aeca8a6413fb3
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 420, y: 1044}
-  - name: Pause_Button_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 420
-      y: 1252
-      width: 200
-      height: 200
-    spriteID: 3e53e386cf0813340b6d8cdcf3fe96ab
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 420, y: 1252}
-  - name: Quit_Button_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 212
-      y: 1668
-      width: 200
-      height: 200
-    spriteID: aaeef720d048728469fe9dea2338ef66
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 212, y: 1668}
-  - name: RedButton_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 10, y: 10, z: 10, w: 10}
-    rect:
-      serializedVersion: 2
-      x: 212
-      y: 212
-      width: 200
-      height: 200
-    spriteID: fd48d89032b2337449f7564fb8217515
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 212, y: 212}
-  - name: RedButton_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 10, y: 10, z: 10, w: 10}
-    rect:
-      serializedVersion: 2
-      x: 212
-      y: 420
-      width: 200
-      height: 200
-    spriteID: b0fff08c47a55f5479c9afbdf6525726
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 212, y: 420}
-  - name: YellowButton_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 10, y: 10, z: 10, w: 10}
-    rect:
-      serializedVersion: 2
-      x: 212
-      y: 628
-      width: 200
-      height: 200
-    spriteID: 5a87d4e04b54f38498b34b2c7e43e6f7
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 212, y: 628}
-  - name: YellowButton_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 10, y: 10, z: 10, w: 10}
-    rect:
-      serializedVersion: 2
-      x: 212
-      y: 836
-      width: 200
-      height: 200
-    spriteID: 132c6dc1a78d9324eaa7f2c61766779a
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 212, y: 836}
-  - name: GreenButton_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 10, y: 10, z: 10, w: 10}
-    rect:
-      serializedVersion: 2
-      x: 212
-      y: 1044
-      width: 200
-      height: 200
-    spriteID: a364f2aa79b44a24bba43c2c680085bf
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 212, y: 1044}
-  - name: GreenButton_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 10, y: 10, z: 10, w: 10}
-    rect:
-      serializedVersion: 2
-      x: 212
-      y: 1252
-      width: 200
-      height: 200
-    spriteID: 06f929e71d8f98244a0feb9e35e07f98
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 212, y: 1252}
+    spritePosition: {x: 0, y: 0}
   - name: Black
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -697,7 +127,6 @@ ScriptedImporter:
       width: 200
       height: 200
     spriteID: dbcba9c6f3a1c69418e8f405bb469746
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -707,94 +136,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 212}
-  - name: Handle_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 420
-      y: 1985
-      width: 100
-      height: 50
-    spriteID: 3125616c5f886fa43a628ccd14f6438f
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 370, y: 1910}
-  - name: Handle_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 5, y: 5, z: 5, w: 5}
-    rect:
-      serializedVersion: 2
-      x: 628
-      y: 321
-      width: 100
-      height: 50
-    spriteID: 1468805f87dcb6a4f999b8756c13e919
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 578, y: 247}
-  - name: FillArea_Light
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 420
-      y: 1668
-      width: 200
-      height: 200
-    spriteID: a8580ece430cb3c4c9931e7575313cc4
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 420, y: 1668}
-  - name: FillArea_Dark
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 628
-      y: 1
-      width: 200
-      height: 200
-    spriteID: a44e495eaf077e947b967b0cf87c7bfc
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 628, y: 4}
+    spritePosition: {x: 0, y: 0}
   - name: Panel_Light
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -807,7 +149,6 @@ ScriptedImporter:
       width: 200
       height: 200
     spriteID: a7716427e50b0e3459eb0e1213912ab9
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -817,6 +158,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 420}
+    spritePosition: {x: 0, y: 0}
   - name: Panel_Dark
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -829,7 +171,6 @@ ScriptedImporter:
       width: 200
       height: 200
     spriteID: bab48141a87bf8f4abcd88f15b0bcd7f
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -839,6 +180,680 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 628}
+    spritePosition: {x: 0, y: 0}
+  - name: Button_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 836
+      width: 200
+      height: 200
+    spriteID: 79121ea0278c7744bb91e671abebc537
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 836}
+    spritePosition: {x: 0, y: 0}
+  - name: Button_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1044
+      width: 200
+      height: 200
+    spriteID: a4b3e0b0ba98a4f44beca4de6f12f143
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 1044}
+    spritePosition: {x: 0, y: 0}
+  - name: InputField_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 10, y: 10, z: 10, w: 10}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1252
+      width: 200
+      height: 200
+    spriteID: 8642460c7edf11947b418d944886b75f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 1252}
+    spritePosition: {x: 0, y: 0}
+  - name: InputField_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 10, y: 10, z: 10, w: 10}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1460
+      width: 200
+      height: 200
+    spriteID: 960f68a1422ecf14fb46efea067f2c2e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 1460}
+    spritePosition: {x: 0, y: 0}
+  - name: Selected_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 10, y: 10, z: 10, w: 10}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1668
+      width: 200
+      height: 200
+    spriteID: ad1a6eceb9803254fb24de76f928f0ba
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 1668}
+    spritePosition: {x: 0, y: 0}
+  - name: Selected_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 10, y: 10, z: 10, w: 10}
+    rect:
+      serializedVersion: 2
+      x: 212
+      y: 4
+      width: 200
+      height: 200
+    spriteID: 7831ccf5de1b2d94fa736788917f7911
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 212, y: 4}
+    spritePosition: {x: 0, y: 0}
+  - name: RedButton_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 10, y: 10, z: 10, w: 10}
+    rect:
+      serializedVersion: 2
+      x: 212
+      y: 212
+      width: 200
+      height: 200
+    spriteID: fd48d89032b2337449f7564fb8217515
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 212, y: 212}
+    spritePosition: {x: 0, y: 0}
+  - name: RedButton_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 10, y: 10, z: 10, w: 10}
+    rect:
+      serializedVersion: 2
+      x: 212
+      y: 420
+      width: 200
+      height: 200
+    spriteID: b0fff08c47a55f5479c9afbdf6525726
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 212, y: 420}
+    spritePosition: {x: 0, y: 0}
+  - name: YellowButton_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 10, y: 10, z: 10, w: 10}
+    rect:
+      serializedVersion: 2
+      x: 212
+      y: 628
+      width: 200
+      height: 200
+    spriteID: 5a87d4e04b54f38498b34b2c7e43e6f7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 212, y: 628}
+    spritePosition: {x: 0, y: 0}
+  - name: YellowButton_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 10, y: 10, z: 10, w: 10}
+    rect:
+      serializedVersion: 2
+      x: 212
+      y: 836
+      width: 200
+      height: 200
+    spriteID: 132c6dc1a78d9324eaa7f2c61766779a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 212, y: 836}
+    spritePosition: {x: 0, y: 0}
+  - name: GreenButton_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 10, y: 10, z: 10, w: 10}
+    rect:
+      serializedVersion: 2
+      x: 212
+      y: 1044
+      width: 200
+      height: 200
+    spriteID: a364f2aa79b44a24bba43c2c680085bf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 212, y: 1044}
+    spritePosition: {x: 0, y: 0}
+  - name: GreenButton_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 10, y: 10, z: 10, w: 10}
+    rect:
+      serializedVersion: 2
+      x: 212
+      y: 1252
+      width: 200
+      height: 200
+    spriteID: 06f929e71d8f98244a0feb9e35e07f98
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 212, y: 1252}
+    spritePosition: {x: 0, y: 0}
+  - name: Quit_Button_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 212
+      y: 1460
+      width: 200
+      height: 200
+    spriteID: e8092377b7f98c64998c1bbe2fce30d9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 212, y: 1460}
+    spritePosition: {x: 0, y: 0}
+  - name: Quit_Button_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 212
+      y: 1668
+      width: 200
+      height: 200
+    spriteID: aaeef720d048728469fe9dea2338ef66
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 212, y: 1668}
+    spritePosition: {x: 0, y: 0}
+  - name: PlayUntilMark_Button_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 420
+      y: 4
+      width: 200
+      height: 200
+    spriteID: 16a0bd1fc9e653f4f99502f3140d927c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 420, y: 4}
+    spritePosition: {x: 0, y: 0}
+  - name: PlayUntilMark_Button_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 420
+      y: 212
+      width: 200
+      height: 200
+    spriteID: fb50a2f2ad4a47e4aa4696ae4c877485
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 420, y: 212}
+    spritePosition: {x: 0, y: 0}
+  - name: PlayAfterMark_Button_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 420
+      y: 420
+      width: 200
+      height: 200
+    spriteID: d9105e39b3c8d624aacbd2f1b1d3dc0d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 420, y: 420}
+    spritePosition: {x: 0, y: 0}
+  - name: PlayAfterMark_Button_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 420
+      y: 628
+      width: 200
+      height: 200
+    spriteID: bbffe9a0b2e5c204495746264a757300
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 420, y: 628}
+    spritePosition: {x: 0, y: 0}
+  - name: Play_Button_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 420
+      y: 836
+      width: 200
+      height: 200
+    spriteID: da3cf916cfa51214a8098a7988dd2a61
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 420, y: 836}
+    spritePosition: {x: 0, y: 0}
+  - name: Play_Button_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 420
+      y: 1044
+      width: 200
+      height: 200
+    spriteID: f848b5954223eb141b6aeca8a6413fb3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 420, y: 1044}
+    spritePosition: {x: 0, y: 0}
+  - name: Pause_Button_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 420
+      y: 1252
+      width: 200
+      height: 200
+    spriteID: 3e53e386cf0813340b6d8cdcf3fe96ab
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 420, y: 1252}
+    spritePosition: {x: 0, y: 0}
+  - name: Pause_Button_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 420
+      y: 1460
+      width: 200
+      height: 200
+    spriteID: 844b27c9a4483c143a40f8bb558179cf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 420, y: 1460}
+    spritePosition: {x: 0, y: 0}
+  - name: Arrow_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 420
+      y: 1876
+      width: 116
+      height: 101
+    spriteID: 80e879c049c0baa40b57c89eedbad420
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 420, y: 1876}
+    spritePosition: {x: 42, y: 49}
+  - name: Arrow_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 628
+      y: 212
+      width: 116
+      height: 101
+    spriteID: 974d6d2ec76f6b3468085ade910323b7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 586, y: 163}
+    spritePosition: {x: 42, y: 49}
+  - name: Checkmark_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1876
+      width: 120
+      height: 120
+    spriteID: 1706478583eba0a48a1d2710d24a60e4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 1876}
+    spritePosition: {x: 40, y: 41}
+  - name: Checkmark_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 212
+      y: 1876
+      width: 120
+      height: 120
+    spriteID: 5bd7eb36076e65748b7ec40b0e082dcb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 172, y: 1835}
+    spritePosition: {x: 40, y: 41}
+  - name: Handle_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 544
+      y: 1876
+      width: 100
+      height: 50
+    spriteID: 3125616c5f886fa43a628ccd14f6438f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 344, y: 1818}
+    spritePosition: {x: 200, y: 129}
+  - name: Handle_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 5, y: 5, z: 5, w: 5}
+    rect:
+      serializedVersion: 2
+      x: 544
+      y: 1884
+      width: 100
+      height: 50
+    spriteID: 1468805f87dcb6a4f999b8756c13e919
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 344, y: 1826}
+    spritePosition: {x: 200, y: 128}
+  - name: FillArea_Light
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 420
+      y: 1668
+      width: 200
+      height: 200
+    spriteID: a8580ece430cb3c4c9931e7575313cc4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 420, y: 1668}
+    spritePosition: {x: 0, y: 0}
+  - name: FillArea_Dark
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 628
+      y: 1
+      width: 200
+      height: 200
+    spriteID: a44e495eaf077e947b967b0cf87c7bfc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 628, y: 4}
+    spritePosition: {x: 0, y: 0}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
@@ -918,21 +933,19 @@ ScriptedImporter:
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
   mosaicLayers: 1
+  characterMode: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
-  importedTextureWidth: 1024
-  importedTextureHeight: 2048
-  documentSize: {x: 200, y: 200}
+  layerMappingOption: 2
+  generatePhysicsShape: 0
   paperDollMode: 0
   keepDupilcateSpriteName: 0
+  skeletonAssetReferenceID: 
   spriteCategoryList:
     categories: []
-  textureActualWidth: 1024
-  textureActualHeight: 2048
   spritePackingTag: 
   resliceFromLayer: 0
-  characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
   - name: White
@@ -942,6 +955,9 @@ ScriptedImporter:
     spriteID: 3c8f84fe743fd694c8503b7504e43a12
     layerID: 322
     mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Black
     spriteName: Black
     isGroup: 0
@@ -949,6 +965,9 @@ ScriptedImporter:
     spriteID: dbcba9c6f3a1c69418e8f405bb469746
     layerID: 344
     mosaicPosition: {x: 4, y: 212}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Panel_Light
     spriteName: Panel_Light
     isGroup: 0
@@ -956,6 +975,9 @@ ScriptedImporter:
     spriteID: a7716427e50b0e3459eb0e1213912ab9
     layerID: 165
     mosaicPosition: {x: 4, y: 420}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Panel_Dark
     spriteName: Panel_Dark
     isGroup: 0
@@ -963,6 +985,9 @@ ScriptedImporter:
     spriteID: bab48141a87bf8f4abcd88f15b0bcd7f
     layerID: 164
     mosaicPosition: {x: 4, y: 628}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Button_Light
     spriteName: Button_Light
     isGroup: 0
@@ -970,6 +995,9 @@ ScriptedImporter:
     spriteID: 79121ea0278c7744bb91e671abebc537
     layerID: 72
     mosaicPosition: {x: 4, y: 836}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Button_Dark
     spriteName: Button_Dark
     isGroup: 0
@@ -977,6 +1005,9 @@ ScriptedImporter:
     spriteID: a4b3e0b0ba98a4f44beca4de6f12f143
     layerID: 59
     mosaicPosition: {x: 4, y: 1044}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: InputField_Light
     spriteName: InputField_Light
     isGroup: 0
@@ -984,6 +1015,9 @@ ScriptedImporter:
     spriteID: 8642460c7edf11947b418d944886b75f
     layerID: 183
     mosaicPosition: {x: 4, y: 1252}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: InputField_Dark
     spriteName: InputField_Dark
     isGroup: 0
@@ -991,6 +1025,9 @@ ScriptedImporter:
     spriteID: 960f68a1422ecf14fb46efea067f2c2e
     layerID: 176
     mosaicPosition: {x: 4, y: 1460}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Selected_Light
     spriteName: Selected_Light
     isGroup: 0
@@ -998,6 +1035,9 @@ ScriptedImporter:
     spriteID: ad1a6eceb9803254fb24de76f928f0ba
     layerID: 143
     mosaicPosition: {x: 4, y: 1668}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Selected_Dark
     spriteName: Selected_Dark
     isGroup: 0
@@ -1005,6 +1045,9 @@ ScriptedImporter:
     spriteID: 7831ccf5de1b2d94fa736788917f7911
     layerID: 151
     mosaicPosition: {x: 212, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: RedButton_Light
     spriteName: RedButton_Light
     isGroup: 0
@@ -1012,6 +1055,9 @@ ScriptedImporter:
     spriteID: fd48d89032b2337449f7564fb8217515
     layerID: 343
     mosaicPosition: {x: 212, y: 212}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: RedButton_Dark
     spriteName: RedButton_Dark
     isGroup: 0
@@ -1019,6 +1065,9 @@ ScriptedImporter:
     spriteID: b0fff08c47a55f5479c9afbdf6525726
     layerID: 342
     mosaicPosition: {x: 212, y: 420}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: YellowButton_Light
     spriteName: YellowButton_Light
     isGroup: 0
@@ -1026,6 +1075,9 @@ ScriptedImporter:
     spriteID: 5a87d4e04b54f38498b34b2c7e43e6f7
     layerID: 341
     mosaicPosition: {x: 212, y: 628}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: YellowButton_Dark
     spriteName: YellowButton_Dark
     isGroup: 0
@@ -1033,6 +1085,9 @@ ScriptedImporter:
     spriteID: 132c6dc1a78d9324eaa7f2c61766779a
     layerID: 340
     mosaicPosition: {x: 212, y: 836}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: GreenButton_Light
     spriteName: GreenButton_Light
     isGroup: 0
@@ -1040,6 +1095,9 @@ ScriptedImporter:
     spriteID: a364f2aa79b44a24bba43c2c680085bf
     layerID: 339
     mosaicPosition: {x: 212, y: 1044}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: GreenButton_Dark
     spriteName: GreenButton_Dark
     isGroup: 0
@@ -1047,6 +1105,9 @@ ScriptedImporter:
     spriteID: 06f929e71d8f98244a0feb9e35e07f98
     layerID: 338
     mosaicPosition: {x: 212, y: 1252}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Quit_Button_Light
     spriteName: Quit_Button_Light
     isGroup: 0
@@ -1054,6 +1115,9 @@ ScriptedImporter:
     spriteID: e8092377b7f98c64998c1bbe2fce30d9
     layerID: 202
     mosaicPosition: {x: 212, y: 1460}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Quit_Button_Dark
     spriteName: Quit_Button_Dark
     isGroup: 0
@@ -1061,6 +1125,9 @@ ScriptedImporter:
     spriteID: aaeef720d048728469fe9dea2338ef66
     layerID: 331
     mosaicPosition: {x: 212, y: 1668}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: PlayUntilMark_Button_Light
     spriteName: PlayUntilMark_Button_Light
     isGroup: 0
@@ -1068,6 +1135,9 @@ ScriptedImporter:
     spriteID: 16a0bd1fc9e653f4f99502f3140d927c
     layerID: 317
     mosaicPosition: {x: 420, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: PlayUntilMark_Button_Dark
     spriteName: PlayUntilMark_Button_Dark
     isGroup: 0
@@ -1075,6 +1145,9 @@ ScriptedImporter:
     spriteID: fb50a2f2ad4a47e4aa4696ae4c877485
     layerID: 326
     mosaicPosition: {x: 420, y: 212}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: PlayAfterMark_Button_Light
     spriteName: PlayAfterMark_Button_Light
     isGroup: 0
@@ -1082,6 +1155,9 @@ ScriptedImporter:
     spriteID: d9105e39b3c8d624aacbd2f1b1d3dc0d
     layerID: 315
     mosaicPosition: {x: 420, y: 420}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: PlayAfterMark_Button_Dark
     spriteName: PlayAfterMark_Button_Dark
     isGroup: 0
@@ -1089,6 +1165,9 @@ ScriptedImporter:
     spriteID: bbffe9a0b2e5c204495746264a757300
     layerID: 325
     mosaicPosition: {x: 420, y: 628}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Play_Button_Light
     spriteName: Play_Button_Light
     isGroup: 0
@@ -1096,6 +1175,9 @@ ScriptedImporter:
     spriteID: da3cf916cfa51214a8098a7988dd2a61
     layerID: 313
     mosaicPosition: {x: 420, y: 836}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Play_Button_Dark
     spriteName: Play_Button_Dark
     isGroup: 0
@@ -1103,6 +1185,9 @@ ScriptedImporter:
     spriteID: f848b5954223eb141b6aeca8a6413fb3
     layerID: 324
     mosaicPosition: {x: 420, y: 1044}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Pause_Button_Light
     spriteName: Pause_Button_Light
     isGroup: 0
@@ -1110,6 +1195,9 @@ ScriptedImporter:
     spriteID: 3e53e386cf0813340b6d8cdcf3fe96ab
     layerID: 311
     mosaicPosition: {x: 420, y: 1252}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Pause_Button_Dark
     spriteName: Pause_Button_Dark
     isGroup: 0
@@ -1117,6 +1205,9 @@ ScriptedImporter:
     spriteID: 844b27c9a4483c143a40f8bb558179cf
     layerID: 323
     mosaicPosition: {x: 420, y: 1460}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Arrow_Light
     spriteName: Arrow_Light
     isGroup: 0
@@ -1124,6 +1215,9 @@ ScriptedImporter:
     spriteID: 80e879c049c0baa40b57c89eedbad420
     layerID: 319
     mosaicPosition: {x: 420, y: 1876}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Arrow_Dark
     spriteName: Arrow_Dark
     isGroup: 0
@@ -1131,6 +1225,9 @@ ScriptedImporter:
     spriteID: 974d6d2ec76f6b3468085ade910323b7
     layerID: 318
     mosaicPosition: {x: 628, y: 212}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Checkmark_Light
     spriteName: Checkmark_Light
     isGroup: 0
@@ -1138,6 +1235,9 @@ ScriptedImporter:
     spriteID: 1706478583eba0a48a1d2710d24a60e4
     layerID: 321
     mosaicPosition: {x: 4, y: 1876}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Checkmark_Dark
     spriteName: Checkmark_Dark
     isGroup: 0
@@ -1145,20 +1245,29 @@ ScriptedImporter:
     spriteID: 5bd7eb36076e65748b7ec40b0e082dcb
     layerID: 320
     mosaicPosition: {x: 212, y: 1876}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Handle_Light
     spriteName: Handle_Light
     isGroup: 0
     parentIndex: -1
     spriteID: 3125616c5f886fa43a628ccd14f6438f
     layerID: 346
-    mosaicPosition: {x: 420, y: 1985}
+    mosaicPosition: {x: 544, y: 1876}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Handle_Dark
     spriteName: Handle_Dark
     isGroup: 0
     parentIndex: -1
     spriteID: 1468805f87dcb6a4f999b8756c13e919
     layerID: 347
-    mosaicPosition: {x: 628, y: 321}
+    mosaicPosition: {x: 544, y: 1884}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: FillArea_Light
     spriteName: FillArea_Light
     isGroup: 0
@@ -1166,6 +1275,9 @@ ScriptedImporter:
     spriteID: a8580ece430cb3c4c9931e7575313cc4
     layerID: 349
     mosaicPosition: {x: 420, y: 1668}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: FillArea_Dark
     spriteName: FillArea_Dark
     isGroup: 0
@@ -1173,13 +1285,14 @@ ScriptedImporter:
     spriteID: a44e495eaf077e947b967b0cf87c7bfc
     layerID: 348
     mosaicPosition: {x: 628, y: 4}
-  characterData:
-    bones: []
-    parts: []
-    dimension: {x: 0, y: 0}
-    characterGroups: []
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
   generateGOHierarchy: 0
   textureAssetName: Buttons_v2 Texture
   prefabAssetName: Buttons_v2 Prefab
   spriteLibAssetName: Buttons_v2 Sprite Lib
+  skeletonAssetName: 
   secondarySpriteTextures: []
